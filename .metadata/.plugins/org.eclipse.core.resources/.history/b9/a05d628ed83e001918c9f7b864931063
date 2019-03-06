@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author bobur
+ *
+ */
+module test {
+	requires java.naming;
+}

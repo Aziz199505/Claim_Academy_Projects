@@ -1,0 +1,33 @@
+package person;
+
+import java.lang.reflect.Array;
+import java.util.LinkedList;
+
+public class testme {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Hello World");
+		int[] list = {3,4,5,5};
+		
+		LinkedList<Integer> newList = convert(list);
+		
+		System.out.println(newList);
+		
+
+		
+		
+	}
+	
+	public static LinkedList<Integer> convert(int[] arr) {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		
+		for(int i = 0; i < arr.length ; i++) {
+			list.add(arr[i]);
+		}
+		return list;
+	}
+	
+	
+
+}

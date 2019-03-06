@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+/**
+ * @author bobur
+ *
+ */
+module test {
+	requires java.naming;
+	requires java.sql;
+	requires jdk.compiler;
+}

@@ -1,0 +1,27 @@
+package FirstJavaProject;
+
+import java.util.Scanner;
+
+interface NumericTest {
+	boolean computeTest(int n);
+}
+
+
+public class ProjectFirst {
+
+	public static void main(String[] args) {
+		/*System.out.println("Hello World");
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Enter your name: ");
+		String userName = input.nextLine();*/
+		
+		//System.out.println("Hello: " + userName);
+		
+		NumericTest isEven = (n) -> (n % 2 == 0);
+		
+		System.out.println(isEven.computeTest(3));
+		
+	}
+
+}

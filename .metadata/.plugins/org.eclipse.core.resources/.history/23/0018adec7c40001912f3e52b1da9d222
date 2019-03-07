@@ -1,0 +1,10 @@
+
+public class ProjectThird {
+
+	public static void main(String[] args) {
+		int coin = 99;
+		System.out.println(coin % 25);
+
+	}
+
+}

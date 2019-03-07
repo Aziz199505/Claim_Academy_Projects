@@ -1,0 +1,18 @@
+package learn;
+
+interface gen<T> {
+	T compute(Integer t);
+}
+
+public class learn {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		gen<Boolean> isEven = (n) -> {
+			return n % 2 == 0;
+		};
+		
+		System.out.println(isEven.compute(10));
+	}
+
+}

@@ -1,0 +1,81 @@
+package WedAssign;
+
+import java.util.Scanner;
+
+public class ProjectThird {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * 1.Write a method to prompt the user to enter the radius of the circle then
+		 * calculate the area and circumference of the circle.
+		 */
+		
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Enter the radius of a circle: ");
+		double radius = sc.nextDouble();
+		
+		double areaOfCircle = calcAreaCircle(radius);
+		double circumOfCircle = calcCircCircle(radius);
+		
+		System.out.println(String.format("Area of Circle:\t%.2f \nCircumference of Circle:\t%.2f", areaOfCircle,circumOfCircle));
+		
+		
+		/*
+		 * 2. Write a method to prompt the user for base-width and height of a triangle,
+		 * then calculate the area of the Triangle.
+		 */
+		
+		
+		System.out.print("Enter the  base-width of a triangle: ");
+		double baseWidthTri = sc.nextDouble();
+		
+		System.out.print("Enter the height of a triangle: ");
+		double heightTri = sc.nextDouble();
+		
+		double areaOfTri = calcAreaOfTri(baseWidthTri,heightTri);
+
+		System.out.println(String.format("Area of Triangle:\t%.2f", areaOfTri));
+
+
+		/*
+		 * 3. Write a method to prompt the user for a number then display check if the
+		 * number is Even or Odd.
+		 */
+		
+		System.out.print("Enter a number to check it is even or odd: ");
+		int number = sc.nextInt();
+		
+		/*
+		 * 4. Write a method to prompt the user for an Integer then display the same
+		 * value with one decimal place. eg user enter "15 " result is:
+		 * "You entered 15, the new value is 15.0".
+		 */	
+		
+		System.out.print("Enter a Integer Number: ");
+		int intNumber = sc.nextInt();
+		
+		System.out.println(String.format("Number with one decimal place:\t%.1f", intNumber));
+
+	}
+	
+	
+	public static  double calcAreaCircle(double radius) {
+		return Math.PI * Math.pow(radius, 2);
+	}
+	
+	public static double calcCircCircle(double radius) {
+		return 2*Math.PI * radius;
+	}
+	
+	public static double calcAreaOfTri(double baseWidth,double height) {
+		return (baseWidth * height)/2;
+	}
+	
+	public static String isEvenOrOdd(int num) {
+		return num % 2 == 0 ?  "Even" :  "Odd";
+	}
+
+}

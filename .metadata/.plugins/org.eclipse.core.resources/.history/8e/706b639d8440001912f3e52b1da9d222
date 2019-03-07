@@ -1,0 +1,25 @@
+package Loops;
+
+public class Loops {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] n = {1,20,35};
+		int[] m = {10,30,45};
+		int total = 0;
+		
+		
+		for(int k = 0; k < n.length; k++) {
+			for(int i = n[k]; i <= m[k]; i++) {
+				total += i;
+			}
+			System.out.println(total);
+		}
+		
+		
+		
+		
+		
+	}
+
+}

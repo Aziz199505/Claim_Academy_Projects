@@ -1,0 +1,30 @@
+
+public class ProjectThird {
+
+	public static void main(String[] args) {
+		int penny = 1;
+		int nickel = 5;
+		int dime = 10;
+		int quarter = 25;
+		
+		double coin = 99;
+		double coinLeft = 0;
+		int totalQts = (int)Math.floor(coin/quarter);
+		coinLeft -=  (totalQts * quarter);
+		int totalDime =  (int)Math.floor((coinLeft/dime));
+		coinLeft -= (totalDime * dime);
+		int totalNickel = (int)Math.floor((coinLeft/nickel));
+		coinLeft -= (totalDime * dime);
+		int totalPenny = (int) coinLeft;
+		
+		
+		System.out.println(totalQts);
+		System.out.println(totalDime);
+		System.out.println(totalNickel);
+		System.out.println(totalPenny);
+
+
+		
+	}
+
+}

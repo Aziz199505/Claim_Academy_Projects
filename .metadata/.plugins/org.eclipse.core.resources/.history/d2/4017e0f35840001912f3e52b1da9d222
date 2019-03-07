@@ -1,0 +1,6 @@
+package learn;
+
+public class Athelete {
+	int age;
+	String name;
+}

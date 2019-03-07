@@ -1,0 +1,23 @@
+package learn;
+
+
+
+
+interface gen<T> {
+	T compute(T t);
+}
+
+public class learn implements Runnable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

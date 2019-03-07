@@ -1,0 +1,15 @@
+
+public class ProjectThird {
+
+	public static void main(String[] args) {
+		int penny = 1;
+		int nickel = 5;
+		int dime = 10;
+		int quarter = 25;
+		
+		int coin = 99;
+		System.out.println(coin / 25);
+
+	}
+
+}

@@ -8,6 +8,8 @@ public class MondayAssigment {
 		//System.out.print("How many numbers you would like to average: ");
 		//int totalNumber = sc.nextInt();
 		
+		
+		
 		//System.out.println(String.format("Average for %d numbers is %.2f", totalNumber,getAverage(totalNumber,sc)));
 		
 		int[] arrNumber = {1,3,4,6,4,1,5};
@@ -30,15 +32,32 @@ public class MondayAssigment {
 
 	}
 	
-	public static double getAverage(int totalNumber,Scanner sc) {
-		double totalCount = 0.0;
-		for(int i = 0; i < totalNumber; i++) {
-			System.out.print("Please enter number " + i+1 + ":");
-			double number = sc.nextDouble();
-			totalCount += number;
+	public static int getHundredAvg(int average, int[] arr) {
+		int count = 0;
+		for(int i =0 ; i < arr.length; i++) {
+			if(arr[i] > average) count++;
 		}
 		
-		return totalCount/totalNumber;
+		
+		return count;
+	}
+	
+	public static int getAverage(int[] arr) {
+		int totalCount = sum(arr);
+		//int count = 0;
+		
+		int average =  totalCount/totalCount;
+		
+		return average;
+		
+	}
+	
+	public static int sum(int[] arr) {
+		int totalCount =0;
+		for(int i = 0; i < arr.length; i++) {
+			totalCount += arr[i];
+		}
+		return totalCount;
 	}
 	
 	public static int sumArr(int[] arr) {

@@ -8,15 +8,15 @@ public class Branch extends Library {
 
 
 	private String name;
-	private String location;
+	private Address address;
 	//private List<Book> totalAmtBooks = new ArrayList<>();
 	private List<Customer> customers = new ArrayList<>();
+	//private List<CustomerProfile> customerProfiles = new ArrayList<>();
 	
-	
-	public Branch(String name, String location) {
+	public Branch(String name,Address address) {
 		//super(libraryName);
 		this.name = name;
-		this.location = location;
+		this.address = address;
 	
 		//this.totalAmtBooks = totalBooks;
 		//this.customers = customers;
@@ -29,28 +29,24 @@ public class Branch extends Library {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
+	
 	
 	
 	public void removeBookForCustomer(Book book,Customer customer) {
-		if(customer.isCheckOut()) {
+		if(book.isCheckedOut()) {
 			int index = getIndexBook(book);
 			
 			if(index == -1) {
 				System.out.println("Book is not there. Please check it out next time");
 			}else {
 				customer.addBook(totalAmtBooks.get(index));
+				customer.getCustomerProfile().checkOut(totalAmtBooks.get(index));
 				totalAmtBooks.remove(book);
 			}
 			
 			
 		} else {
-			System.out.println("Please check it out to get books");
+			System.out.println(String.format("Please check it out %s to get book",book.getTitle()));
 		}
 	}
 	
@@ -70,6 +66,9 @@ public class Branch extends Library {
 	
 	public void addCustomers(Customer customer) {
 		customers.add(customer);
+		customer.setCustomerProfile(new CustomerProfile(customer));
+		//customerProfiles.add(new CustomerProfile(customer));
+		
 	}
 
 
@@ -83,8 +82,20 @@ public class Branch extends Library {
 		this.customers = customers;
 	}
 	
-	public String toString() {
-		return String.format("Branch Name:%s\nLocation:%s\nTotal Customers:%d\nTotal Books in a Branch:%d", this.name,this.location,this.customers.size(),totalAmtBooks.size());
+	public Address getAddress() {
+		return address;
 	}
 
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	
+	public String toString() {
+		return String.format("Branch Name:%s\n%s\nTotal Customers:%d\nTotal Books in a Branch:%d", this.name,this.address.toString(),this.customers.size(),totalAmtBooks.size());
+	}
+
+
+	
 }

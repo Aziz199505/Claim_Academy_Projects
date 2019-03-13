@@ -90,7 +90,7 @@ public class Library {
 	
 	
 	public String toString() {
-		return String.format("Library Name: %s", this.name);
+		return String.format("Library Name: %s\nNumber of Books: %d", this.name,this.totalAmtBooks.size());
 	}
 	
 }

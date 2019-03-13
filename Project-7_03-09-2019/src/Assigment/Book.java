@@ -3,10 +3,10 @@ package Assigment;
 public class Book {
 	
 	private String author;
-	private int isbn = (int)Math.random() * 10000000;
+	private int isbn = 10000 + (int)(Math.random() * ((100000000 - 10000) + 1));
 	private String title;
 	private int numberOfPages = 60 + (int)(Math.random() * ((500 - 60) + 1));
-	
+	private boolean checkedOut = false;
 	public Book(String author, int isbn, String title, int numberOfPages) {
 		super();
 		this.author = author;
@@ -56,6 +56,14 @@ public class Book {
 	
 	public String toString() {
 		return String.format("Author: %s\nIsbn:%d\nTitle:%s\nNumber of Pages: %d",this.author,this.isbn,this.title,this.numberOfPages);
+	}
+
+	public boolean isCheckedOut() {
+		return checkedOut;
+	}
+
+	public void setCheckedOut(boolean checkedOut) {
+		this.checkedOut = checkedOut;
 	}
 
 }

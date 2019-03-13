@@ -1,6 +1,8 @@
 package newLearn;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,17 +16,35 @@ public class main {
 		//System.out.println(S.substring(1,6));
 		
 		
-		String line = "this is 20.d65dd text";
+		BigDecimal big = new BigDecimal("3.0");
+		
+		ArrayList<BigDecimal> bd = new ArrayList<>();
+		bd.add(big);
+		bd.add(new BigDecimal("2"));
+		bd.add(new BigDecimal("-2"));
+		bd.add(new BigDecimal("000.000"));
+		
+		Collections.sort(bd);
 		
 		
-		String pattern = "is";
-		
-		
-		
-		Matcher p = Pattern.compile(pattern).matcher(line);
-		while(p.find()) {
-			System.out.println(p.group());
+		for(int i = 0; i < bd.size(); i++) {
+			System.out.println(bd.get(i));
 		}
+		
+
+		
+		System.out.println(big);
+		/*
+		 * String line = "this is 20.d65dd text";
+		 * 
+		 * 
+		 * String pattern = "is";
+		 * 
+		 * 
+		 * 
+		 * Matcher p = Pattern.compile(pattern).matcher(line); while(p.find()) {
+		 * System.out.println(p.group()); }
+		 */
 		
 		
 		

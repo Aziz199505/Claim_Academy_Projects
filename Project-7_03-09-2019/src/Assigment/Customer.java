@@ -1,7 +1,9 @@
 package Assigment;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Customer {
@@ -49,6 +51,7 @@ public class Customer {
 	
 	public void addBook(Book book) {
 		books.add(book);
+		this.customerProfile.getBookLogs().add(new BookLog(book));
 	}
 	
 	
@@ -62,7 +65,16 @@ public class Customer {
 		this.totalNumReturn += 1;
 		books.remove(book);
 		branch.addBook(book);
-		customerProfile.checkIn(book);;
+		this.checkIn(book);
+	}
+	
+	
+	public void checkIn(Book book) throws ParseException {
+		SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = dateformat3.parse("20/03/2019");
+		for(int i = 0; i < this.customerProfile.getBookLogs().size(); i++) {
+			if(book == this.customerProfile.getBookLogs().get(i).getBook()) this.customerProfile.getBookLogs().get(i).setCheckInDate(date);
+		}
 	}
 	
 	public String toString() {

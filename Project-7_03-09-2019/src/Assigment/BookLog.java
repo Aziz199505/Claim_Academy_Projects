@@ -55,7 +55,7 @@ public class BookLog {
 	
 	public String toString() {
 		if(checkOutDate == checkInDate) {
-			return String.format("Book %s  was checked out in %s",book.getTitle(),dateformat.format(checkOutDate));
+			return String.format("Book %s  was checked out in %s and not been returned",book.getTitle(),dateformat.format(checkOutDate));
 		} else {
 			return String.format("Book %s was checked out in %s, checked in %s and returned in %s day(s)",book.getTitle(),dateformat.format(checkOutDate),dateformat.format(checkInDate),totalTimeReturn());
 		}

@@ -15,18 +15,6 @@ public class CustomerProfile {
 		this.customer = customer;
 	}
 	
-	public void checkOut(Book book) {
-		bookLogs.add(new BookLog(book));
-	}
-	
-	public void checkIn(Book book) throws ParseException {
-		SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
-		Date date = dateformat3.parse("20/03/2019");
-		for(int i = 0; i < bookLogs.size(); i++) {
-			if(book == bookLogs.get(i).getBook()) bookLogs.get(i).setCheckInDate(date);
-		}
-	}
-	
 	
 	public String logs() {
 		String log = String.format("Logs for %s %s\n",customer.getName(),customer.getLastName());
@@ -39,6 +27,14 @@ public class CustomerProfile {
 	
 	public String toString() {
 		return logs();
+	}
+
+	public List<BookLog> getBookLogs() {
+		return bookLogs;
+	}
+
+	public void setBookLogs(List<BookLog> bookLogs) {
+		this.bookLogs = bookLogs;
 	}
 	
 	

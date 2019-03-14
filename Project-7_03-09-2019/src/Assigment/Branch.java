@@ -40,7 +40,7 @@ public class Branch extends Library {
 				System.out.println("Book is not there. Please check it out next time");
 			}else {
 				customer.addBook(totalAmtBooks.get(index));
-				customer.getCustomerProfile().checkOut(totalAmtBooks.get(index));
+				//customer.getCustomerProfile().checkOut(totalAmtBooks.get(index));
 				totalAmtBooks.remove(book);
 			}
 			

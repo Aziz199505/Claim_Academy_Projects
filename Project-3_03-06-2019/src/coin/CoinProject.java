@@ -1,6 +1,8 @@
+package coin;
+
 import java.util.Scanner;
 
-public class ProjectThird {
+public class CoinProject {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

@@ -1,13 +1,19 @@
+import java.util.Scanner;
 
 public class ProjectThird {
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
 		int penny = 1;
 		int nickel = 5;
 		int dime = 10;
 		int quarter = 25;
 		
-		double coin = 99;
+		System.out.println("Please enter the total penies: ");
+		double coin = (double) sc.nextInt();
+		
+		
 		int totalQts = (int)Math.floor(coin/quarter);
 		coin -=  (totalQts * quarter);
 		//System.out.println(coin);
@@ -26,10 +32,11 @@ public class ProjectThird {
 		int totalPenny = (int) coin;
 		
 		
-		System.out.println(totalQts);
-		System.out.println(totalDime);
-		System.out.println(totalNickel);
-		System.out.println(totalPenny);
+		
+		
+		
+		System.out.println(String.format("Total Quarters : %d |  Total Dimes: %d | Total Nickels: %d | Total Pennies: %d", totalQts,totalDime,totalNickel,totalPenny));
+
 		
 		
 

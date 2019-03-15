@@ -57,7 +57,7 @@ public class Person {
 	}
 
 	public String toString() {
-		return String.format("%s %s %s", this.firstName,this.middleName != null ? this.middleName : "",this.lastName).trim().replaceAll(" +", " ");
+		return String.format("|%s %s %s|%s|%s|", this.firstName,this.middleName != null ? this.middleName : "",this.lastName,this.address.toString(),this.contact.toString()).trim().replaceAll(" +", " ");
 	}
 	
 	

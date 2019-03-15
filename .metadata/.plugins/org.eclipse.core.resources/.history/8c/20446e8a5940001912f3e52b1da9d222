@@ -1,9 +1,0 @@
-package learn;
-
-public class Swimmer extends Athelete {
-
-	Swimmer(int age, String name,String position) {
-		super(age, name);
-	}
-	
-}

@@ -1,14 +1,15 @@
-package Assigment;
+package PhoneBook;
 
 public class Address {
-	private String street,state,city;
-	private int zipcode;
 	
-	public Address(String street, String state, int zipcode) {
+	private String street,state,city,zipcode;
+
+	public Address(String street, String city,String state,String zipcode) {
 		super();
 		this.street = street;
 		this.state = state;
 		this.zipcode = zipcode;
+		this.city = city;
 	}
 
 	public String getStreet() {
@@ -23,17 +24,24 @@ public class Address {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public int getZipcode() {
+	public String  getZipcode() {
 		return zipcode;
 	}
-	public void setZipcode(int zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 	
+	public String getCity() {
+		return city;
+	}
 
+	public void setCity(String city) {
+		this.city = city;
+	}
 	
 	public String toString() {
-		return String.format("Address: %s %s  %d",street,state,zipcode);
+		return String.format("%s, %s, %s, %s",street,city,state,zipcode);
 	}
+	
 	
 }

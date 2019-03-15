@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 public class Customer {
 	public Customer(String lastName, String name, Address address) {
 		super();

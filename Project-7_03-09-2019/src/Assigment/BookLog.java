@@ -9,7 +9,11 @@ public class BookLog {
 	private Book book;
 	private Date checkOutDate = new Date();
 	private Date checkInDate = checkOutDate;
+	private String dFormat;
 	
+	public String getDateByFormat() {
+		return dateformat.format(checkOutDate);
+	}
 	
 	
 	public BookLog(Book book) {

@@ -1,9 +1,14 @@
 package PhoneBook;
 
 public class Address {
-	
-	private String street,state,city,zipcode;
+	//Creating variables
 
+	private String street,state,city,zipcode;
+	//Creating default and parametize constructor
+	
+	public Address() {}
+	
+	
 	public Address(String street, String city,String state,String zipcode) {
 		super();
 		this.street = street;
@@ -11,6 +16,9 @@ public class Address {
 		this.zipcode = zipcode;
 		this.city = city;
 	}
+	
+	//Getters setters for variables
+
 
 	public String getStreet() {
 		return street;
@@ -38,9 +46,13 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	//Formatted string to used output Contact variables
+	public String orignalFormat() {
+		return String.format("%s, %s, %s, %s",street,city,state,zipcode);
+	}
 	
 	public String toString() {
-		return String.format("%s, %s, %s, %s",street,city,state,zipcode);
+		return String.format("Street: %s City:%s State:%s Zipcode:%s",street,city,state,zipcode);
 	}
 	
 	

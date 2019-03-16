@@ -1,12 +1,16 @@
 package PhoneBook;
 
 public class Person {
-	
+	//Creating variables
+
 	private Address address;
 	private Contact contact;
 	private String firstName,lastName,middleName;
+	private String Birthday,Aniversary;
 	
-	public Person() {}
+	
+	//Creating default and parametize constructor with overload constructors to handle middle name
+
 	public Person(String firstName, String middleName, String lastName) {
 		super();
 		this.firstName = firstName;
@@ -19,7 +23,8 @@ public class Person {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-	
+	//Getters setters for variables
+
 	public Address getAddress() {
 		return address;
 	}
@@ -51,14 +56,37 @@ public class Person {
 		this.middleName = middleName;
 	}
 	
+	public String getBirthday() {
+		return Birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		Birthday = birthday;
+	}
+
+	public String getAniversary() {
+		return Aniversary;
+	}
+
+	public void setAniversary(String aniversary) {
+		Aniversary = aniversary;
+	}
+	
+	//Returns full name string used for sorting
 	public String fullName() {
 		return String.format("%s %s %s", this.firstName,this.middleName != null ? this.middleName : "",this.lastName).trim().replaceAll(" +", " ");
 
 	}
+	
+	public String originalFormat() {
+		return String.format("|%s %s %s|%s|%s|%s|%s", this.firstName,this.middleName != null ? this.middleName : "",this.lastName,this.address.toString(),this.Birthday,this.Aniversary,this.contact.toString()).trim().replaceAll(" +", " ");
+	}
 
 	public String toString() {
-		return String.format("|%s %s %s|%s|%s|", this.firstName,this.middleName != null ? this.middleName : "",this.lastName,this.address.toString(),this.contact.toString()).trim().replaceAll(" +", " ");
+		return String.format(" FirstName: %s Middle Name:%s Last Name: %s %s Birthday: %s Aniversary: %s %s", this.firstName,this.middleName != null ? this.middleName : "",this.lastName,this.address.toString(),this.Birthday,this.Aniversary,this.contact.toString()).trim().replaceAll(" +", " ");
 	}
+
+	
 	
 	
 

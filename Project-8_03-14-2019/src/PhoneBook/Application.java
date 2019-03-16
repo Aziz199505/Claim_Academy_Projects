@@ -451,7 +451,7 @@ public class Application {
 				searchList = addPerson(searchList,p);
 			}
 			
-			if(opt == 4 && p.getContact().getTelephone().toLowerCase().contains(response)) {
+			if(opt == 4 && p.getContact().getTelephone().contains(filterOnlyNumber(response))) {
 				searchList = addPerson(searchList,p);
 			}
 			

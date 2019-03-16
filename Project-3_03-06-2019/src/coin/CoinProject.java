@@ -6,7 +6,7 @@ public class CoinProject {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
+		//Assign Variables
 		int penny = 1;
 		int nickel = 5;
 		int dime = 10;
@@ -15,7 +15,8 @@ public class CoinProject {
 		System.out.println("Please enter the total penies: ");
 		double coin = (double) sc.nextInt();
 		
-		
+		//Calculating changes 
+		//Dividing total coins by coin getting whole number and substracting to get remain repeating for all coins
 		int totalQts = (int)Math.floor(coin/quarter);
 		coin -=  (totalQts * quarter);
 		//System.out.println(coin);
@@ -36,7 +37,7 @@ public class CoinProject {
 		
 		
 		
-		
+		//Getting result
 		System.out.println(String.format("Total Quarters : %d |  Total Dimes: %d | Total Nickels: %d | Total Pennies: %d", totalQts,totalDime,totalNickel,totalPenny));
 
 		

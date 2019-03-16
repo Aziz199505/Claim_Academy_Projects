@@ -55,7 +55,7 @@ public class Branch extends Library {
 	public int getIndexBook(Book book) {
 		int index = -1;
 		for(int i=0;i < totalAmtBooks.size(); i++) {
-			if(totalAmtBooks.get(i) == book) {
+			if(totalAmtBooks.get(i).toString().equals(book.toString())) {
 				index = i;
 				break;
 			}

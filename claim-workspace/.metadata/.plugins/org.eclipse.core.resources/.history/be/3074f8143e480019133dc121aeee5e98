@@ -1,0 +1,12 @@
+package claim;
+
+public class Application {
+	public static void main(String args[]) {
+		System.out.println("Hello");
+		
+		Person s1 = new Student();
+		Person e1 = new Employee();
+		
+		double telPhoneBill = s1.calculateTelephoneBill(120.5);
+	}
+}

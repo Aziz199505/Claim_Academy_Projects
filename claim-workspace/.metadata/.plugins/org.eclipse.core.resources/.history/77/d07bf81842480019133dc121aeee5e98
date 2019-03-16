@@ -1,0 +1,46 @@
+package claim;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Application {
+	public static void main(String args[]) {
+		
+		Person s1 = new Student("Jake","Walter");
+		Person e1 = new Employee("Moly","Adams");
+		
+		double s1TelPhoneBill = s1.calculateTelephoneBill(120.5);
+		double e1TelPhoneBill = e1.calculateTelephoneBill(120.5);
+
+		System.out.println(s1TelPhoneBill);
+		System.out.println(e1TelPhoneBill);
+		
+		Person p1 = new Student("Aziz","Sobirov");
+		Person p2 = new Employee("Andy","Cooper");
+		
+		
+		System.out.println(p1.calculateTelephoneBill(120.5));
+		System.out.println(p2.calculateTelephoneBill(120.5));
+		
+		Person[] people = {s1,e1,p1,p2};
+		
+		for(Person p: people) {
+			System.out.println(p.toString());
+		}
+		
+		for(Person p: people) {
+			System.out.println(p.calculateTelephoneBill(120.5));
+		}
+		
+		List<Student> students = new ArrayList<Student>();
+		List<Employee> employees = new ArrayList<Employee>();
+		
+		students.add((Student) s1);
+		students.add((Student) p1);
+		
+			
+	}
+	
+	
+	
+}

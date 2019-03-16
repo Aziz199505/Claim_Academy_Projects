@@ -1,0 +1,6 @@
+package claim;
+
+public abstract class Person {
+	public abstract double taxes();
+
+}

@@ -1,0 +1,16 @@
+package claim;
+
+public class Student extends Person {
+
+	@Override
+	public double taxes(double amount) {
+		// TODO Auto-generated method stub
+		return amount * 0.02;
+	}
+	
+	
+	public String toString() {
+		return String.format("%s %s", this.firstName, this.lastName);
+	}
+
+}

@@ -1,0 +1,10 @@
+package claim;
+
+public abstract class Person {
+	protected String firstName,lastName;
+	
+	public abstract double taxes(double amount);
+	
+	public double calculateTelephoneBill(double amount);
+
+}

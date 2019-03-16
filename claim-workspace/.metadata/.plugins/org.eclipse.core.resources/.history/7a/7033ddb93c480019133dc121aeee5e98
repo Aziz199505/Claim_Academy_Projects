@@ -1,0 +1,8 @@
+package claim;
+
+public abstract class Person {
+	protected String firstName,lastName;
+	
+	public abstract double taxes();
+
+}

@@ -1,0 +1,16 @@
+package claim;
+
+public class Employee extends Person{
+
+	public Employee(String firstName, String lastName) {
+		super(firstName, lastName);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public double taxes(double amount) {
+		// TODO Auto-generated method stub
+		return amount * 0.2;
+	}
+
+}

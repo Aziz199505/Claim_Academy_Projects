@@ -1,0 +1,6 @@
+package claim;
+
+public class school {
+	List<Student> students = new ArrayList<Student>();
+
+}

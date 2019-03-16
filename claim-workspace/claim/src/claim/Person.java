@@ -1,0 +1,31 @@
+package claim;
+
+interface Bills {
+	double gasBill(double amount);
+	boolean carInsurance(boolean exist);
+}
+
+public abstract class Person implements Bills {
+	protected String firstName,lastName;
+	
+	public Person(String firstName,String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	
+	public abstract double taxes(double amount);
+	
+	public double calculateTelephoneBill(double amount) {
+		return taxes(amount) + amount;
+	};
+	
+	
+	
+	
+	
+	public String toString() {
+		return String.format("%s %s", this.firstName, this.lastName);
+	}
+
+}

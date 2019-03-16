@@ -1,0 +1,17 @@
+package claim;
+
+public abstract class Person {
+	protected String firstName,lastName;
+	
+	public abstract double taxes(double amount);
+	
+	public double calculateTelephoneBill(double amount) {
+		return taxes(amount) + amount;
+	};
+	
+	
+	public String toString() {
+		return String.format("%s %s", this.firstName, this.lastName);
+	}
+
+}

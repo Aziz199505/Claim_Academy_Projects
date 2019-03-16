@@ -1,0 +1,19 @@
+package claim;
+
+public class Application {
+	public static void main(String args[]) {
+		
+		Person s1 = new Student();
+		Person e1 = new Employee();
+		
+		double s1TelPhoneBill = s1.calculateTelephoneBill(120.5);
+		double e1TelPhoneBill = e1.calculateTelephoneBill(120.5);
+
+		System.out.println(s1TelPhoneBill);
+		System.out.println(e1TelPhoneBill);
+
+	}
+	
+	
+	
+}

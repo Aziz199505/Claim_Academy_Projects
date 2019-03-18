@@ -531,7 +531,7 @@ public class Application {
 		
 		//If entry entered wrong it will say invalid
 		try {
-			personData = data[0].split(" ");
+			personData = data[0].replaceAll("^\\s+", "").split(" ");
 			
 			//getting address from split
 			addr = new Address(data[1], data[2], data[3], data[4]);
@@ -550,8 +550,11 @@ public class Application {
 		//Logic for middle name exist or not
 		if(personData.length == 2) {
 			person = new Person(personData[0],personData[1]);
-		} else {
+		}else if(personData.length == 3) {
 			person = new Person(personData[0],personData[1],personData[2]);
+		}
+		else {
+			person = new Person(personData[0],personData[1] + " " + personData[2],personData[3]);
 		}
 		
 		person.setAddress(addr);

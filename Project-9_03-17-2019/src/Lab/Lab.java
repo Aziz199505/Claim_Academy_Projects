@@ -9,6 +9,7 @@ public class Lab {
 		
 		int age = validateAge(sc);
 		
+		System.out.println(age);
 	}
 	
 	public static int validateAge(Scanner sc) {

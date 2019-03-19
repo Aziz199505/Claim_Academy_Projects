@@ -41,12 +41,13 @@ public class Application {
 	
 		
 		//This is just for testing so I don't have to keep adding same data entry over time
-		
-		  String[] str = {"John 1, 114 Market St, St Louis, AL, 63403, 6366435698",
-		  "John 3, 324 Main St, St Charles, MO,63303, 8475390126",
-		  "John 2, 574 Pole ave, St. Peters, MO, 63333, 5628592375"};
-		  
-		 for(int i = 0; i < str.length; i++) { redirect(1,str[i],"mainMenu",null); }
+		/*
+		 * String[] str = {"John 1, 114 Market St, St Louis, AL, 63403, 6366435698",
+		 * "John 3, 324 Main St, St Charles, MO,63303, 8475390126",
+		 * "John 2, 574 Pole ave, St. Peters, MO, 63333, 5628592375"};
+		 * 
+		 * for(int i = 0; i < str.length; i++) { redirect(1,str[i],"mainMenu",null); }
+		 */
 		 
 		//Testing case
 		

@@ -1,39 +1,55 @@
 package newLearn;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.math.BigInteger;
+import java.util.Scanner;
+
+class Test {
+	public Test() {
+	}
+}
+
 
 public class main {
-
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		//System.out.println(S.substring(3,7));
 		//System.out.println(S.substring(1,6));
 		
+		Test t = new Test();
 		
-		BigDecimal big = new BigDecimal("3.0");
+		int a = 10;
 		
-		ArrayList<BigDecimal> bd = new ArrayList<>();
-		bd.add(big);
-		bd.add(new BigDecimal("2"));
-		bd.add(new BigDecimal("-2"));
-		bd.add(new BigDecimal("000.000"));
-		
-		Collections.sort(bd);
+		//Object.class.toClass(a);
 		
 		
-		for(int i = 0; i < bd.size(); i++) {
-			System.out.println(bd.get(i));
-		}
-		
-
-		
-		System.out.println(big);
+		/*
+		 * Scanner sc = new Scanner(System.in);
+		 * 
+		 * B = new BigInteger("100"); A =
+		 * BigInteger.valueOf(Long.valueOf(sc.nextLine())); B =
+		 * BigInteger.valueOf(sc.nextLine());
+		 * 
+		 * System.out.println(A.multiply(B)); BigInteger A, B;
+		 */
+		/*
+		 * BigDecimal big = new BigDecimal("3.0");
+		 * 
+		 * ArrayList<BigDecimal> bd = new ArrayList<>(); bd.add(big); bd.add(new
+		 * BigDecimal("2")); bd.add(new BigDecimal("-2")); bd.add(new
+		 * BigDecimal("000.000"));
+		 * 
+		 * Collections.sort(bd);
+		 * 
+		 * 
+		 * for(int i = 0; i < bd.size(); i++) { System.out.println(bd.get(i)); }
+		 * 
+		 * 
+		 * 
+		 * System.out.println(big);
+		 */
 		/*
 		 * String line = "this is 20.d65dd text";
 		 * 

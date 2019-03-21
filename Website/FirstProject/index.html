@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="box row">
+    <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label for="">First Name <span>*</span></label>
+                <input type="text" class="form-control" placeholder="">
+        </div>
+    </div>
+
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label for="">Last Name <span>*</span></label>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label for="">Country <span>*</span></label>
+                <br>
+                <input type="text" placeholder="USA" list="country_name">
+
+                <datalist id="country_name">
+                    <option value="USA">USA</option>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Brazil">Brazil</option>
+                </datalist>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <div class="btn btn btn-primary">Submit</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
+

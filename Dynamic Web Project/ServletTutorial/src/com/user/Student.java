@@ -6,7 +6,7 @@ public class Student {
 	private String email;
 	private String schoolName;
 	private String password;
-	private double gpa; 
+	private double gpa,bmi; 
 	private Address address;
 	
 	public Student() {};
@@ -77,6 +77,14 @@ public class Student {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public double getBmi() {
+		return bmi;
+	}
+
+	public void setBmi(double bmi) {
+		this.bmi = bmi;
 	}
 	
 	

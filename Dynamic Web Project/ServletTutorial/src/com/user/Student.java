@@ -8,7 +8,8 @@ public class Student {
 	private String password;
 	private double gpa,bmi; 
 	private Address address;
-	
+	private double  totalIncomeTax;
+	private double taxPercent;
 	public Student() {};
 	
 	public Student(String firstName, String lastName, String email, String schoolName, String password, double gpa,
@@ -85,6 +86,22 @@ public class Student {
 
 	public void setBmi(double bmi) {
 		this.bmi = bmi;
+	}
+
+	public double getTotalIncomeTax() {
+		return totalIncomeTax;
+	}
+
+	public void setTotalIncomeTax(double d) {
+		this.totalIncomeTax = d;
+	}
+
+	public double getTaxPercent() {
+		return taxPercent;
+	}
+
+	public void setTaxPercent(double d) {
+		this.taxPercent = d;
 	}
 	
 	

@@ -114,7 +114,9 @@
     <div class="row">
         <div class="col-md-4">
           <h2>My Income Tax </h2>
-          <p><%  out.print(String.format("%.2f",student.getBmi()));  %></p>
+          <p><%  out.print(String.format("%.2f",student.getTotalIncomeTax()));  %></p>
+          <h2>My Income Percent </h2>
+          <p><%  out.print(String.format("%.2f",student.getTaxPercent()));  %></p>
 			<!--  	<p><a class="btn btn-default" href="GpaServlet" role="button">View GPA </a></p>
         --> </div>        
         <div class="col-md-4">
@@ -122,7 +124,7 @@
            <form action="IncomeTaxServlet" method="post">
            <div class="form-group">
     <label for="totalIncome">Enter Total Income</label>
-    <input type="number" class="form-control" name="totalIncome" id="height">
+    <input type="number" class="form-control" name="totalIncome" id="totalIncome">
   </div>
   <div class="form-group">
     <label for="status">Select Status</label>

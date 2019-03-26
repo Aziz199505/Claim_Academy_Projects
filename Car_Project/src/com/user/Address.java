@@ -50,6 +50,8 @@ public class Address {
 	}
 	
 	
-	
+	public String toString() {
+		return String.format("%s-%s-%s-%s",street,city,state,zipCode);
+	}
 
 }

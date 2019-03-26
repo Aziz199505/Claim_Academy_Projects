@@ -1,0 +1,2 @@
+Toyota,Carrola,null,null,null,null,10000,2014,5500.50
+Bwn,X5,null,null,null,null,500,2005,1200.00

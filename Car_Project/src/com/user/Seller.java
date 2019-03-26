@@ -9,10 +9,13 @@ public class Seller extends User{
 	public Seller() {
 		super();
 		// TODO Auto-generated constructor stub
+		type = "seller";
+
 	}
 
-	public Seller(List<Car> cars, Address address, Contact contact, String firstName, String lastName) {
-		super(cars, address, contact, firstName, lastName);
+	public Seller( Address address, Contact contact, String firstName, String lastName) {
+		super(address, contact, firstName, lastName);
+		type = "seller";
 		// TODO Auto-generated constructor stub
 	}
 

@@ -29,5 +29,7 @@ public class Contact {
 		this.phone = phone;
 	}
 	
-	
+	public String toString() {
+		return String.format("%s %s", email,phone);
+	}
 }

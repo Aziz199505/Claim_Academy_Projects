@@ -3,13 +3,16 @@ package com.car;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
+import java.text.SimpleDateFormat;
 
 public class Car {
 	private String make,model,descp,imgUrl;
-	private Date dateOfPurchase,dateOfAdded;
+	private Date dateOfPurchase;
+	private Date dateOfAdded;
 	private int odometer,year;
 	private double price;
-	
+	private SimpleDateFormat dateformat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+
 	
 	public Car() {
 		super();
@@ -24,6 +27,8 @@ public class Car {
 		this.model = model;
 		this.odometer = odometer;
 		this.price = price;
+		this.year = year;
+		
 	}
 
 
@@ -35,7 +40,14 @@ public class Car {
 		}
 	}
 
-	
+	public String getDateByFormat(Date date) {
+		try{
+			return dateformat.format(date);
+
+		}catch(Exception e) {
+			return "null";
+		}
+	}
 	
 	
 	public int getYear() {
@@ -156,7 +168,9 @@ public class Car {
 				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
 	}
 
-
+	public String formatData() {
+		return String.format("%s,%s,%s,%s,%s,%s,%d,%d,%.2f",make,model,descp,imgUrl,getDateByFormat(dateOfPurchase),getDateByFormat(dateOfAdded),odometer,year,price);
+	}
 
 	@Override
 	public String toString() {

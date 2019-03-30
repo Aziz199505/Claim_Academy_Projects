@@ -1,0 +1,3 @@
+aston martin,DB9,my cool car,http://www.regcheck.org.uk/image.aspx/@YXN0b24gbWFydGluIERCOSAyMDEw,null,29-3-2019 02:41:44,1,2010,1.00
+bmw,320i,,http://www.regcheck.org.uk/image.aspx/@Ym13IDMyMGkgMjAxNg==,null,1-1-2018 02:53:53,1,2016,1.00
+mazda,CX-3,awesome car,http://www.regcheck.org.uk/image.aspx/@bWF6ZGEgQ1gtMyAyMDEw,null,29-3-2019 04:13:45,1,2010,15000.00

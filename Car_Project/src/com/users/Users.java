@@ -32,7 +32,7 @@ public class Users {
 
 	public void addUser(User user) {
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,false));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,true));
 			bw.append(String.format("%s\r\n",user.formatData()));
 			bw.close();
 			

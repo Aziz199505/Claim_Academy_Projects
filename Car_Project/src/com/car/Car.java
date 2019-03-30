@@ -1,9 +1,10 @@
 package com.car;
 
-import java.util.Date;
-import java.util.Objects;
-import java.util.Random;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.util.Date;
+import java.util.Random;
 
 public class Car {
 	private String make,model,descp,imgUrl;
@@ -11,6 +12,8 @@ public class Car {
 	private Date dateOfAdded;
 	private int odometer,year;
 	private double price;
+	boolean discount = false;
+	int discountPercent = 0;
 	private SimpleDateFormat dateformat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 
 	
@@ -28,15 +31,31 @@ public class Car {
 		this.odometer = odometer;
 		this.price = price;
 		this.year = year;
+		this.imgUrl = "http://www.regcheck.org.uk/image.aspx/@" +  Base64.getEncoder().encodeToString(String.format("%s %s %s", make,model,year).getBytes());
+	}
+	
+	
+	public int totalDays() {
+		//return new Date(checkOutDate.getTime() - checkInDate.getTime());
+		Date date = new Date();
+		long diffDays = (date.getTime() - dateOfAdded.getTime() )/ (1000 * 60 * 60 * 24);
 		
+		return Integer.parseInt(Long.toString(diffDays));
+
 	}
 
 
-
 	public void discountPrice(int min) {
-		if(min <= 10) {
-			Random r = new Random();
-			this.price *= r.nextInt((10 - min) + 1) + min;		
+		System.out.println("Hello!!!!!");
+		System.out.println(totalDays());
+		if(totalDays() >= 120) {
+			this.discount = true;
+			
+			if(min <= 10) {
+				Random r = new Random();
+				this.discountPercent = r.nextInt((10 - min) + 1) + min;
+				this.price *= 1 - (discountPercent/100.00);		
+			}
 		}
 	}
 
@@ -112,8 +131,9 @@ public class Car {
 	}
 
 
-	public Date getDateOfAdded() {
-		return dateOfAdded;
+	public String getDateOfAdded() {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		return format.format(dateOfAdded);
 	}
 
 
@@ -145,28 +165,34 @@ public class Car {
 	}
 
 
+	
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(dateOfAdded, dateOfPurchase, descp, imgUrl, make, model, odometer, price);
+
+
+
+	public boolean isDiscount() {
+		return discount;
 	}
 
 
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Car other = (Car) obj;
-		return Objects.equals(dateOfAdded, other.dateOfAdded) && Objects.equals(dateOfPurchase, other.dateOfPurchase)
-				&& Objects.equals(descp, other.descp) && Objects.equals(imgUrl, other.imgUrl)
-				&& Objects.equals(make, other.make) && Objects.equals(model, other.model) && odometer == other.odometer
-				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
+	public void setDiscount(boolean discount) {
+		this.discount = discount;
 	}
+
+
+
+	public int getDiscountPercent() {
+		return discountPercent;
+	}
+
+
+
+	public void setDiscountPercent(int discountPercent) {
+		this.discountPercent = discountPercent;
+	}
+
+
 
 	public String formatData() {
 		return String.format("%s,%s,%s,%s,%s,%s,%d,%d,%.2f",make,model,descp,imgUrl,getDateByFormat(dateOfPurchase),getDateByFormat(dateOfAdded),odometer,year,price);

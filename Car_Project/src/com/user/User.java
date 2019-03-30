@@ -74,7 +74,7 @@ public abstract class User {
 			bw.close();
 			
 		} catch (IOException e) {
-			System.out.println(e);
+			System.out.println("IO Exception: "+e);
 		}
 	}
 	
@@ -128,7 +128,7 @@ public abstract class User {
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.out.println(e);
+			System.out.println("File not found" +e);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -136,23 +136,12 @@ public abstract class User {
 	}
 	
 	public void removeCar(Car car) {
-		
-		Iterator<Car> itr = cars.iterator();
-
-		while(itr.hasNext()) {
-			Car c = itr.next();
-			//System.out.println(car.formatData());
-			//System.out.println(c.formatData());
-			
-			System.out.println(String.format("%s | %s", car.formatData(),c.formatData()));
-			System.out.println(car.formatData().replaceAll("\\r\\n", "").equals(c.formatData().replaceAll("\\r\\n", "")));
-			if(car.formatData().equals(c.formatData())) {
-				System.out.println("Yes");
-				cars.remove(c);
-			}
-				
-			
+		List<Car> copyCar = new ArrayList<>();
+		for(int i = 0; i < cars.size(); i++) {
+			if(!cars.get(i).formatData().equals(car.formatData())) copyCar.add(cars.get(i));
 		}
+		
+		cars = copyCar;
 		
 		//cars.remove(car);
 	}

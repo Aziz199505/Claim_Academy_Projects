@@ -24,7 +24,7 @@ public class GetList extends HttpServlet {
  
             RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
             dispatcher.forward(req, res);
-    		System.out.println(req.getSession().getId());
+    		//System.out.println("Session ID: "+req.getSession().getId());
 
         
     }

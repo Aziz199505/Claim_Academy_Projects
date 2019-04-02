@@ -11,7 +11,14 @@
 		<spring.version>4.0.1.RELEASE</spring.version>
 	</properties>
   
-  
+  <executions>
+    <execution>
+        <phase>package</phase>
+        <goals>
+            <goal>manifest</goal>
+        </goals>
+    </execution>
+</executions>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

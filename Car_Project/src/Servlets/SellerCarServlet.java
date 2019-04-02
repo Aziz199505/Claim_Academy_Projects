@@ -1,10 +1,12 @@
 package Servlets;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -22,22 +24,22 @@ import com.user.Seller;
 import com.user.User;
 
 /**
- * Servlet implementation class CarServlet
+ * Servlet implementation class SellerCarServlet
  */
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
 maxFileSize = 1024 * 1024 * 5, 
 maxRequestSize = 1024 * 1024 * 5 * 5)
-@WebServlet("/CarServlet")
-public class CarServlet extends HttpServlet {
+@WebServlet("/SellerCarServlet")
+public class SellerCarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String path ="D:\\users\\Desktop\\Java\\Car_Project\\WebContent\\car-images\\"; 
+	private static final String path ="D:\\users\\Desktop\\Java\\Car_Project\\WebContent\\images\\"; 
 
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CarServlet() {
+    public SellerCarServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -98,22 +100,28 @@ public class CarServlet extends HttpServlet {
 	    Date date = new Date();
 	    car.setDateOfAdded(date);
 	    
+    	File uploads = new File(path);
+
 	    
-	    
+	    //System.out.println(inventory.getSellers().size());
 	    if(newSeller == null) {
-	    	System.out.println("New seller is null");
 	    	for(Seller seller: inventory.getSellers()) {
 	    		if(seller.getContact().getEmail().equals(sellerEmail)) {
 	    			if(!fileName.equals("")) {
-	    		    	filePart.write(path+seller.getFirstName()+"-"+seller.getLastName()+"-"+fileName);
-	    		    	car.setImgUrl("./car-images/"+seller.getFirstName()+"-"+seller.getLastName()+"-"+fileName);
-	    			    //InputStream fileContent = filePart.getInputStream();
+	    					    				
+	    		    	
+	    		    	
+	    		    	car.saveImage(uploads, fileName, filePart);
+	    		    	
+	    		    	//filePart.write(path+seller.getFirstName()+"-"+seller.getLastName()+"-"+fileName);
+	    		    	
+	    		    	
+	    			    
 	    		    }
 	    			seller.addCar(car);
 	    		};
 	    	}
 	    } else {
-	    	System.out.println("New seller is not null");
 
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
@@ -124,7 +132,6 @@ public class CarServlet extends HttpServlet {
 			String state = request.getParameter("state");
 			String zipCode = request.getParameter("zipCode");
 			
-			System.out.println("My email is  + " + email);
 	    	
 	    	User seller = new Seller(new
 	    			 Address(street,city,state,zipCode) ,new
@@ -132,21 +139,26 @@ public class CarServlet extends HttpServlet {
 	    	
 	    	
 	    	if(!fileName.equals("")) {
-		    	filePart.write(path+seller.getFirstName()+"-"+seller.getLastName()+"-"+fileName);
-		    	car.setImgUrl("./car-images/"+seller.getFirstName()+"-"+seller.getLastName()+"-"+fileName);
+		    	//filePart.write(path+seller.getFirstName()+"-"+seller.getLastName()+"-"+fileName);
+		    	//car.setImgUrl("./images/"+seller.getFirstName()+"-"+seller.getLastName()+"-"+fileName);
 			    //InputStream fileContent = filePart.getInputStream();
+				
+		    	car.saveImage(uploads, fileName, filePart);
+		    	
+		    	
 		    }
 	    	seller.addCar(car);
 	    	inventory.getUsers().addUser(seller);
 	    	inventory.getSellers().add((Seller) seller);
 	    }
 	    
-    	inventory.getCars().add(car);
+    	inventory.getSellerCars().add(car);
 
 	    
 		 
 	    
-	   
+    	//request.getRequestDispatcher("index.jsp").forward(request, response);
+
     	response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
     	
 	    

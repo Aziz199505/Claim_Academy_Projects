@@ -27,7 +27,12 @@ public class Users {
 
 	public Users() {
 		super();
-		loadFileUsers();
+		try {
+			loadFileUsers();
+
+		}catch(Exception ex) {
+			System.out.println("Didn't not load users!");
+		}
 	}
 
 	public void addUser(User user) {
@@ -107,8 +112,13 @@ public class Users {
 				user.setFirstName(parsed[1]);
 				user.setLastName(parsed[2]);
 				user.setContact(new Contact(contactParse[0],contactParse[1]));
-				user.setAddress(new Address(addressParse[0],addressParse[1],addressParse[2],addressParse[3]));	
-				user.loadFileCars();
+				user.setAddress(new Address(addressParse[0],addressParse[1],addressParse[2],addressParse[3]));
+				try {
+					user.loadFileCars();
+
+				}catch(Exception e) {
+					System.out.println("User didn't get loaded");
+				}
 				
 				//inFile.nextLine();
 				

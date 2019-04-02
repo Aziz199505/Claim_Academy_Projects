@@ -1,2 +1,0 @@
-Zaparosh,Zapar,test,./car-images/John-Smith-zaparosh12.jpg,null,29-3-2019 02:50:46,1,2010,1.00
-aston martin,DB9,,http://www.regcheck.org.uk/image.aspx/@YXN0b24gbWFydGluIERCOSAyMDE4,null,29-3-2019 02:54:18,1,2018,1.00

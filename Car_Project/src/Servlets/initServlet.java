@@ -88,8 +88,14 @@ public class initServlet extends HttpServlet {
 			inventory.setUsers(users);
 
 			inventory.addSeller();
-			inventory.addCars();
+			inventory.addSellerCars();
+			
+			inventory.addBuyer();
+			inventory.addBuyerCars();
 			inventory.addCarTypes();
+			inventory.loadTransact();
+
+			
 			//seller.removeCar(toyota);
 			
 			

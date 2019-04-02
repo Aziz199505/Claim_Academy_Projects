@@ -36,6 +36,18 @@
 		});
 	
 	 $('#chShipAdd').prop('checked', false);
+	 
+	 
+	 $('#chShipAddBuyer').change(function() {
+		    if ($('#chShipAddBuyer').prop('checked')) {
+		        $('#shipadddivbuyer').show();
+		    } else {
+		        $('#shipadddivbuyer').hide();
+		    }
+		});
+	
+	 $('#chShipAddBuyer').prop('checked', false);
+	 
 
 	</script>
 	
@@ -86,6 +98,7 @@
           <p>
             <!-- <a href="#" class="btn btn-primary my-2 open-button" onclick="openForm()">Add Car</a> -->
             <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddCarForm">Sell Car</button>
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#modalShowStats">View Stats</button>
             
             
             
@@ -104,7 +117,17 @@
              	
 	            <div class="col-md-4">
 	              <div class="card mb-4 box-shadow">
-	                <img class="card-img-top" src="<c:out value="${car.imgUrl}" />"  alt="Card image cap">
+	              
+	              <c:choose>
+				    <c:when test="${car.ownImage}">
+	              		<img class="card-img-top" src="<c:url value="GetImage?imgName=${car.fileName}" />"  alt="Card image cap">
+				        <br />
+				    </c:when>    
+				    <c:otherwise>
+	                	<img class="card-img-top" src="<c:url value="${car.imgUrl}" />"  alt="Card image cap">
+				        <br />
+				    </c:otherwise>
+				</c:choose>
 	                <c:if test="${car.discount}">
 	                  <div class="top-left">
 	                  		<div class="discount-label red"> <span>-${car.discountPercent}%</span> </div>
@@ -113,7 +136,7 @@
 	                <div class="card-body">
 	                
 	                
-	                  <h5 class="card-title">Price: <span style="color:red;">$<c:out value="${car.price}"/></span></h5>
+	                  <h5 class="card-title">Price: <span style="color:red;"><c:out value="${car.priceFormat}"/></span></h5>
 	                  <hr>
 	                  <h5 class="card-title"><c:out value="${car.make} ${car.model} ${car.year}"/></h5>
 	                  
@@ -121,7 +144,7 @@
 	                  <div class="d-flex justify-content-between align-items-center">
 	                    <div class="btn-group">
 	                      <button type="button" data-target=<c:out value="#modaShowCarInfo${lop.index}${loop.index}"/> data-toggle="modal" class="btn btn-sm btn-outline-secondary">View</button>
-	                      <button type="button" class="btn btn-sm btn-outline-secondary">Sell</button>
+	                      <button type="button" data-target=<c:out value="#modaShowCarSell${lop.index}${loop.index}"/> data-toggle="modal" class="btn btn-sm btn-outline-secondary">Sell</button>
 	                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 	                      
 	                    </div>
@@ -131,6 +154,7 @@
 	              </div>
 	            </div>
 	            
+	           <!-- View Model --> 
 	            <div class="modal fade bd-example-modal-lg" id=<c:out value="modaShowCarInfo${lop.index}${loop.index}"/> tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 				 		<div class="modal-dialog modal-lg">
 					    <div class="modal-content">
@@ -141,39 +165,174 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-					        <h3 style="text-align:center">Car Info</h3>
-					        <table class=   "table table-user-information">
-					       	<thead class="thead-dark">
-						      <tr>
-						      	<th>Seller</th>
-						        <th>Make</th>
-						        <th>Model</th>
-						        <th>Year</th>
-						        <th>Odometer</th>
-						        <th>Date</th>
-						   		<th>Price</th>
-						   		<th>Contact</th>
-						      </tr>
-						    </thead>
-			                <tbody>
-			                  <tr>
-			                  	<td><c:out value="${seller.firstName} ${seller.lastName}"/></td>
-			                  	<td><c:out value="${car.make}"/></td>
-			                  	<td><c:out value="${car.model}"/></td>
-			                 	<td><c:out value="${car.year}"/></td>
-			                  	<td><c:out value="${car.odometer}"/></td>
-			                 	<td><c:out value="${car.dateOfAdded}"/></td>
-			                 	<td><c:out value="${car.price}"/></td>
-			                 	<td><c:out value="${seller.contact.email}"/></td>
-			                  </tr>
-			               </tbody>
-			              </table>  
+					      	<div class="panel-body inf-content">
+							    <div class="row">
+							        <div class="col-md-4">
+							        	<c:choose>
+											<c:when test="${car.ownImage}">
+											 <img class="img-circle img-thumbnail isTooltip" data-original-title="Usuario" src="<c:url value="GetImage?imgName=${car.fileName}" />"  style="max-width: 75%;" alt="Card image cap">
+														  
+											</c:when>    
+											<c:otherwise>
+											<img class="img-circle img-thumbnail isTooltip" data-original-title="Usuario" src="<c:url value="${car.imgUrl}" />"  style="max-width: 75%;"  alt="Card image cap">
+														     
+											</c:otherwise>
+										</c:choose>
+							        </div>
+							        <div class="col-md-6">
+							            <strong>Information</strong><br>
+							            <div class="table-responsive">
+							            <table class="table table-condensed table-responsive table-user-information">
+							                <tbody>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+							                                Seller                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${seller.firstName} ${seller.lastName}"/>     
+							                        </td>
+							                    </tr>
+							                    <tr>    
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-user  text-primary"></span>    
+							                                Make                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.make}"/>     
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
+							                                Model                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.model}"/>  
+							                        </td>
+							                    </tr>
+							
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+							                                Year                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.year}"/> 
+							                        </td>
+							                    </tr>
+							
+							
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-eye-open text-primary"></span> 
+							                                Odometer                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.formatOdo}"/>
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-envelope text-primary"></span> 
+							                                Date                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.dateOfAdded}"/>  
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-envelope text-primary"></span> 
+							                                Days in Stock                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.totalDays}"/>  
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+							                                Price                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.priceFormat}"/>
+							                        </td>
+							                    </tr>
+							                    <c:if test="${car.discount}">
+								                  <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+							                                Discount                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                           ${car.discountPercent}%
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+							                                Original Price                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.orgPriceFormat}"/>
+							                        </td>
+							                    </tr>
+							                    
+								                </c:if>
+							                    
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+							                                Contact                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                             <c:out value="${seller.contact.email}"/>
+							                        </td>
+							                    </tr>                                    
+							                </tbody>
+							            </table>
+							            </div>
+								        </div>
+								    </div>
+								</div> 
 					        <hr>
 					        <h3 style="text-align:center">Car Image</h3>
 					        
 					        <div class="image-frame" style="text-align:center">
-							  <img style="max-width:75%; text-align:center" class="img-responsive" src="<c:out value="${car.imgUrl}" />"  alt="test"/>
-							 </div>
+							<c:choose>
+							    <c:when test="${car.ownImage}">
+				              		<img class="img-responsive" src="<c:url value="GetImage?imgName=${car.fileName}" />"  style="max-width: 75%;" alt="Card image cap">
+							        <br />
+							    </c:when>    
+							    <c:otherwise>
+				                	<img class="img-responsive" src="<c:url value="${car.imgUrl}" />"  style="max-width: 75%;"  alt="Card image cap">
+							        <br />
+							    </c:otherwise>
+							</c:choose>
+							</div>
 					        
 					      </div>
 					      <div class="modal-footer">
@@ -185,7 +344,125 @@
 				</div>
 				
 				
+				<!-- Sell Model --> 
 				
+				<div class="modal fade" id=<c:out value="modaShowCarSell${lop.index}${loop.index}"/> tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				  aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				     <div class="modal-header text-center">
+				        <h4 class="modal-title w-100 font-weight-bold">Sell Car</h4>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      
+				      
+				      
+				     <form action="BuyerCarServlet" method="post">
+				     <div class="modal-body mx-3">
+				     
+				     <div class="md-form mb-5">
+				     	
+				     	<input name="carName" value=<c:out value="${car.formatCarName}"/> type="hidden">
+				     	<input name="sellerEmail" value=<c:out value="${seller.contact.email}"/> type="hidden">
+				     	
+				     	<select name="buyerEmail" id="makeTitle" class="form-control selectpicker">
+				       	  <c:forEach var="buyer" items="${inventory.buyers}">
+				        	
+						  	<option value="${buyer.contact.email}">${buyer.firstName} ${buyer.lastName}</option>
+						  
+						  </c:forEach>
+						</select>
+							<label data-error="wrong" data-success="right" for="orangeForm-name">Buyers</label>
+						</div>
+				     
+				     <div class="md-form mb-5 text-center">
+				        <div class="checkbox">
+						  <label>
+			    			<input type="checkbox" onclick="ChangeBuyer()" href="#moreaboutbuyer" data-toggle="collapse" aria-expanded="false" aria-controls="moreaboutbuyer" class="form-control" id="chShipAddBuyer" name="isNewBuyer" value="newBuyer">
+						    New Buyer
+						  </label>
+						</div>
+				        
+				        
+				        </div>
+				        
+				        
+				        <div id="shipadddivbuyer">
+	        				<div class="collapse" id="moreaboutbuyer" >
+				     
+						<div class="md-form mb-5">
+			          <i class="fas fa-user prefix grey-text"></i>
+			          <input name="firstName" type="text" id="orangeForm-name" class="form-control validate">
+			          <label data-error="wrong" data-success="right" for="orangeForm-name">First name</label>
+			        </div>
+			        
+			        <div class="md-form mb-5">
+			          <i class="fas fa-user prefix grey-text"></i>
+			          <input name="lastName" type="text" id="orangeForm-name" class="form-control validate">
+			          <label data-error="wrong" data-success="right" for="orangeForm-name">Last name</label>
+			        </div>
+			        
+			        <div class="md-form mb-5">
+			          <i class="fas fa-envelope prefix grey-text"></i>
+			          <input name="email" type="email" id="orangeForm-email" class="form-control validate">
+			          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+			        </div>
+			        
+			        <div class="md-form mb-5">
+			          <i class="fas fa-user prefix grey-text"></i>
+			          <input name="cellPhone" type="text" id="orangeForm-name" class="form-control validate w-50">
+			          <label data-error="wrong" data-success="right" for="orangeForm-name">Cell Phone</label>
+			        </div>
+			        
+			        <div class="md-form mb-5">
+			          <i class="fas fa-user prefix grey-text"></i>
+			          <input name="street" type="text" id="orangeForm-name" class="form-control validate">
+			          <label data-error="wrong" data-success="right" for="orangeForm-name">Street</label>
+			        </div>
+			        
+			        <div class="md-form mb-5">
+			          <i class="fas fa-user prefix grey-text"></i>
+			          <input name="city" type="text" id="orangeForm-name" class="form-control validate w-50">
+			          <label data-error="wrong" data-success="right" for="orangeForm-name">City</label>
+			        </div>
+			        
+			        
+			        <div class="md-form mb-5">
+			          <i class="fas fa-user prefix grey-text"></i>
+			          <select name="state">
+			          <c:forEach var="state" items="${inventory.states}">
+		        	
+				  		<option value="${state}">${state}</option>
+				  
+				 	 </c:forEach>
+				 	 
+				 	 </select>
+			          
+			          <label data-error="wrong" data-success="right" for="orangeForm-name">State</label>
+			        </div>
+			        
+			        <div class="md-form mb-5">
+			          <i class="fas fa-user prefix grey-text"></i>
+			          <input name="zipCode" type="text" id="orangeForm-name" class="form-control validate w-25">
+			          <label data-error="wrong" data-success="right" for="orangeForm-name">Zip Code</label>
+			        </div>
+		         
+					</div>
+					</div>
+					     </div>
+					     	<div class="modal-footer d-flex justify-content-center">
+					        <input type="submit" class="btn btn-deep-orange">
+					      </div>
+					     </form>
+					     
+
+									     
+					     
+					    </div>
+					  </div>
+					</div>
              </c:forEach>
            </c:forEach>
             
@@ -209,12 +486,14 @@
 
 
 
+
+
 <div class="modal fade" id="modalAddCarForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
     
-     <form action="CarServlet" method="post" enctype="multipart/form-data">
+     <form action="SellerCarServlet" method="post" enctype="multipart/form-data">
      
 	      <div class="modal-header text-center">
 	        <h4 class="modal-title w-100 font-weight-bold">Car Registration</h4>
@@ -401,7 +680,156 @@
     </div>
   </div>
 </div>
-	
+
+
+<div class="modal fade bd-example-modal-lg" id="modalShowStats" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				 		<div class="modal-dialog modal-lg">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h4 class="modal-title" id="myModalLabel">Statistics/Logs</h4>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					      	<div class="panel-body inf-content">
+							    <div class="row">
+							        <div class="col-md-4">
+							        	<!-- Image Icon -->
+							        </div>
+							        <div class="col-md-6">
+							            <strong>Statistics</strong><br>
+							            <div class="table-responsive">
+							            <table class="table table-condensed table-responsive table-user-information">
+							                <tbody>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+							                                Total Sellers                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.sellers.size()}"/>     
+							                        </td>
+							                    </tr>
+							                    <tr>    
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-user  text-primary"></span>    
+							                                Total Buyers                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.buyers.size()}"/>     
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
+							                                Total Cars in Stock                                               
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.sellerCars.size()}"/>     
+							                        </td>
+							                    </tr>
+							
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+							                                Total Cars Sold                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.buyerCars.size()}"/>     
+							                        </td>
+							                    </tr>
+							
+							
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-eye-open text-primary"></span> 
+							                                Total Profit                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.totalProfit}"/>
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-envelope text-primary"></span> 
+							                                Total Cars in Stock After 120 days                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.exipred}"/>  
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-envelope text-primary"></span> 
+							                                Average Car Price                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.averagePrice}"/>  
+							                        </td>
+							                    </tr>
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+							                                Most Expensive Car in Stock                                              
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${inventory.mostExpCar}"/>
+							                        </td>
+							                    </tr>
+								                  <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+							                                Most Expensive Car Sold                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                           ${inventory.mostExpCarSold}
+							                        </td>
+							                    </tr>
+							                                                    
+							                </tbody>
+							            </table>
+							            </div>
+								        </div>
+								    </div>
+								</div> 
+					        <hr>
+					        <h3 style="text-align:center">Transaction Logs</h3>
+					        
+					        <ul style="text-align:center" class="list-group">
+					        <c:forEach var="transaction" items="${inventory.transactions}">
+							  <li class="list-group-item"><c:out value="${transaction}"/></li>
+							  
+						  </c:forEach>
+					   
+							</ul>
+					        
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<!-- 					        <button type="button" class="btn btn-primary">Save changes</button>
+ -->					      </div>
+					    </div>
+					  </div>
+				</div>	
 
   </body>
   

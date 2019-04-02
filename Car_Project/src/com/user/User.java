@@ -20,7 +20,7 @@ public abstract class User {
 	protected Address address;
 	protected Contact contact;
 	protected String firstName,lastName;
-	private static final String path ="D:\\users\\Desktop\\Java\\Car_Project\\src\\com\\\\store\\"; 
+	private static final String path ="D:\\users\\Desktop\\Java\\Car_Project\\src\\com\\store\\"; 
 	protected String type;
 
 	public User() {
@@ -39,7 +39,7 @@ public abstract class User {
 	
 	
 	public void addCar(Car car) {
-		String fileName = path+"cars-"+firstName+"-"+lastName+".txt";
+		String fileName = path+type+"cars-"+firstName+"-"+lastName+".txt";
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,true));
 			bw.append(String.format("%s\r\n",car.formatData()));
@@ -52,7 +52,7 @@ public abstract class User {
 	}
 	
 	public void override() {
-		String fileName = path+"cars-"+firstName+"-"+lastName+".txt";
+		String fileName = path+type+"cars-"+firstName+"-"+lastName+".txt";
 		try {
 			File f = new File(fileName);
 			if(f.delete()) 
@@ -79,7 +79,7 @@ public abstract class User {
 	}
 	
 	public void loadFileCars() {
-		String fileName = path+"cars-"+firstName+"-"+lastName+".txt";
+		String fileName = path+type+"cars-"+firstName+"-"+lastName+".txt";
 
 		try {
 			Scanner inFile = new Scanner(new File(fileName));

@@ -184,4 +184,9 @@ right: 4px;
 transform: rotate(3deg);
 }
 
+.modal-body {
+  width: auto;
+  max-width: 95%;
+}
+
 

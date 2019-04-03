@@ -24,7 +24,8 @@ public class Users {
 	private List<User> users = new ArrayList<>();
 	private static final String path ="D:\\users\\Desktop\\Java\\Car_Project\\src\\com\\store\\"; 
 	String fileName = path+"users.txt";
-
+	
+	//Inital it will load all users when session gets created
 	public Users() {
 		super();
 		try {
@@ -34,7 +35,8 @@ public class Users {
 			System.out.println("Didn't not load users!");
 		}
 	}
-
+	
+	//Adding users also adding to user file so I can store users
 	public void addUser(User user) {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,true));
@@ -48,6 +50,8 @@ public class Users {
 		users.add(user);
 	}
 	
+	
+	//This function future feature if I ever needed to remove user also from file I can use this function although I am not using it. It is good to include for future features
 	public void override() {
 		String fileName = path+"users.txt";
 		try {
@@ -86,7 +90,7 @@ public class Users {
 		}
 	}
 	
-	
+	//Getting users from stored user file 
 	public void loadFileUsers() {
 		String fileName = path+"users.txt";
 		
@@ -147,6 +151,7 @@ public class Users {
 		this.users = users;
 	}
 	
+	//Not using this it was test
 	public String usersFormat() {
 		String temp = "";
 		for(User user: users) {

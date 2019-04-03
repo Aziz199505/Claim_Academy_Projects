@@ -48,6 +48,16 @@
 	
 	 $('#chShipAddBuyer').prop('checked', false);
 	 
+	 $('#chShipAddBit').change(function() {
+		    if ($('#chShipAddBit').prop('checked')) {
+		        $('#shipadddivbit').show();
+		    } else {
+		        $('#shipadddivbit').hide();
+		    }
+		});
+	
+	 $('#chShipAddBit').prop('checked', false);
+	 
 
 	</script>
 	
@@ -55,7 +65,7 @@
   </head>
 
   <body>
-
+	
     <header>
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -145,8 +155,8 @@
 	                    <div class="btn-group">
 	                      <button type="button" data-target=<c:out value="#modaShowCarInfo${lop.index}${loop.index}"/> data-toggle="modal" class="btn btn-sm btn-outline-secondary">View</button>
 	                      <button type="button" data-target=<c:out value="#modaShowCarSell${lop.index}${loop.index}"/> data-toggle="modal" class="btn btn-sm btn-outline-secondary">Sell</button>
-	                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-	                      
+<!-- 	                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+ -->	                      
 	                    </div>
 	                    <small class="text-muted">Posted: <c:out value="${car.dateOfAdded}" /></small>
 	                  </div>
@@ -343,6 +353,15 @@
 					  </div>
 				</div>
 				
+				<c:if test="${car.userAccept}">
+					<script>
+		
+						alert("Bit got rejected");
+						
+					</script>
+					
+					<c:out value="${car.ignoreAccept}"/>
+				</c:if>
 				
 				<!-- Sell Model --> 
 				
@@ -376,6 +395,32 @@
 						</select>
 							<label data-error="wrong" data-success="right" for="orangeForm-name">Buyers</label>
 						</div>
+				     
+				     	<div class="md-form mb-5 text-center">
+				           <div class="checkbox">
+						  <label>
+			    			<input type="checkbox" onclick="ChangeBit()" href="#moreaboutbit" data-toggle="collapse" aria-expanded="false" aria-controls="moreaboutbit" class="form-control" id="chShipAddBit" name="isNewBit" value="newBit">
+						    Place Bit
+						  </label>
+						</div>
+				        </div>
+				        
+				         <div id="shipadddivbit">
+	        				<div class="collapse" id="moreaboutbit" >
+				     		
+				     		<div class="md-form mb-5">
+					          <label data-error="wrong" data-success="right" for="orangeForm-name">Current Car Price <span style="color:red;"><c:out value="${car.priceFormat}"/></span> </label>
+					        </div>	
+				     			
+					     	<div class="md-form mb-5">
+					          <i class="fas fa-user prefix grey-text"></i>
+					          <input name="bit" type="number" value="0" min="0" id="orangeForm-name" class="form-control validate">
+					          <label data-error="wrong" data-success="right" for="orangeForm-name">Buyer's Bit</label>
+					        </div>
+					        
+					        </div>
+					        
+					       </div>
 				     
 				     <div class="md-form mb-5 text-center">
 				        <div class="checkbox">

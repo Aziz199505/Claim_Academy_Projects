@@ -29,7 +29,7 @@ public class Car {
 	private double orgPrice = 0;
 	private int totalDays = 0;
     NumberFormat us = NumberFormat.getCurrencyInstance(Locale.US);
-
+    private boolean userAccept = false;
 	
 	public Car() {
 		super();
@@ -38,18 +38,22 @@ public class Car {
 	
 
 	public Car(String make, String model,int year,
-			int odometer, double price) {
+		int odometer, double price) {
 		super();
-		this.make = make;
-		this.model = model;
+		
+		//Replace , to empty line because it will have problems with saving file
+		this.make = make.replace(",", "");
+		this.model = model.replace(",", "");
 		this.odometer = odometer;
 		this.price = price;
 		this.year = year;
+		
+		///Found API from online where they were using base64 to encode their api so I decoded and found it and using their api to retrieve car images
 		this.imgUrl = "http://www.regcheck.org.uk/image.aspx/@" +  Base64.getEncoder().encodeToString(String.format("%s %s %s", make,model,year).getBytes());
 		this.orgPrice = price;
 	}
 	
-	
+	//Find in out total days between date of purchase and now
 	public int totalDays() {
 		//return new Date(checkOutDate.getTime() - checkInDate.getTime());
 		Date date = new Date();
@@ -59,7 +63,8 @@ public class Car {
 
 	}
 
-
+	
+	//Making discount if 120 days in stock
 	public void discountPrice(int min) {
 		System.out.println(totalDays());
 		if(totalDays() >= 120) {
@@ -72,7 +77,8 @@ public class Car {
 			}
 		}
 	}
-
+	
+	//Formating date
 	public String getDateByFormat(Date date) {
 		try{
 			return dateformat.format(date);
@@ -82,7 +88,10 @@ public class Car {
 		}
 	}
 	
+	//Saving uploaded image to folder setting img url
 	public void saveImage(File uploads,String fileName,Part filePart) {
+		
+		//Fixed bug replacing all space with empty
 		String carName = this.make.replaceAll("\\s+","")+"-"+this.model.replaceAll("\\s+","")+this.year;
 		this.ownImage = true;
 		this.fileName = carName+"-"+fileName;
@@ -114,7 +123,25 @@ public class Car {
 	}
 	
 	
+	public boolean isUserAccept() {
+		return userAccept;
+	}
+	
+	public String getIgnoreAccept() {
+		this.userAccept = false;
+		return "";
+	}
+
+
+
+	public void setUserAccept(boolean userAccept) {
+		this.userAccept = userAccept;
+	}
+
+
+
 	public String getFormatOdo() {
+		//Formating odometer with 3 zeros
 		DecimalFormat formatter = new DecimalFormat("#,###");
 		return formatter.format(this.odometer);
 	}
@@ -173,7 +200,7 @@ public class Car {
 
 
 	public void setMake(String make) {
-		this.make = make;
+		this.make = make.replace(",", "");
 	}
 
 
@@ -183,7 +210,7 @@ public class Car {
 
 
 	public void setModel(String model) {
-		this.model = model;
+		this.model = model.replace(",", "");
 	}
 
 
@@ -193,7 +220,7 @@ public class Car {
 
 
 	public void setDescp(String descp) {
-		this.descp = descp;
+		this.descp = descp.replace(",", "");
 	}
 
 
@@ -256,13 +283,10 @@ public class Car {
 
 
 	public void setPrice(double price) {
+		//Setting original price so i can keep track of original
 		this.orgPrice = price;
 		this.price = price;
 	}
-
-
-	
-
 
 
 
@@ -290,6 +314,7 @@ public class Car {
 
 	public String getFormatCarName() {
 		System.out.println(String.format("%s-%s-%d-%d", make,model,year,odometer));
+		//Fix bug replace all space
 		return String.format("%s-%s-%d-%d", make,model,year,odometer).replaceAll("\\s+","");
 	}
 

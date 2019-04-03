@@ -37,7 +37,7 @@ public abstract class User {
 		loadFileCars();
 	}
 	
-	
+	//User adding car also adding to file so I can store data
 	public void addCar(Car car) {
 		String fileName = path+type+"cars-"+firstName+"-"+lastName+".txt";
 		try {
@@ -51,6 +51,8 @@ public abstract class User {
 		cars.add(car);
 	}
 	
+	
+	//This override function used mainly for removing car from list and users car file will also remove car from it
 	public void override() {
 		String fileName = path+type+"cars-"+firstName+"-"+lastName+".txt";
 		try {
@@ -78,6 +80,8 @@ public abstract class User {
 		}
 	}
 	
+	
+	//Gettings car from stored file parsing each data with ,
 	public void loadFileCars() {
 		String fileName = path+type+"cars-"+firstName+"-"+lastName+".txt";
 
@@ -135,6 +139,7 @@ public abstract class User {
 		}
 	}
 	
+	//Removing car from  users list
 	public void removeCar(Car car) {
 		List<Car> copyCar = new ArrayList<>();
 		for(int i = 0; i < cars.size(); i++) {

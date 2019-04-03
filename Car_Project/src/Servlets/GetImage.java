@@ -1,5 +1,6 @@
 package Servlets;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,6 +39,13 @@ public class GetImage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		/*
+		 * This servlet for getting local Image writing image to html and response image
+		 */		
+		
+		
 		HttpSession session = request.getSession(true);
 
 		String fileImgName = request.getParameter("imgName");
@@ -56,6 +64,8 @@ public class GetImage extends HttpServlet {
 
          response.setHeader("Content-Disposition", "inline; filename=\"" + fileImgName + "\"");
  		OutputStream out = response.getOutputStream();
+ 		
+ 		//This is getting extension
  		String regex = "(?<=\\.).*$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(fileImgName);
@@ -66,6 +76,8 @@ public class GetImage extends HttpServlet {
 		}
  		
 		//ImageIO.write(img, output , out);
+		
+		//Responding image to html
 		FileInputStream in = new FileInputStream(file);
 		byte[] buf = new byte[1024];
 		int len = 0;

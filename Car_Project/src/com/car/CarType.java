@@ -3,6 +3,7 @@ package com.car;
 import java.util.List;
 import java.util.TreeSet;
 
+//This is for getting car make and models from cvs file from online
 public class CarType {
 	String make;
 	TreeSet<String> models = new TreeSet<>();

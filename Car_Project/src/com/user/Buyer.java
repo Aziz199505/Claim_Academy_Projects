@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.car.Car;
 
+//Buyer inhereted from user also type is buyer
 public class Buyer extends User {
 
 	public Buyer() {

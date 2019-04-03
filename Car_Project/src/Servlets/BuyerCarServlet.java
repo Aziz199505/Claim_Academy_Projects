@@ -46,23 +46,42 @@ public class BuyerCarServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		
+		/*
+		 * gettting session also inventroy from session
+		 */		
 		HttpSession session = request.getSession(true);
 		Inventory inventory = (Inventory) session.getAttribute("inventory");
 		
+		/*
+		 * Getting post data from jsp
+		 */		
 		String newBuyer = request.getParameter("isNewBuyer");
 		String buyerEmail = request.getParameter("buyerEmail");
 		String carName = request.getParameter("carName");
 		String sellerEmail = request.getParameter("sellerEmail");
 		
+		/*
+		 * if newBit is checkmark then I know that buyer wants bit
+		 */		
+		boolean newBit = request.getParameter("isNewBit") == null ? false : true;
+		double bit = 0;
 		
-		System.out.println(String.format("%s %s %s %s", newBuyer,buyerEmail,carName,sellerEmail));
+		
+		if(newBit) bit = Double.valueOf(request.getParameter("bit"));
+		
+		
+		
+		//System.out.println(String.format("%s %s %s %s", newBuyer,buyerEmail,carName,sellerEmail));
 		
 		if(newBuyer == null) {
-			System.out.println(carName);
-	    	inventory.addTransaction(sellerEmail, buyerEmail, carName,false,true);
+			//If it is not new buyer
+			//Just add information to transaction class
+			//System.out.println(carName);
+	    	inventory.addTransaction(sellerEmail, buyerEmail, carName,false,true,newBit,bit);
 	    } else {
-
+	    	
+	    	//If it is new User and get all user information and adding to user and inventory users list
+	    	
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
 			String email = request.getParameter("email");
@@ -78,14 +97,15 @@ public class BuyerCarServlet extends HttpServlet {
 	    			 Contact(email,cellPhone),firstName,lastName);
 	    	
 	    	
-	    	System.out.println("Buy Logic" + buyer);
+	    	//System.out.println("Buy Logic" + buyer);
 	    	inventory.addNewBuyer((Buyer) buyer);
 	    	
-	    	System.out.println(carName);
-	    	inventory.addTransaction(sellerEmail, email, carName,false,false);
+	    	//System.out.println(carName);
+	    	//Adding trasnaction
+	    	inventory.addTransaction(sellerEmail, email, carName,false,false,newBit,bit);
 	    }
 	    
-		
+		//Redirecting to main page ones request is finished with session still intact
     	response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
 
 	}

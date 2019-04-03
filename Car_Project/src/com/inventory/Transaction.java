@@ -1,6 +1,8 @@
 package com.inventory;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import com.car.Car;
@@ -14,43 +16,60 @@ public class Transaction {
 	private boolean accept = false;
 	private boolean[] option = {true,false};
 	private boolean isLoad = false;
+	private boolean newBit = false;
+	private double bit = 0;
     NumberFormat us = NumberFormat.getCurrencyInstance(Locale.US);
 
 	public Transaction() {
 		
 	}
 	
-	public Transaction(Seller seller, Buyer buyer, Car car,boolean isLoad) {
+	public Transaction(Seller seller, Buyer buyer, Car car,boolean isLoad,boolean newBit,double bit) {
 		super();
 		this.seller = seller;
 		this.buyer = buyer;
 		this.car = car;
 		this.isLoad = isLoad;
+		this.newBit = newBit;
+		this.bit = bit;
 		transact();
 	}
 	
-	
+	/*
+	 * This is for if transaction happen if seller accepts bit also adds buyer if
+	 * seller accepts and removes car from sellers list
+	 */	
 	public void transact() {
-		boolean notFind = true;
-		/*
-		 * for(Car c : buyer.getCars()) {
-		 * System.out.println(c.getMake().equals(car.getMake()) &&
-		 * c.getModel().equals(car.getModel()) && c.getYear() == car.getYear() &&
-		 * c.getOdometer() == car.getOdometer()); if(c.getMake().equals(car.getMake())
-		 * && c.getModel().equals(car.getModel()) && c.getYear() == car.getYear() &&
-		 * c.getOdometer() == car.getOdometer()) notFind = false; }
-		 */
-		
+
+		Date date = new Date();
+
 		if(!isLoad) {
-			int opt =  (int) Math.round( Math.random() );
-			this.accept = option[opt];
-			if(accept) {
-					
+			/*
+			 * int opt = (int) Math.round( Math.random() ); this.accept = option[opt];
+			 * if(accept) {
+			 * 
+			 * }
+			 */
+			
+			if(newBit) {
+				if(bit >= (car.getOrgPrice() * 0.9)) {
+					car.setPrice(bit);
+					car.setDateOfPurchase(date);
+					this.seller.removeCar(car);
+					this.buyer.addCar(car);
+					this.seller.override();
+				}else {
+					car.setUserAccept(true);
 				}
-				
-			this.seller.removeCar(car);
-			this.buyer.addCar(car);
-			this.seller.override();
+			}else {
+				car.setDateOfPurchase(date);
+				this.seller.removeCar(car);
+				this.buyer.addCar(car);
+				this.seller.override();
+			}
+			
+			
+			
 		}
 		
 		
@@ -98,6 +117,8 @@ public class Transaction {
 		this.option = option;
 	}
 	
+	
+	//Reporting transaction log
 	public String toString() {
 		/*
 		 * if(car.isDiscount()) { //return String.
@@ -106,8 +127,9 @@ public class Transaction {
 		 * getYear(),buyer.getFirstName(),buyer.getLastName(),us.format(car.getPrice()),
 		 * car.getDiscountPercent()); } else { }
 		 */
-		
-		return String.format("%s %s sold %s %s %s to %s %s at %s price",seller.getFirstName(),seller.getLastName(),car.getMake(),car.getModel(),car.getYear(),buyer.getFirstName(),buyer.getLastName(),us.format(car.getPrice()));
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
+
+		return String.format("%s|%s %s sold %s %s %s to %s %s at %s price",simpleDateFormat.format(car.getDateOfPurchase()),seller.getFirstName(),seller.getLastName(),car.getMake(),car.getModel(),car.getYear(),buyer.getFirstName(),buyer.getLastName(),us.format(car.getPrice()));
 
 	}
 	

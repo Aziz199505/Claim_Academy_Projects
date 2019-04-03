@@ -59,12 +59,18 @@ public class SellerCarServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		/*
+		 * This is for add car/seller and getting image file from uploaded file
+		 */		
 		Part filePart = request.getPart("imageFile"); // Retrieves <input type="file" name="file">
 		
 		HttpSession session = request.getSession(true);
 		Inventory inventory = (Inventory) session.getAttribute("inventory");
 		
 		
+		
+		//Getting all data from jsp form
 		String newSeller = request.getParameter("isNewSeller");
 		String sellerEmail = request.getParameter("seller");
 		
@@ -95,6 +101,8 @@ public class SellerCarServlet extends HttpServlet {
 		 * System.out.println("Hello"); 
 		 * 
 		 */
+	    
+	    //Adding car
 	    Car car = new Car(make,model,year,odometer,price);
 	    car.setDescp(descp);
 	    Date date = new Date();
@@ -104,7 +112,11 @@ public class SellerCarServlet extends HttpServlet {
 
 	    
 	    //System.out.println(inventory.getSellers().size());
+    	
+    	
 	    if(newSeller == null) {
+	    	
+	    	//If seller already exist then just add car to seller cars list
 	    	for(Seller seller: inventory.getSellers()) {
 	    		if(seller.getContact().getEmail().equals(sellerEmail)) {
 	    			if(!fileName.equals("")) {
@@ -122,7 +134,8 @@ public class SellerCarServlet extends HttpServlet {
 	    		};
 	    	}
 	    } else {
-
+	    	
+	    	//If it is new seller just register to new seller and add car to seller list
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
 			String email = request.getParameter("email");

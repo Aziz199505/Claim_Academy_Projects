@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 import javax.servlet.http.Part;
@@ -30,6 +31,7 @@ public class Car {
 	private int totalDays = 0;
     NumberFormat us = NumberFormat.getCurrencyInstance(Locale.US);
     private boolean userAccept = false;
+    boolean carNew = false;
 	
 	public Car() {
 		super();
@@ -51,6 +53,8 @@ public class Car {
 		///Found API from online where they were using base64 to encode their api so I decoded and found it and using their api to retrieve car images
 		this.imgUrl = "http://www.regcheck.org.uk/image.aspx/@" +  Base64.getEncoder().encodeToString(String.format("%s %s %s", make,model,year).getBytes());
 		this.orgPrice = price;
+		
+		carNew = odometer == 0 ? true : false;
 	}
 	
 	//Find in out total days between date of purchase and now
@@ -66,7 +70,7 @@ public class Car {
 	
 	//Making discount if 120 days in stock
 	public void discountPrice(int min) {
-		System.out.println(totalDays());
+		//System.out.println(totalDays());
 		if(totalDays() >= 120) {
 			this.discount = true;
 			
@@ -261,10 +265,27 @@ public class Car {
 
 
 	public void setOdometer(int odometer) {
+		carNew = odometer == 0 ? true : false;
 		this.odometer = odometer;
 	}
 
 
+
+
+
+	public boolean isCarNew() {
+		return carNew;
+	}
+	
+	public String getUsed() {
+		return carNew ? "Yes" : "No";
+	}
+
+
+
+	public void setCarNew(boolean isNew) {
+		this.carNew = isNew;
+	}
 
 
 
@@ -311,9 +332,13 @@ public class Car {
 	public void setDiscountPercent(int discountPercent) {
 		this.discountPercent = discountPercent;
 	}
+	
+	public String getFormatCarSearch() {
+		return String.format("%s,%s,%s,%s,%s", make,model,year,us.format(price),carNew ? "New" : "Used");
+	}
 
 	public String getFormatCarName() {
-		System.out.println(String.format("%s-%s-%d-%d", make,model,year,odometer));
+		//System.out.println(String.format("%s-%s-%d-%d", make,model,year,odometer));
 		//Fix bug replace all space
 		return String.format("%s-%s-%d-%d", make,model,year,odometer).replaceAll("\\s+","");
 	}
@@ -328,6 +353,28 @@ public class Car {
 		return "Car [make=" + make + ", model=" + model + ", descp=" + descp + ", imgUrl=" + imgUrl
 				+ ", dateOfPurchase=" + dateOfPurchase + ", dateOfAdded=" + dateOfAdded + ", odometer=" + odometer
 				+ ", year=" + year + ", price=" + price + "]";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(imgUrl, make, model, odometer, year);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		return Objects.equals(imgUrl, other.imgUrl) && Objects.equals(make, other.make)
+				&& Objects.equals(model, other.model) && odometer == other.odometer && year == other.year;
 	}
 
 

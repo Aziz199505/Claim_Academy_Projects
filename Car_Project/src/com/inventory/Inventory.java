@@ -34,6 +34,7 @@ public class Inventory {
 	private List<Buyer> buyers = new ArrayList<>();
 	private List<Car> sellerCars = new ArrayList<>();
 	private List<Car> buyerCars = new ArrayList<>();
+	private boolean searchedItem = false;
 	private List<Transaction> transactions = new ArrayList<>();
 	private List<CarType> carTypes = new ArrayList();
 	private String[] states;
@@ -369,6 +370,16 @@ public class Inventory {
 		return transactions;
 	}
 
+	
+	
+	public boolean isSearchedItem() {
+		return searchedItem;
+	}
+
+	public void setSearchedItem(boolean searchedItem) {
+		this.searchedItem = searchedItem;
+	}
+
 	public String getMostExpCar() {
 		return mostExpCar;
 	}
@@ -400,6 +411,8 @@ public class Inventory {
 	
 
 	public List<Car> getSellerCars() {
+
+		
 		return sellerCars;
 	}
 
@@ -418,8 +431,24 @@ public class Inventory {
 	public List<Seller> getSellers() {
 		return sellers;
 	}
+	
+	public List<Seller> getSearchedSeller() {
+		List<Seller> tempSeller = new ArrayList<>();
+		if(searchedItem) {
+			for(Seller seller : sellers) {
+				if(seller.isSearched()) {
+					tempSeller.add(seller);
+				}
+			}
+			return tempSeller;
+		} else {
+			return sellers;
+		}
+	}
 
 	public void setSellers(List<Seller> sellers) {
+		
+		
 		this.sellers = sellers;
 	}
 

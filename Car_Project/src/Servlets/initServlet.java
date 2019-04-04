@@ -58,7 +58,7 @@ public class initServlet extends HttpServlet {
 			 
 			
 			inventory.setUsers(users);
-
+			inventory.setSearchedItem(false);
 			inventory.addSeller();
 			inventory.addSellerCars();
 			

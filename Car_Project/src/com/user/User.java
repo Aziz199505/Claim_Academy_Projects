@@ -17,12 +17,13 @@ import com.car.Car;
 
 public abstract class User {
 	protected List<Car> cars = new ArrayList<Car>();
+	protected List<Car> searchedCars = new ArrayList<Car>();
 	protected Address address;
 	protected Contact contact;
 	protected String firstName,lastName;
 	private static final String path ="D:\\users\\Desktop\\Java\\Car_Project\\src\\com\\store\\"; 
 	protected String type;
-
+	private boolean searched = false;
 	public User() {
 		super();
 	}
@@ -152,9 +153,32 @@ public abstract class User {
 	}
 	
 	
+	public void addSearchedCar(Car car) {
+		searchedCars.add(car);
+	}
+	
+	
+	public List<Car> getSearchedCars() {
+		return searchedCars;
+	}
+
+
+	public void setSearchedCars(List<Car> searchedCars) {
+		this.searchedCars = searchedCars;
+	}
+
+
 	public List<Car> getCars() {
+		
 		return cars;
 	}
+	
+	public List<Car> getSearchCars() {
+		if(searched) return searchedCars;
+		
+		return cars;
+	}
+	
 	public void setCars(List<Car> cars) {
 		this.cars = cars;
 	}
@@ -202,10 +226,40 @@ public abstract class User {
 
 
 
+	public boolean isSearched() {
+		return searched;
+	}
+
+
+	public void setSearched(boolean searched) {
+		this.searched = searched;
+	}
+
+
 	@Override
 	public String toString() {
 		return "User [Cars=" + cars + ", address=" + address + ", contact=" + contact + ", firstName=" + firstName
 				+ ", lastName=" + lastName + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName, type);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(type, other.type);
 	}
 	
 	

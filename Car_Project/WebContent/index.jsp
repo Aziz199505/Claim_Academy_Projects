@@ -92,13 +92,37 @@
 			&nbsp;
             <strong>AutoSale</strong>
           </a>
+
+	    
+	    </div>
+	    
+	     <form action="searchServlet" method="get" class="form-inline my-2 my-lg-0">
+	      <input name="search" list="listOfSellCars" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	    </form>
+	    	&nbsp;	&nbsp;	&nbsp;
+	   
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          
+          
         </div>
-      </div>
+     
     </header>
 
+
+		     <datalist id="listOfSellCars">
+										
+
+     <c:forEach var="seller" items="${inventory.sellers}">
+           	  <c:forEach var="car" items="${seller.cars}">
+           	  	<option value="${car.formatCarSearch}"></option>
+           	  </c:forEach>
+           	 </c:forEach>
+           	 
+           	        			</datalist>
+	
     <main role="main">
 
       <section class="jumbotron text-center">
@@ -122,8 +146,10 @@
 
           <div class="row">
            
-           <c:forEach var="seller" items="${inventory.sellers}" varStatus="lop">
-           	  <c:forEach var="car" items="${seller.cars}" varStatus="loop">
+           
+           
+           <c:forEach var="seller" items="${inventory.searchedSeller}" varStatus="lop">
+           	  <c:forEach var="car" items="${seller.searchCars}" varStatus="loop">
              	
 	            <div class="col-md-4">
 	              <div class="card mb-4 box-shadow">
@@ -143,6 +169,12 @@
 	                  		<div class="discount-label red"> <span>-${car.discountPercent}%</span> </div>
 	                  </div>
 	                </c:if>
+	                <c:if test="${car.carNew}">
+	                  <div class="top-left">
+	                  		<div class="discount-label blue"> <span>New!</span> </div>
+	                  </div>
+	                </c:if>
+	                
 	                <div class="card-body">
 	                
 	                
@@ -237,6 +269,18 @@
 							                        </td>
 							                        <td class="text-primary">
 							                            <c:out value="${car.year}"/> 
+							                        </td>
+							                    </tr>
+							                    
+							                    <tr>        
+							                        <td>
+							                            <strong>
+							                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+							                                New                                                
+							                            </strong>
+							                        </td>
+							                        <td class="text-primary">
+							                            <c:out value="${car.used}"/> 
 							                        </td>
 							                    </tr>
 							
@@ -611,7 +655,7 @@
 	        
 	        <div class="md-form mb-5">
 	          <i class="fas fa-user prefix grey-text"></i>
-	          <input name="odometer" type="number" value="1" min="0" id="orangeForm-name" class="form-control validate">
+	          <input name="odometer" type="number" value="0" min="0" id="orangeForm-name" class="form-control validate">
 	          <label data-error="wrong" data-success="right" for="orangeForm-name">Odometer</label>
 	        </div>
 	        

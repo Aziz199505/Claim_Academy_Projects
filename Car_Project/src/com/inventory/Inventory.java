@@ -408,6 +408,17 @@ public class Inventory {
 		return sellerCars.size();
 	}
 	
+	public String getSetSearchedItemFalse() {
+		List<Car> emptyList = new ArrayList<>();
+		
+		 this.setSearchedItem(false);
+		 for(Seller seller : sellers) { 
+			 seller.setSearchedCars(emptyList);
+			 seller.setSearched(false);
+		 }
+		return "";
+	}
+	
 	
 
 	public List<Car> getSellerCars() {

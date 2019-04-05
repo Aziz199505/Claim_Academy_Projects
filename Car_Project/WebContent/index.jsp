@@ -555,7 +555,12 @@
              </c:forEach>
            </c:forEach>
             
+            
+            
           </div>
+        
+        	<c:out value="${inventory.setSearchedItemFalse}"></c:out>
+        
         </div>
       </div>
 

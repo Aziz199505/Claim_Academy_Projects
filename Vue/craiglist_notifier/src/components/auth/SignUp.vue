@@ -43,7 +43,7 @@
     },
     methods : {
       singUp() {
-        this.$store.dispatch('signIn',this.user)
+        this.$store.dispatch('signUp',this.user)
       }
     }
 

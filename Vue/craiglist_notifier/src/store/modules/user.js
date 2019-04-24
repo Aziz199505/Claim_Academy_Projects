@@ -1,9 +1,12 @@
 import globalAxios from "axios";
 import router from '../../router'
+import Hashids from 'hashids'
 
 
 const state =  {
-    user : null
+    user : null,
+    hashId : null,
+    hash : new Hashids('',10)
 }
 
 const mutations = {
@@ -13,7 +16,11 @@ const mutations = {
   },*/
   storeUser(state,user){
     state.user = user
-  }
+    state.hashId = state.hash.encode(user.userId)
+  },
+  emptyUser(state) {
+    state.user = null
+  },
 
 }
 const actions =  {
@@ -40,13 +47,18 @@ const actions =  {
       password : authData.password
     }).then(res => {
       commit('storeUser',res.data)
-      router.push('/')
+      router.push(`/user/${state.hashId}`)
       console.log(res.data)
     }).catch(error => {
       console.log(error)
     })
   },
-  fetchUser({commit,state}) {
+  signOut({commit}) {
+    console.log("Sign Out!")
+    commit('emptyUser')
+    router.push('/')
+
+/*  fetchUser({commit,state}) {
     if(!(state.idToken)) return;
     globalAxios.get('/users.json?auth=' + state.idToken + "&uid=" + state.userId)
       .then(res => {
@@ -62,7 +74,7 @@ const actions =  {
         //this.email = users[0].email
         commit('storeUser',users[0])
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error))}*/
   },
   storeData({commit,state},formData){
     /*if(!(state.idToken)) return;
@@ -84,6 +96,9 @@ const getters =  {
   },*/
   getUser(state) {
     return !(state.user) ? false : state.user;
+  },
+  getUserHashId(state) {
+    return !(state.user) ? false : {hashId : state.hashId, userId : state.hash.decode(state.hashId)[0]};
   }
 }
 

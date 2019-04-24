@@ -24,8 +24,10 @@
       <form class="form-inline">
 
         <router-link class="btn btn-outline-success" to="/">Home</router-link>
-        <router-link class="btn btn-outline-success" to="/sign-in">Sign In</router-link>
-        <router-link class="btn btn-outline-success" to="/sign-up">Sing Up</router-link>
+        <router-link v-if="getUser === false" class="btn btn-outline-success" to="/sign-in">Sign In</router-link>
+        <button v-if="getUser !== false" @click="$store.dispatch('signOut')" class="btn btn-outline-success" >Sign Out</button>
+
+        <router-link v-if="getUser === false" class="btn btn-outline-success" to="/sign-up">Sing Up</router-link>
       </form>
 
 
@@ -48,6 +50,14 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+  export default {
+    computed : {
+      ...mapGetters([
+          'getUser'
+      ])
+    }
+  }
 
 </script>
 

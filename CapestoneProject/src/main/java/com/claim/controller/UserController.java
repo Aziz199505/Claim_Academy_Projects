@@ -52,7 +52,7 @@ public class UserController {
 		
 		 Optional<User> temp = userRepository.findByEmail(user.getEmail());
 		 
-		 System.out.println("Hello world");
+		 //System.out.println("Hello world");
 		 if(!temp.isPresent()) {
 				return new ResponseEntity<> (HttpStatus.UNAUTHORIZED);
 		 }

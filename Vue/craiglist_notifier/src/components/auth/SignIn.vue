@@ -33,9 +33,9 @@
     },
     methods : {
       signIn() {
-        console.log("I clicked")
         this.$store.dispatch('signIn',{email : this.email, password : this.password})
         console.log(this.email)
+        console.log(this.password)
         console.log(this.options)
       }
     }

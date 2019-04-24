@@ -4,7 +4,6 @@ import router from './router'
 import store from './store/store'
 import axios from 'axios'
 
-
 axios.defaults.baseURL = 'http://localhost:8080'
 //axios.defaults.headers.common['Authorization'] = 'fasfdsa'
 axios.defaults.headers.get['Accepts'] = 'application/json'

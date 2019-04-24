@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 @Entity
 @Table(name="user")
 public class User {
@@ -34,7 +36,10 @@ public class User {
 
 	@Column(name="password")
 	private String password;
+	
 
+	
+	
 
 	public long getUserId() {
 		return userId;
@@ -102,9 +107,16 @@ public class User {
 
 
 	public void setPassword(String password) {
-		this.password = password;
+		String salt = "----$$$$$@@@##!#!#$199sasClaimAcademy";
+		this.password = getMD5Hash(String.valueOf(password)+salt);
 	}
 	
+	public String getMD5Hash(String data) {
+		String md5 = DigestUtils.md5Hex(data);
+		return md5;
+	}
+
+
 	
 	
 	

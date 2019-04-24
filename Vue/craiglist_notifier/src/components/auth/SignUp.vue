@@ -5,15 +5,17 @@
       <h1 class="h3 mb-3 font-weight-normal">Sign Up!</h1>
 
       <label for="inputFirstName" class="sr-only">First Name</label>
-      <input v-model="firstName" type="text" id="inputFirstName" class="form-control" placeholder="First Name">
+      <input v-model="user.firstName" type="text" id="inputFirstName" class="form-control" placeholder="First Name">
       <label for="inputLastName" class="sr-only">Last Name</label>
-      <input v-model="lastName" type="text" id="inputLastName" class="form-control" placeholder="Last Name">
+      <input v-model="user.lastName" type="text" id="inputLastName" class="form-control" placeholder="Last Name">
       <label for="inputCellPhone" class="sr-only">Cell Phone</label>
-      <input v-model="cellPhone" type="text" id="inputCellPhone" class="form-control" placeholder="Cell Phone">
+      <input v-model="user.cellPhone" type="text" id="inputCellPhone" class="form-control" placeholder="Cell Phone">
+      <label for="inputUsername" class="sr-only">username</label>
+      <input v-model="user.username" type="text" id="inputUsername" class="form-control" placeholder="Username">
       <label for="inputEmail" class="sr-only">Email Address</label>
-      <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input v-model="user.email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input v-model="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
       <button @click.prevent="singUp" class="btn btn-lg btn-primary btn-block">Sign Up</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
@@ -28,20 +30,20 @@
   export default {
     data() {
       return {
-        email : "",
-        password : "",
-        firstName : "",
-        lastName : "",
-        cellPhone : "",
-        options : []
+        user : {
+          email: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          cellPhone: "",
+          username: "",
+          options: []
+        }
       }
     },
     methods : {
       singUp() {
-        console.log("I clicked")
-
-        console.log(this.email)
-        console.log(this.options)
+        this.$store.dispatch('signIn',this.user)
       }
     }
 

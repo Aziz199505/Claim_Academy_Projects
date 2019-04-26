@@ -7,16 +7,20 @@ import Home from './components/Home.vue'
 import thankYou from './components/auth/thank-you.vue'
 import User from './components/user/User.vue'
 import store from './store/store'
+import Preference from './components/user/Preference.vue'
 
 import Dashboard from './components/dashboard/dashboard.vue'
 
 Vue.use(VueRouter)
 
 const routerRule = (to,from,next) => {
-  console.log(store.getters.getUserHashId)
+  /*console.log(store.getters.getUserHashId)
+  console.log(to.params.id)*/
   console.log('inside route setup')
-  if(store.getters.getUserHashId) {
+  if(store.getters.getUserHashId && to.params.id == store.getters.getUserHashId.hashId) {
     next()
+  }else {
+    next('/')
   }
 }
 
@@ -29,10 +33,11 @@ const routes = [
   { path : '/dashboard',component : Dashboard},
 */
   { path : '/thank-you', component : thankYou},
-  {path : "/user",name : "user",components : {
+  {path : "/user/:id",name : "user",components : {
       default : User
     }, beforeEnter : routerRule , children : [
-      {path : '/:id/dashboard', name : "dashboard", component : Dashboard, beforeEnter : routerRule}
+      {path : '', component : Preference},
+      {path : '/user/:id/dashboard', name : "dashboard", component : Dashboard, beforeEnter : routerRule}
 /*      {path : ':id/edit', component : UserEdit, name : 'UserEdit'}*/
 
     ]},

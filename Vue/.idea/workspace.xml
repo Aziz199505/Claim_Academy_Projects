@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a107729-ae28-41e4-a84b-25e9a9b6a5a5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/user/Preference.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/user/SideBarItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-1_03-04-2019/.markers" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-1_03-04-2019/.markers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-2_03-05-2019/.markers" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-2_03-05-2019/.markers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-3_03-06-2019/.markers" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-3_03-06-2019/.markers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-3_03-06-2019/org.eclipse.egit.core/GitProjectData.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/Project-3_03-06-2019/org.eclipse.egit.core/GitProjectData.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/test/.markers" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/test/.markers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/1714717687.index" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/1714717687.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2063973686.index" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2063973686.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/3271193799.index" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/3271193799.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/javaLikeNames.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/javaLikeNames.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/2019/3/10/refactorings.index" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/2019/3/10/refactorings.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/Project-1_03-04-2019/2019/3/10/refactorings.index" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/Project-1_03-04-2019/2019/3/10/refactorings.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/test/2019/3/10/refactorings.index" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/test/2019/3/10/refactorings.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/05b0fe8524860bd73cbb07ef30fb34cc/segments.gen" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/05b0fe8524860bd73cbb07ef30fb34cc/segments.gen" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/segments.gen" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/segments.gen" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/workspaceState.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/workspaceState.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.10.0.20181127-2120.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.10.0.20181127-2120.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/version.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../.metadata/version.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/src/main/java/com/claim/CapestoneProject/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/src/main/java/com/claim/CapestoneProject/DatabaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/src/main/java/com/claim/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/src/main/java/com/claim/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/src/main/java/com/claim/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/src/main/java/com/claim/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CapestoneProject/src/test/java/com/claim/CapestoneProject/CapestoneProjectApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CapestoneProject/src/test/java/com/claim/CapestoneProject/CapestoneProjectApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Car_Project/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Car_Project/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Car_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Car_Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Car_Project/WebContent/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Car_Project/WebContent/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/catalina.policy" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/catalina.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/catalina.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/catalina.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/server.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/Servers/Tomcat v8.5 Server at localhost-config/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/ServletTutorial/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/ServletTutorial/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Web Project/ServletTutorial/WebContent/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dynamic Web Project/ServletTutorial/WebContent/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-10_03-19-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-10_03-19-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-10_04-16-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-10_04-16-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-3_03-06-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-3_03-06-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-4_03-07-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-4_03-07-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-5_03-08-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-5_03-08-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-6_03-09-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-6_03-09-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-7_03-09-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-7_03-09-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-8_03-14-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-8_03-14-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project-9_03-17-2019/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project-9_03-17-2019/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/markdown-navigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/markdown-navigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/markdown-navigator/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/react-event-bus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/react-event-bus.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventConsumer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventConsumer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventTarget.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/EventTarget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/withEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/dist/withEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/node_modules/react-event-bus/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../React/node_modules/react-event-bus/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../React/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/react-clock" beforeDir="false" afterPath="$PROJECT_DIR$/../React/react-clock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/react-clock-2" beforeDir="false" afterPath="$PROJECT_DIR$/../React/react-clock-2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/student-portal" beforeDir="false" afterPath="$PROJECT_DIR$/../React/student-portal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/to-do" beforeDir="false" afterPath="$PROJECT_DIR$/../React/to-do" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/catalina.policy" beforeDir="false" afterPath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/catalina.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/catalina.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/catalina.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/server.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servers/Tomcat v8.5 Server at localhost-config/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/LineChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/LineChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardNav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardNav.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/myChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/myChart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/report.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/report.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/sideBarNav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/sideBarNav.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/header/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/header/header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/components/user/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/components/user/User.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craiglist_notifier/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/craiglist_notifier/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/FirstProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/FirstProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../claim-workspace/.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/../claim-workspace/.metadata/.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../claim-workspace/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../claim-workspace/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../claim-workspace/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/claim/2019/3/11/refactorings.index" beforeDir="false" afterPath="$PROJECT_DIR$/../claim-workspace/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/claim/2019/3/11/refactorings.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../claim-workspace/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.10.0.20181127-2120.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../claim-workspace/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.10.0.20181127-2120.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../claim/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../claim/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code-challage-gates/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../code-challage-gates/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../test/.gitignore" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/store/modules/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="790">
+              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/user/Preference.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardNav.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/myChart.vue">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/report.vue">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" column="11" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/sideBarNav.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="57" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/user/SideBarItem.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardHeader.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="19" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/craiglist_notifier/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/components/Home.vue" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/store/store.js" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/store/modules/user.js" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/components/header/header.vue" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/components/user/User.vue" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/router.js" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/index.html" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/components/user/sideBarItem.vue" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/components/user/SideBarItem.vue" />
+        <option value="$PROJECT_DIR$/craiglist_notifier/src/components/user/Preference.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="947" />
+    <option name="y" value="-8" />
+    <option name="width" value="974" />
+    <option name="height" value="733" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard_components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="craiglist_notifier" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a107729-ae28-41e4-a84b-25e9a9b6a5a5" name="Default Changelist" comment="" />
+      <created>1556135174354</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556135174354</updated>
+      <workItem from="1556135175647" duration="471000" />
+      <workItem from="1556136672537" duration="8529000" />
+      <workItem from="1556212924310" duration="12290000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="21290000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/src/components/user/UserEdit.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/Home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="33" column="12" selection-start-line="33" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/header/header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/src/components/user/UserStart.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/src/components/user/UserDetail.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/src/components/user/User.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="59" column="40" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/store/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/user/User.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/store/modules/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="790">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/myChart.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/report.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/sideBarNav.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="57" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/user/SideBarItem.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/user/Preference.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardNav.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard_components/dashboardHeader.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/craiglist_notifier/src/components/dashboard/dashboard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

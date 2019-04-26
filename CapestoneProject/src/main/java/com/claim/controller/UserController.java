@@ -22,12 +22,16 @@ import com.claim.repository.UserRepository;
 public class UserController {
 
 	@Autowired
+	SendMail sendMail;
+	
+	@Autowired
 	private UserRepository userRepository;
 	
 	@RequestMapping(value="/submitUserDetails",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			method=RequestMethod.POST)
 	public void sumbitStudentDetails(@RequestBody User user) {
+		//Send Mail sendMail.sendMail(user.getEmail(), "Welcome", user.getUsername() + " thanks for registering!");
 		userRepository.save(user);
 	}
 	

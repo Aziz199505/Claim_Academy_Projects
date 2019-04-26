@@ -6,8 +6,10 @@
       leave-active-class="animated slideOutRight"
       mode="out-in"
     >-->
-      <router-view></router-view>
+      <!--<router-view></router-view>-->
 <!--   </transition>-->
+
+    <router-view></router-view>
   </div>
 
 </template>

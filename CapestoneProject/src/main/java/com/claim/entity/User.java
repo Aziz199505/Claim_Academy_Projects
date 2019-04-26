@@ -1,9 +1,14 @@
 package com.claim.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -37,9 +42,40 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="user",cascade = CascadeType.ALL)
+    private Set<Preference> preference;
 
 	
 	
+
+	public User() {
+		super();
+	}
+
+
+	public User(long userId, String username, String email, String firstName, String lastName, String cellPhone,
+			String password, Set<Preference> preference) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.cellPhone = cellPhone;
+		this.password = password;
+		this.preference = preference;
+	}
+
+
+	public Set<Preference> getPreference() {
+		return preference;
+	}
+
+
+	public void setPreference(Set<Preference> preference) {
+		this.preference = preference;
+	}
+
 
 	public long getUserId() {
 		return userId;

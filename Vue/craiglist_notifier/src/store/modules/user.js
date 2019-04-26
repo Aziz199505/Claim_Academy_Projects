@@ -2,11 +2,11 @@ import globalAxios from "axios";
 import router from '../../router'
 import Hashids from 'hashids'
 
+const hash =  new Hashids('',10)
 
 const state =  {
     user : null,
-    hashId : null,
-    hash : new Hashids('',10)
+    hashId : null
 }
 
 const mutations = {
@@ -16,7 +16,7 @@ const mutations = {
   },*/
   storeUser(state,user){
     state.user = user
-    state.hashId = state.hash.encode(user.userId)
+    state.hashId = hash.encode(user.userId)
   },
   emptyUser(state) {
     state.user = null
@@ -47,7 +47,7 @@ const actions =  {
       password : authData.password
     }).then(res => {
       commit('storeUser',res.data)
-      router.push(`/user/${state.hashId}`)
+      router.push(`/user/${hash.encode(res.data.userId)}`)
       console.log(res.data)
     }).catch(error => {
       console.log(error)
@@ -98,7 +98,7 @@ const getters =  {
     return !(state.user) ? false : state.user;
   },
   getUserHashId(state) {
-    return !(state.user) ? false : {hashId : state.hashId, userId : state.hash.decode(state.hashId)[0]};
+    return !(state.user) ? false : {hashId : state.hashId, userId : hash.decode(state.hashId)[0]};
   }
 }
 

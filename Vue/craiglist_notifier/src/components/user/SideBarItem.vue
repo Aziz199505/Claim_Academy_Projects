@@ -1,7 +1,7 @@
 <template>
-  <nav class="col-md-4.5 d-none d-md-block bg-light sidebar text-center">
+  <nav class="col-md-3 col-lg-2 col-xs-4 d-none d-md-block bg-light sidebar text-center">
     <div class="sidebar-sticky">
-      <ul class="nav flex-column">
+      <ul class="nav ">
         <slot></slot>
         <!--<li class="nav-item">
 
@@ -29,6 +29,7 @@
 </script>
 
 <style scoped>
+
 
   .sidebar {
     position: relative;

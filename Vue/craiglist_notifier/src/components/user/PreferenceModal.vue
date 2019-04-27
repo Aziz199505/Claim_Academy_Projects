@@ -196,9 +196,13 @@
 
 <script>
   import axios from 'axios'
+  import {mapGetters} from 'vuex'
+
+
   export default {
     data() {
       return {
+        isLocation : false,
         city : "",
         StreetAddress : "",
         State : "",
@@ -251,11 +255,16 @@
         }
       }
     },
+    computed : {
+    ...mapGetters([
+        'getCors'
+      ])
+    },
     created() {
       this.$getLocation()
         .then(coor => {
           console.log(coor);
-          axios.get(`https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/Rest/?lat=${coor.lat}&lon=${coor.lng}&apikey=6c436e1250d34ec9b621e9d30eee2c9a&format=json&notStore=false&version=4.10`).then((res) => {
+          axios.get(`${this.getCors}https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/Rest/?lat=${coor.lat}&lon=${coor.lng}&apikey=6c436e1250d34ec9b621e9d30eee2c9a&format=json&notStore=false&version=4.10`).then((res) => {
             try {
               let addr = res.data.StreetAddresses[0]
               console.log(addr)

@@ -25,6 +25,9 @@ export default {
   },
   components : {
     appHeader : header
+  },
+  created() {
+    this.$store.dispatch('fetchAreas')
   }
 }
 </script>

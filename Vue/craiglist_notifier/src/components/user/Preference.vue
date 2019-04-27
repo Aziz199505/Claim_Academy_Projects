@@ -15,7 +15,7 @@
           <h1 class="h2">Preferences</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
-              <button data-toggle="modal" data-target="#modalAddCarForm" class="btn btn-sm btn-outline-primary">Add</button>
+              <button @click="prefState = !prefState" data-toggle="modal" data-target="#modalAddCarForm" class="btn btn-sm btn-outline-primary">Add</button>
               <button class="btn btn-sm btn-outline-danger">Remove</button>
             </div>
             <div class="dropdown">
@@ -41,7 +41,7 @@
 
     </div>
 
-    <app-pref-modal></app-pref-modal>
+    <app-pref-modal v-if="prefState"></app-pref-modal>
 
   </div>
 
@@ -56,6 +56,7 @@
   export default {
     data() {
       return {
+        prefState : false,
         hideList : true
       }
     },
@@ -65,6 +66,8 @@
       appPrefModal : PrefModal
     },
     computed : {
+
+
       adjustMain() {
         return {
           "col-md-9 col-xs-8 col-lg-10" : this.hideList,

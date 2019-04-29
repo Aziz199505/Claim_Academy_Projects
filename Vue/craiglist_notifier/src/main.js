@@ -3,11 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store/store'
 import axios from 'axios'
+
 import VueGeolocation from 'vue-browser-geolocation';
+import VueTagsInput from '@johmun/vue-tags-input';
 
 
 Vue.use(VueGeolocation);
-
+Vue.use(VueTagsInput);
 
 axios.defaults.baseURL = 'http://localhost:8080'
 //axios.defaults.headers.common['Authorization'] = 'fasfdsa'
@@ -29,6 +31,30 @@ const resInterceptor = axios.interceptors.response.use(res => {
 
 axios.interceptors.request.eject(reqInterceptor)
 axios.interceptors.response.eject(resInterceptor)
+
+
+Vue.component('time-picker', {
+  props:["value"],
+  data(){
+    return {
+      selectedTime: this.value
+    }
+  },
+  template: "<input size='6' type='text' v-model='selectedDate' @input='onInput'>",
+  methods:{
+    onInput(){
+      this.$emit('input', this.selectedTime)
+    }
+  },
+  mounted () {
+    new flatpickr(this.$el, {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "h:i K",
+      time_24hr: false
+    })
+  }
+})
 
 
 new Vue({

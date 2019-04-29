@@ -53,6 +53,7 @@
   import SideBarItem from './SideBarItem.vue'
   import ListedItem from './ListedItem.vue'
   import PrefModal from './PreferenceModal.vue'
+
   export default {
     data() {
       return {

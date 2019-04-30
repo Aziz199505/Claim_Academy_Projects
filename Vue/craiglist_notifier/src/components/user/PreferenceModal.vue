@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" id="modalAddCarForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade" id="modalAddCarForm" role="dialog" aria-labelledby="myModalLabel"
        aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -131,7 +131,7 @@
 
             <div v-if="options.includes('notifyEmail')" class="md-form mb-5">
               <div v-for="(item,index) in optionsEmail">
-                <p>{{item}} - From: <time-picker></time-picker> To: <time-picker></time-picker>  <span><button class="btn btn-sm btn-outline-primary">Add</button></span> </p>
+                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="tags.push(timeFrom)" class="btn btn-sm btn-primary" >Add</button></span> </p>
                 <vue-tags-input
                   v-model="tag"
                   :tags="tags"
@@ -203,8 +203,10 @@
   export default {
     data() {
       return {
+        timeTo : '12:00 AM',
+        timeFrom : '12:00 PM',
         tag: '',
-        tags: ['aziz','sobirov'],
+        tags: [],
         detailEmailOpt : [],
         detailTextOpt : [],
         optionsEmail : [],
@@ -397,6 +399,9 @@
       okIcon : CheckIcon
     },
     watch : {
+      timeFrom(value) {
+        console.log("Time changed! to: " + value)
+      },
       selectedState(value) {
 
         if(this.isLocation) {

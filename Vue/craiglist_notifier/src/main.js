@@ -40,7 +40,7 @@ Vue.component('time-picker', {
       selectedTime: this.value
     }
   },
-  template: "<input size='6' type='text' v-model='selectedDate' @input='onInput'>",
+  template: "<input size='6' type='text' v-model='selectedTime' @input='onInput'>",
   methods:{
     onInput(){
       this.$emit('input', this.selectedTime)

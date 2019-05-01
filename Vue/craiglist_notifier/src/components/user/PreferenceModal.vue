@@ -20,7 +20,7 @@
 
             <div class="md-form mb-4">
 
-              <select name="category"  class="form-control selectpicker">
+              <select name="category"  v-model="selectedCategory" class="form-control selectpicker">
                 <option v-for="(v,key) in category" :value="key">{{v}}</option>
               </select>
 
@@ -44,7 +44,7 @@
 
             <div class="md-form mb-4">
 
-              <select v-model="city" name="city"   class="form-control selectpicker capitalize">
+              <select v-model="city" name="city" @change="onCityChange"  class="form-control selectpicker capitalize">
                 <option class="capitalize" v-for="(item,index) in onAreas" :value="item.Description">{{item.Description}}</option>
               </select>
 
@@ -57,9 +57,16 @@
 
             <div class="md-form mb-5">
               <i class="fas fa-user prefix grey-text"></i>
-              <input v-model="search" name="search" type="text" placeholder="Search anything..." id="orangeForm" class="form-control validate">
+<!--
+              <input  v-model="search" name="search" type="text" placeholder="Search anything..." id="orangeForm" class="form-control validate">
+-->
+
+              <vue-simple-suggest  :filter-by-query="true" :list="searches" v-model="search" placeholder="Search Anything..."></vue-simple-suggest>
+
               <label data-error="wrong" data-success="right" for="orangeForm">Search</label>
             </div>
+
+
 
             <div class="md-form mb-5">
               <i class="fas fa-user prefix grey-text"></i>
@@ -131,11 +138,12 @@
 
             <div v-if="options.includes('notifyEmail')" class="md-form mb-5">
               <div v-for="(item,index) in optionsEmail">
-                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="tags.push(timeFrom)" class="btn btn-sm btn-primary" >Add</button></span> </p>
+                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="addDetails(item,timeFrom + '-' + timeTo)" class="btn btn-sm btn-primary" >Add</button></span> </p>
                 <vue-tags-input
                   v-model="tag"
-                  :tags="tags"
-                  @tags-changed="newTags => tags = newTags"
+                  :tags="detailEmailOpt[item]"
+                  :avoid-adding-duplicates="duplicate"
+                  @tags-changed="newTags => detailEmailOpt[item] = newTags"
                 />
               </div>
             </div>
@@ -198,17 +206,25 @@
   import axios from 'axios'
   import {mapGetters} from 'vuex'
   import {CheckIcon} from 'vue-feather-icons'
-  import VueTagsInput from '@johmun/vue-tags-input';
+  import VueSimpleSuggest from 'vue-simple-suggest'
+  import 'vue-simple-suggest/dist/styles.css' // Optional CSS
+  import moment from 'moment'
 
+
+  moment().format();
   export default {
     data() {
+
       return {
-        timeTo : '12:00 AM',
-        timeFrom : '12:00 PM',
+        hostname : "anchorage",
+        selectedCategory : "sss",
+        searches : [],
+        duplicate : false,
+        timeTo : '12:00 PM',
+        timeFrom : '11:49 AM',
         tag: '',
-        tags: [],
-        detailEmailOpt : [],
-        detailTextOpt : [],
+        detailEmailOpt : {SUNDAY : [],MONDAY : [],TUESDAY : [],WEDNESDAY : [],THURSDAY : [],FRIDAY : [],SATURDAY : []},
+        detailTextOpt : {},
         optionsEmail : [],
         optionsText : [],
         options : [],
@@ -329,8 +345,24 @@
     },
     methods : {
       onStateChange() {
-        //console.log(this.selectedState)
+
+        //this.city = this.onAreas.get(0).Description
+       //console.log(this.onAreas[0])
+        this.city = this.onAreas[0].Description
+        this.hostname = this.onAreas[0].Hostname
       },
+      onCityChange() {
+        console.log(this.city)
+        console.log(this.onAreas)
+        let area = this.onAreas.filter(e => {
+          if(e.Description == this.city) return e
+        })[0]
+
+        console.log("My Area")
+        console.log(area)
+        this.hostname = area.Hostname
+      }
+      ,
       distance(lat1, lon1, lat2, lon2) {
         let radlat1 = Math.PI * lat1/180
         let radlat2 = Math.PI * lat2/180
@@ -346,6 +378,11 @@
         dist = dist * 1.609344
         //if (unit=="N") { dist = dist * 0.8684 }
         return dist
+      },
+      addDetails(item,timeFrame) {
+        console.log(timeFrame)
+        this.detailEmailOpt[item].push(timeFrame)
+        console.log(this.detailEmailOpt)
       }
     },
     computed : {
@@ -396,7 +433,8 @@
         });
     },
     components : {
-      okIcon : CheckIcon
+      okIcon : CheckIcon,
+      VueSimpleSuggest
     },
     watch : {
       timeFrom(value) {
@@ -418,9 +456,62 @@
           //console.log(closest)
           let closestIndex = closest.indexOf(Math.min(...closest))
           this.city = myArea[closestIndex].Description
-
+          console.log(myArea[closestIndex])
+          this.hostname = myArea[closestIndex].Hostname
         }
+      },
+      detailEmailOpt : {
+        handler(val){
+          console.log("Changed")
+          Object.entries(val).map((k,i) => {
+           // console.log(k[0] + "," + k[1])
+            k[1].forEach(e => {
+
+              let parsed = e.split('-')
+              let timeFrom = parsed[0]
+              let timeTo = parsed[1]
+              timeFrom = moment(timeFrom,'HH:mm A')._d
+              timeTo = moment(timeTo,'HH:mm A')._d
+             // console.log(timeFrom + " " + timeTo)
+
+              k[1].forEach(d => {
+
+                let parsed2 = d.split('-')
+                let timeFrom2 = parsed2[0]
+                let timeTo2 = parsed2[1]
+                timeFrom2 = moment(timeFrom2,'HH:mm A')._d
+                timeTo2 = moment(timeTo2,'HH:mm A')._d
+                console.log(timeTo)
+                console.log(timeTo2)
+                console.log(timeFrom)
+                console.log(timeFrom2)
+                console.log(timeFrom >= timeFrom2 && timeTo2 < timeTo)
+
+
+
+
+
+              })
+
+            })
+
+
+          } )
+        },
+        deep: true
+      },
+      search(value) {
+        console.log("It is been search: " + value)
+        axios.get(`${this.getCors}https://${this.hostname}.craigslist.org/suggest?type=search&term=${value}&cat=${this.selectedCategory}`)
+          .then(res => {
+            console.log(res)
+            this.searches = res.data
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
+
     }
   }
 </script>

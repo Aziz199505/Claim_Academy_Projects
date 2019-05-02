@@ -142,8 +142,9 @@
                 <vue-tags-input
                   v-model="tag"
                   :tags="detailEmailOpt[item]"
-                  :avoid-adding-duplicates="duplicate"
-                  @tags-changed="newTags => detailEmailOpt[item] = newTags"
+                  @tags-changed="newTags => tagChange(item,newTags)"
+
+
                 />
               </div>
             </div>
@@ -216,6 +217,7 @@
     data() {
 
       return {
+        stop : false,
         hostname : "anchorage",
         selectedCategory : "sss",
         searches : [],
@@ -344,6 +346,28 @@
       }
     },
     methods : {
+       isValidDate(d) {
+            return d instanceof Date && !isNaN(d);
+       },
+
+      tagChange(item,newTags) {
+        let parsed = item.split('-')
+        let timeFrom = parsed[0]
+        let timeTo = parsed[1]
+
+
+        timeFrom = moment(timeFrom,'HH:mm A')._d
+        timeTo = moment(timeTo,'HH:mm A')._d
+
+/*        console.log("old tags length: "+this.detailEmailOpt[item].length)
+        console.log("new tags length: "+newTags.length)
+
+        console.log(item,newTags)*/
+
+        if((this.isValidDate(timeFrom) && this.isValidDate(timeTo)) || this.detailEmailOpt[item].length >= newTags.length) {
+          this.detailEmailOpt[item] = newTags
+        }
+      },
       onStateChange() {
 
         //this.city = this.onAreas.get(0).Description
@@ -381,8 +405,53 @@
       },
       addDetails(item,timeFrame) {
         console.log(timeFrame)
-        this.detailEmailOpt[item].push(timeFrame)
+        let temp = [...this.detailEmailOpt[item]]
+
         console.log(this.detailEmailOpt)
+
+        let parsed = timeFrame.split('-')
+        let timeFrom = parsed[0]
+        let timeTo = parsed[1]
+
+
+        timeFrom = moment(timeFrom,'HH:mm A')._d
+        timeTo = moment(timeTo,'HH:mm A')._d
+
+
+        console.log("Time from: " + timeFrom)
+        console.log("Time to: " + timeTo)
+
+        console.log(temp)
+        console.log(this.detailEmailOpt[item])
+        let status = false
+        temp.forEach((e,index) => {
+          let parsed2 = e.split('-')
+          let timeFrom2 = parsed2[0]
+          let timeTo2 = parsed2[1]
+
+          timeFrom2 = moment(timeFrom2,'HH:mm A')._d
+          timeTo2 = moment(timeTo2,'HH:mm A')._d
+
+          if(timeFrom > timeFrom2 && timeTo <= timeTo2) {
+            status = true
+          }
+
+          if(timeFrom < timeFrom2 && timeTo >= timeTo2) {
+            this.detailEmailOpt[item].splice(index,1)
+          }
+
+          console.log(timeFrom > timeFrom2)
+          console.log(timeFrom + " " + timeFrom2)
+          console.log(timeTo <= timeTo2 )
+          console.log(timeTo + " " + timeTo2)
+
+        })
+
+
+        if(!status) this.detailEmailOpt[item].push(timeFrame)
+
+
+
       }
     },
     computed : {
@@ -462,8 +531,9 @@
       },
       detailEmailOpt : {
         handler(val){
-          console.log("Changed")
-          Object.entries(val).map((k,i) => {
+/*          console.log("Changed")
+          console.log(val)*/
+          /*Object.entries(val).map((k,i) => {
            // console.log(k[0] + "," + k[1])
             k[1].forEach(e => {
 
@@ -474,29 +544,12 @@
               timeTo = moment(timeTo,'HH:mm A')._d
              // console.log(timeFrom + " " + timeTo)
 
-              k[1].forEach(d => {
 
-                let parsed2 = d.split('-')
-                let timeFrom2 = parsed2[0]
-                let timeTo2 = parsed2[1]
-                timeFrom2 = moment(timeFrom2,'HH:mm A')._d
-                timeTo2 = moment(timeTo2,'HH:mm A')._d
-                console.log(timeTo)
-                console.log(timeTo2)
-                console.log(timeFrom)
-                console.log(timeFrom2)
-                console.log(timeFrom >= timeFrom2 && timeTo2 < timeTo)
-
-
-
-
-
-              })
 
             })
 
 
-          } )
+          } )*/
         },
         deep: true
       },

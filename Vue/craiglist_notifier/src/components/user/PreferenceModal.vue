@@ -21,7 +21,7 @@
             <div class="md-form mb-4">
 
               <select name="category"  v-model="selectedCategory" class="form-control selectpicker">
-                <option v-for="(v,key) in category" :value="key">{{v}}</option>
+                <option v-for="(v,key) in getCategory" :value="key">{{v}}</option>
               </select>
 
               <label data-error="wrong" data-success="right" for="orangeForm">Category</label>
@@ -32,7 +32,7 @@
             <div class="md-form mb-4">
 
               <select @change="onStateChange" name="states" v-model="selectedState"  class="form-control selectpicker">
-                <option v-for="(v,key) in states" :value="key">{{v}}</option>
+                <option v-for="(v,key) in getStates" :value="key">{{v}}</option>
               </select>
 
               <label data-error="wrong" data-success="right" for="orangeForm">State</label>
@@ -138,13 +138,11 @@
 
             <div v-if="options.includes('notifyEmail')" class="md-form mb-5">
               <div v-for="(item,index) in optionsEmail">
-                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="addDetails(item,timeFrom + '-' + timeTo,'email')" class="btn btn-sm btn-primary" >Add</button></span> </p>
+                <p>{{item}} - From: <time-picker v-model="detailEmailTime[item].timeFrom"></time-picker> To: <time-picker v-model="detailEmailTime[item].timeTo"></time-picker>  <span><button @click="addDetails(item,detailEmailTime[item].timeFrom + '-' + detailEmailTime[item].timeTo,'email')" class="btn btn-sm btn-primary" >Add</button></span> </p>
                 <vue-tags-input
                   v-model="tag"
                   :tags="detailEmailOpt[item]"
                   @tags-changed="newTags => tagChange(item,newTags,'email')"
-
-
                 />
               </div>
             </div>
@@ -170,7 +168,7 @@
 
             <div v-if="options.includes('notifyText')" class="md-form mb-5">
               <div v-for="(item,index) in optionsText">
-                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="addDetails(item,timeFrom + '-' + timeTo,'text')" class="btn btn-sm btn-primary" >Add</button></span> </p>
+                <p>{{item}} - From: <time-picker v-model="detailTextTime[item].timeFrom"></time-picker> To: <time-picker v-model="detailTextTime[item].timeTo"></time-picker>  <span><button @click="addDetails(item,detailTextTime[item].timeFrom + '-' + detailTextTime[item].timeTo,'text')" class="btn btn-sm btn-primary" >Add</button></span> </p>
                 <vue-tags-input
                   v-model="tag"
                   :tags="detailTextOpt[item]"
@@ -183,7 +181,7 @@
 
             <div class="md-form mb-5">
               <i class="fas fa-user prefix grey-text"></i>
-              <textarea name="descp" class="form-control validate" rows="5" id="comment"></textarea>
+              <textarea placeholder="Add Description" v-model="descp" name="descp" class="form-control validate" rows="5" id="comment"></textarea>
 
               <label data-error="wrong" data-success="right" for="orangeForm">Description</label>
             </div>
@@ -204,7 +202,11 @@
 
           </div>
           <div class="modal-footer d-flex justify-content-center">
-            <input type="submit" class="btn btn-deep-orange">
+           <!-- <input type="submit" class="btn btn-deep-orange">-->
+
+
+            <button @click="sumbitInfo" data-toggle="modal" data-target="#modalAddCarForm" class="btn btn-deep-orange">Submit</button>
+
           </div>
         </div>
       </div>
@@ -226,14 +228,17 @@
     data() {
 
       return {
+        descp : "",
         stop : false,
         hostname : "anchorage",
         selectedCategory : "sss",
         searches : [],
         duplicate : false,
-        timeTo : '12:00 AM',
-        timeFrom : '11:59 PM',
+        timeTo : '11:59 PM',
+        timeFrom : '12:00 AM',
         tag: '',
+        detailEmailTime: {SUNDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},MONDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},TUESDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},WEDNESDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},THURSDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},FRIDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},SATURDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'}},
+        detailTextTime : {SUNDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},MONDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},TUESDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},WEDNESDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},THURSDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},FRIDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'},SATURDAY : {timeFrom : '12:00 AM', timeTo : '11:59 PM'}},
         detailEmailOpt : {SUNDAY : [],MONDAY : [],TUESDAY : [],WEDNESDAY : [],THURSDAY : [],FRIDAY : [],SATURDAY : []},
         detailTextOpt : {SUNDAY : [],MONDAY : [],TUESDAY : [],WEDNESDAY : [],THURSDAY : [],FRIDAY : [],SATURDAY : []},
         optionsEmail : [],
@@ -249,113 +254,102 @@
         StreetAddress : "",
         State : "",
         Zip : "",
-        ZipPlus : "",
-        category : {
-          'sss' : 'all',
-          'ata' : 'antiques',
-          'ppa' : 'appliances',
-          'ara' : 'arts+crafts',
-          'sna' : 'atvs/utvs/snow',
-          'pta' : 'auto parts',
-            'baa' : 'baby+kids',
-          'bar' : 'barter',
-          'haa' : 'beauty+hlth',
-          'bip' : 'bike parts',
-            'bia' : 'bikes',
-          'bpa' : 'boat parts',
-            'boo' : 'boats',
-          'bka' : 'books',
-          'bfa' : 'business',
-          'cta' : 'cars+trucks',
-          'ema' : 'cds/dvd/vhs',
-          'moa' : 'cell phones',
-            'cla' : 'clothes+acc',
-          'cba' : 'collectibles',
-          'syp' : 'computer parts',
-            'sya' : 'computers',
-          'ela' : 'electronics',
-          'gra' : 'farm+garden',
-          'zip' : 'free stuff',
-            'fua' : 'furniture',
-          'gms' : 'garage sales',
-            'foa' : 'general',
-          'hva' : 'heavy equipment',
-            'hsa' : 'household',
-          'jwa' : 'jewelry',
-          'maa' : 'materials',
-          'mpa' : 'motorcycle parts',
-            'mca' : 'motorcycles',
-          'msa' : 'music instr',
-            'pha' : 'photo+video',
-          'rva' : 'RVs',
-          'sga' : 'sporting',
-          'tia' : 'tickets',
-          'tla' : 'tools',
-          'taa' : 'toys+games',
-          'vga' : 'video gaming',
-            'waa' : 'wanted'
-        },
-        states : {
-          'AK': 'Alaska',
-          'AL': 'Alabama',
-          'AR': 'Arkansas',
-          'AZ': 'Arizona',
-          'CA': 'California',
-          'CO': 'Colorado',
-          'CT': 'Connecticut',
-          'DC': 'District of Columbia',
-          'DE': 'Delaware',
-          'FL': 'Florida',
-          'GA': 'Georgia',
-          'HI': 'Hawaii',
-          'IA': 'Iowa',
-          'ID': 'Idaho',
-          'IL': 'Illinois',
-          'IN': 'Indiana',
-          'KS': 'Kansas',
-          'KY': 'Kentucky',
-          'LA': 'Louisiana',
-          'MA': 'Massachusetts',
-          'MD': 'Maryland',
-          'ME': 'Maine',
-          'MI': 'Michigan',
-          'MN': 'Minnesota',
-          'MO': 'Missouri',
-          'MP': 'Northern Mariana Islands',
-          'MS': 'Mississippi',
-          'MT': 'Montana',
-          'NA': 'National',
-          'NC': 'North Carolina',
-          'ND': 'North Dakota',
-          'NE': 'Nebraska',
-          'NH': 'New Hampshire',
-          'NJ': 'New Jersey',
-          'NM': 'New Mexico',
-          'NV': 'Nevada',
-          'NY': 'New York',
-          'OH': 'Ohio',
-          'OK': 'Oklahoma',
-          'OR': 'Oregon',
-          'PA': 'Pennsylvania',
-          'PR': 'Puerto Rico',
-          'RI': 'Rhode Island',
-          'SC': 'South Carolina',
-          'SD': 'South Dakota',
-          'TN': 'Tennessee',
-          'TX': 'Texas',
-          'UT': 'Utah',
-          'VA': 'Virginia',
-          'VI': 'Virgin Islands',
-          'VT': 'Vermont',
-          'WA': 'Washington',
-          'WI': 'Wisconsin',
-          'WV': 'West Virginia',
-          'WY': 'Wyoming'
-        }
+        ZipPlus : ""
       }
     },
     methods : {
-       isValidDate(d) {
+      isEmpty(obj) {
+        for(let key in obj) {
+          if(obj.hasOwnProperty(key))
+            return false;
+        }
+        return true;
+      },
+
+      assignTimeOpts(detailOpts,options,type) {
+        let detailOpt = {} /*Object.assign({},this.detailEmailOpt)*/
+
+        Object.entries(detailOpts).map((k) => {
+          // console.log(k[0] + "," + k[1])
+          //console.log(k)
+          console.log(k[0])
+          //console.log(this.optionsEmail)
+
+          console.log(options.includes(k[0]))
+          if(options.includes(k[0])) {
+            //console.log("Work")
+            let actTime = []
+            detailOpts[k[0]].forEach(e =>  {
+
+              let parsed = e.split('-')
+              let timeFrom = parsed[0]
+              let timeTo = parsed[1]
+
+
+              timeFrom = moment(timeFrom,'HH:mm A')._d
+              timeTo = moment(timeTo,'HH:mm A')._d
+
+              actTime.push({timeFrom,timeTo})
+
+
+
+            })
+
+
+            detailOpt[k[0]] = actTime
+
+          }
+        })
+
+        //console.log("Details....")
+        //console.log(detailOpt)
+
+        console.log(detailOpt)
+
+        if(type == 'email') this.detailEmailOpt = Object.assign({},detailOpt)
+        if(type == 'text') this.detailTextOpt = Object.assign({},detailOpt)
+        //detailOpts = Object.assign({},detailOpt)
+      },
+
+
+      sumbitInfo() {
+
+
+        this.assignTimeOpts(this.detailEmailOpt,this.optionsEmail,'email')
+        this.assignTimeOpts(this.detailTextOpt,this.optionsText,'text')
+
+
+      /*  console.log(this.detailEmailOpt)
+
+        console.log(this.detailTextOpt)*/
+
+
+
+
+
+
+
+        console.log("Info submitted")
+        this.$store.dispatch('addPref', {
+          category : this.selectedCategory,
+          city : this.city,
+          hasPic : this.options.includes('hasImage'),
+          maxPrice : this.maxPrice,
+          minPrice : this.minPrice,
+          notifyEmail : options.includes('notifyEmail'),
+          notifyText : options.includes('notifyText'),
+          detailEmailOpt : this.detailEmailOpt,
+          detailTextOpt : this.detailTextOpt,
+          search : this.search,
+          state : this.state,
+          descp : this.descp
+
+
+
+        } )
+
+      },
+      isValidDate(d) {
             return d instanceof Date && !isNaN(d);
        },
 
@@ -364,6 +358,15 @@
         let timeFrom = parsed[0]
         let timeTo = parsed[1]
 
+        let detailOpt = null
+
+        if(opt == 'email') {
+          detailOpt = this.detailEmailOpt
+        }
+        if(opt == 'text')
+        {
+          detailOpt = this.detailTextOpt
+        }
 
         timeFrom = moment(timeFrom,'HH:mm A')._d
         timeTo = moment(timeTo,'HH:mm A')._d
@@ -372,15 +375,11 @@
         console.log("new tags length: "+newTags.length)
 
         console.log(item,newTags)*/
-        if(opt == 'email') {
-          if((this.isValidDate(timeFrom) && this.isValidDate(timeTo)) || this.detailEmailOpt[item].length >= newTags.length) {
-            this.detailEmailOpt[item] = newTags
-          }
-        } else {
-          if((this.isValidDate(timeFrom) && this.isValidDate(timeTo)) || this.detailTextOpt[item].length >= newTags.length) {
-            this.detailTextOpt[item] = newTags
-          }
+
+        if((this.isValidDate(timeFrom) && this.isValidDate(timeTo)) || detailOpt[item].length >= newTags.length) {
+          detailOpt[item] = newTags
         }
+
 
 
 
@@ -393,14 +392,14 @@
         this.hostname = this.onAreas[0].Hostname
       },
       onCityChange() {
-        console.log(this.city)
-        console.log(this.onAreas)
+        //console.log(this.city)
+        //console.log(this.onAreas)
         let area = this.onAreas.filter(e => {
           if(e.Description == this.city) return e
         })[0]
 
-        console.log("My Area")
-        console.log(area)
+        //console.log("My Area")
+        //console.log(area)
         this.hostname = area.Hostname
       }
       ,
@@ -421,19 +420,28 @@
         return dist
       },
       addDetails(item,timeFrame,opt) {
-        console.log(timeFrame)
+       // console.log(timeFrame)
 
         let temp = null
+        let detailOpt = null
+
 
         if(opt == 'email') {
-          temp = [...this.detailEmailOpt[item]]
-        } else {
-          temp = [...this.detailTextOpt[item]]
+          detailOpt = this.detailEmailOpt
+        }
+        if(opt == 'text')
+        {
+          detailOpt = this.detailTextOpt
         }
 
 
 
-        console.log(this.detailEmailOpt)
+        temp = [...detailOpt[item]]
+
+
+
+
+      ///  console.log(this.detailEmailOpt)
 
         let parsed = timeFrame.split('-')
         let timeFrom = parsed[0]
@@ -444,13 +452,36 @@
         timeTo = moment(timeTo,'HH:mm A')._d
 
 
-        console.log("Time from: " + timeFrom)
-        console.log("Time to: " + timeTo)
+/*        console.log("Time from: " + timeFrom)
+        console.log("Time to: " + timeTo)*/
 
-        console.log(temp)
-        console.log(this.detailEmailOpt[item])
+        let countTimeFrom = (timeFrom.getHours() * 60 * 60) + (timeFrom.getMinutes() * 60) + timeFrom.getSeconds()
+        let countTimeTo = (timeTo.getHours() * 60 * 60) + (timeTo.getMinutes() * 60) + timeTo.getSeconds()
+
+/*
+        console.log("Time from: " + timeFrom.getHours())
+        console.log("Time to: " + timeTo.getHours())
+
+
+        console.log("Time from: " + timeFrom.getMinutes())
+        console.log("Time to: " + timeTo.getMinutes())
+
+
+        console.log("Time from: " + timeFrom.getSeconds())
+        console.log("Time to: " + timeTo.getSeconds())
+
+        console.log("Total time " + countTimeFrom)*/
+
+       // console.log(temp)
+       // console.log(this.detailEmailOpt[item])
         let status = false
+
+        if(countTimeTo <= countTimeFrom) {
+          status = true
+        }
+
         temp.forEach((e,index) => {
+          //console.log("My e: " + e + " My timeframe" + timeFrame)
           let parsed2 = e.split('-')
           let timeFrom2 = parsed2[0]
           let timeTo2 = parsed2[1]
@@ -458,32 +489,65 @@
           timeFrom2 = moment(timeFrom2,'HH:mm A')._d
           timeTo2 = moment(timeTo2,'HH:mm A')._d
 
-          if(timeFrom > timeFrom2 && timeTo <= timeTo2) {
+          let countTimeFrom2 = (timeFrom2.getHours() * 60 * 60) + (timeFrom2.getMinutes() * 60) + timeFrom2.getSeconds()
+          let countTimeTo2 = (timeTo2.getHours() * 60 * 60) + (timeTo2.getMinutes() * 60) + timeTo2.getSeconds()
+
+
+          if(countTimeFrom >= countTimeFrom2 && countTimeTo <= countTimeTo2) {
             status = true
           }
 
-          if(timeFrom < timeFrom2 && timeTo >= timeTo2) {
 
-            if(opt == 'email') {
-              this.detailEmailOpt[item].splice(index, 1)
-            } else {
-              this.detailTextOpt[item].splice(index, 1)
-            }
+          if(e == timeFrame) {
+            status = true
           }
 
-          console.log(timeFrom > timeFrom2)
+
+
+
+         /* console.log(countTimeFrom + "  " + countTimeFrom2)
+          console.log(countTimeTo + "  " + countTimeTo2)*/
+
+
+          if(countTimeFrom >= countTimeFrom2 && countTimeTo > countTimeTo2 && countTimeFrom < countTimeTo2) {
+            detailOpt[item].splice(index, 1, parsed2[0] +  "-" + parsed[1])
+            console.log("Log worked!!!: " + index)
+            status = true
+           // detailOpt[item].splice(index, 1)
+
+            //detailOpt[item][index] = parsed[0] +  "-" + parsed2[1]
+          }
+
+
+          if(countTimeFrom < countTimeFrom2 && countTimeTo <= countTimeTo2 && countTimeTo > countTimeFrom2) {
+            detailOpt[item].splice(index, 1, parsed[0] +  "-" + parsed2[1])
+            //console.log("Log worked!!!: " + index)
+            status = true
+            // detailOpt[item].splice(index, 1)
+
+            //detailOpt[item][index] = parsed[0] +  "-" + parsed2[1]
+          }
+
+
+          if(countTimeFrom < countTimeFrom2 && countTimeTo >= countTimeTo2) {
+            detailOpt[item].splice(index, 1)
+          }
+
+
+
+         /* console.log(timeFrom > timeFrom2)
           console.log(timeFrom + " " + timeFrom2)
           console.log(timeTo <= timeTo2 )
-          console.log(timeTo + " " + timeTo2)
+          console.log(timeTo + " " + timeTo2)*/
 
         })
 
 
-        if(opt == 'email') {
-          if(!status) this.detailEmailOpt[item].push(timeFrame)
-        } else {
-          if(!status) this.detailTextOpt[item].push(timeFrame)
+
+        if(!status) {
+          detailOpt[item].push(timeFrame)
         }
+
 
 
 
@@ -493,7 +557,9 @@
     computed : {
     ...mapGetters([
         'getCors',
-        'getRefAreas'
+        'getRefAreas',
+        'getStates',
+        'getCategory'
       ]),
 
       onAreas() {
@@ -561,7 +627,7 @@
           //console.log(closest)
           let closestIndex = closest.indexOf(Math.min(...closest))
           this.city = myArea[closestIndex].Description
-          console.log(myArea[closestIndex])
+         // console.log(myArea[closestIndex])
           this.hostname = myArea[closestIndex].Hostname
         }
       },
@@ -590,10 +656,10 @@
         deep: true
       },
       search(value) {
-        console.log("It is been search: " + value)
+        //console.log("It is been search: " + value)
         axios.get(`${this.getCors}https://${this.hostname}.craigslist.org/suggest?type=search&term=${value}&cat=${this.selectedCategory}`)
           .then(res => {
-            console.log(res)
+            //console.log(res)
             this.searches = res.data
           })
           .catch(err => {

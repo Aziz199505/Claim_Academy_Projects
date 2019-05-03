@@ -57,6 +57,9 @@ Vue.component('time-picker', {
 })
 
 
+Vue.config.productionTip = false
+
+
 new Vue({
   el: '#app',
   router,

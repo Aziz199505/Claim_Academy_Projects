@@ -138,11 +138,11 @@
 
             <div v-if="options.includes('notifyEmail')" class="md-form mb-5">
               <div v-for="(item,index) in optionsEmail">
-                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="addDetails(item,timeFrom + '-' + timeTo)" class="btn btn-sm btn-primary" >Add</button></span> </p>
+                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="addDetails(item,timeFrom + '-' + timeTo,'email')" class="btn btn-sm btn-primary" >Add</button></span> </p>
                 <vue-tags-input
                   v-model="tag"
                   :tags="detailEmailOpt[item]"
-                  @tags-changed="newTags => tagChange(item,newTags)"
+                  @tags-changed="newTags => tagChange(item,newTags,'email')"
 
 
                 />
@@ -169,7 +169,16 @@
             </div>
 
             <div v-if="options.includes('notifyText')" class="md-form mb-5">
+              <div v-for="(item,index) in optionsText">
+                <p>{{item}} - From: <time-picker v-model="timeFrom"></time-picker> To: <time-picker v-model="timeTo"></time-picker>  <span><button @click="addDetails(item,timeFrom + '-' + timeTo,'text')" class="btn btn-sm btn-primary" >Add</button></span> </p>
+                <vue-tags-input
+                  v-model="tag"
+                  :tags="detailTextOpt[item]"
+                  @tags-changed="newTags => tagChange(item,newTags,'text')"
 
+
+                />
+              </div>
             </div>
 
             <div class="md-form mb-5">
@@ -222,11 +231,11 @@
         selectedCategory : "sss",
         searches : [],
         duplicate : false,
-        timeTo : '12:00 PM',
-        timeFrom : '11:49 AM',
+        timeTo : '12:00 AM',
+        timeFrom : '11:59 PM',
         tag: '',
         detailEmailOpt : {SUNDAY : [],MONDAY : [],TUESDAY : [],WEDNESDAY : [],THURSDAY : [],FRIDAY : [],SATURDAY : []},
-        detailTextOpt : {},
+        detailTextOpt : {SUNDAY : [],MONDAY : [],TUESDAY : [],WEDNESDAY : [],THURSDAY : [],FRIDAY : [],SATURDAY : []},
         optionsEmail : [],
         optionsText : [],
         options : [],
@@ -350,7 +359,7 @@
             return d instanceof Date && !isNaN(d);
        },
 
-      tagChange(item,newTags) {
+      tagChange(item,newTags,opt) {
         let parsed = item.split('-')
         let timeFrom = parsed[0]
         let timeTo = parsed[1]
@@ -363,10 +372,18 @@
         console.log("new tags length: "+newTags.length)
 
         console.log(item,newTags)*/
-
-        if((this.isValidDate(timeFrom) && this.isValidDate(timeTo)) || this.detailEmailOpt[item].length >= newTags.length) {
-          this.detailEmailOpt[item] = newTags
+        if(opt == 'email') {
+          if((this.isValidDate(timeFrom) && this.isValidDate(timeTo)) || this.detailEmailOpt[item].length >= newTags.length) {
+            this.detailEmailOpt[item] = newTags
+          }
+        } else {
+          if((this.isValidDate(timeFrom) && this.isValidDate(timeTo)) || this.detailTextOpt[item].length >= newTags.length) {
+            this.detailTextOpt[item] = newTags
+          }
         }
+
+
+
       },
       onStateChange() {
 
@@ -403,9 +420,18 @@
         //if (unit=="N") { dist = dist * 0.8684 }
         return dist
       },
-      addDetails(item,timeFrame) {
+      addDetails(item,timeFrame,opt) {
         console.log(timeFrame)
-        let temp = [...this.detailEmailOpt[item]]
+
+        let temp = null
+
+        if(opt == 'email') {
+          temp = [...this.detailEmailOpt[item]]
+        } else {
+          temp = [...this.detailTextOpt[item]]
+        }
+
+
 
         console.log(this.detailEmailOpt)
 
@@ -437,7 +463,12 @@
           }
 
           if(timeFrom < timeFrom2 && timeTo >= timeTo2) {
-            this.detailEmailOpt[item].splice(index,1)
+
+            if(opt == 'email') {
+              this.detailEmailOpt[item].splice(index, 1)
+            } else {
+              this.detailTextOpt[item].splice(index, 1)
+            }
           }
 
           console.log(timeFrom > timeFrom2)
@@ -448,7 +479,12 @@
         })
 
 
-        if(!status) this.detailEmailOpt[item].push(timeFrame)
+        if(opt == 'email') {
+          if(!status) this.detailEmailOpt[item].push(timeFrame)
+        } else {
+          if(!status) this.detailTextOpt[item].push(timeFrame)
+        }
+
 
 
 

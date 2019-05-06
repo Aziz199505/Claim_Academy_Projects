@@ -1,13 +1,17 @@
 package com.claim.entity;
 
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -47,10 +51,18 @@ public class Preference {
 	
 	@Column(name="searchNearby")
 	private boolean searchNearby;
+	
+	
+	
+	
 
 	@ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "userId")
     private User user;
+	
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="preference",cascade = CascadeType.ALL)
+    private Set<Notify> notifyDetail;
 	
 	
 
@@ -59,7 +71,7 @@ public class Preference {
 	}
 
 	public Preference(long prefId, String city, double maxPrice, double minPrice, String category, String postal,
-			boolean hasBic, boolean notify, boolean notifyEmail, boolean notifyPhone, boolean searchNearby, User user) {
+			boolean hasBic, boolean notify, boolean notifyEmail, boolean notifyPhone, boolean searchNearby, User user, Set<Notify> notifyDetail) {
 		super();
 		this.prefId = prefId;
 		this.city = city;
@@ -73,10 +85,22 @@ public class Preference {
 		this.notifyPhone = notifyPhone;
 		this.searchNearby = searchNearby;
 		this.user = user;
+		this.notifyDetail = notifyDetail;
+		
 	}
 
 	
 	
+	
+	
+	public Set<Notify> getNotifyDetail() {
+		return notifyDetail;
+	}
+
+	public void setNotifyDetail(Set<Notify> notifyDetail) {
+		this.notifyDetail = notifyDetail;
+	}
+
 	public User getUser() {
 		return user;
 	}

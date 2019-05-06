@@ -1,7 +1,7 @@
 <template>
-  <nav class="col-md-3 col-lg-2 col-xs-4 d-none d-md-block bg-light sidebar text-center">
+  <nav class="col-md-5 col-lg-6 col-xs-6 d-none d-md-block bg-light sidebar text-center">
     <div class="sidebar-sticky">
-      <ul class="nav ">
+      <ul class="nav row">
         <slot></slot>
         <!--<li class="nav-item">
 
@@ -31,6 +31,7 @@
 <style scoped>
 
 
+
   .sidebar {
     position: relative;
     top: 0;
@@ -39,9 +40,11 @@
     z-index: 100; /* Behind the navbar */
     padding: 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+
   }
 
   .sidebar-sticky {
+    cursor: col-resize;
     position: -webkit-sticky;
     position: sticky;
     top: 48px; /* Height of navbar */

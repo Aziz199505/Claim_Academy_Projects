@@ -272,10 +272,10 @@
         Object.entries(detailOpts).map((k) => {
           // console.log(k[0] + "," + k[1])
           //console.log(k)
-          console.log(k[0])
+          //console.log(k[0])
           //console.log(this.optionsEmail)
 
-          console.log(options.includes(k[0]))
+          //console.log(options.includes(k[0]))
           if(options.includes(k[0])) {
             //console.log("Work")
             let actTime = []
@@ -304,7 +304,7 @@
         //console.log("Details....")
         //console.log(detailOpt)
 
-        console.log(detailOpt)
+        //console.log(detailOpt)
 
         if(type == 'email') this.detailEmailOpt = Object.assign({},detailOpt)
         if(type == 'text') this.detailTextOpt = Object.assign({},detailOpt)
@@ -318,6 +318,9 @@
         this.assignTimeOpts(this.detailEmailOpt,this.optionsEmail,'email')
         this.assignTimeOpts(this.detailTextOpt,this.optionsText,'text')
 
+
+        this.detailEmailOpt.name = "email"
+        this.detailTextOpt.name = "phone"
 
       /*  console.log(this.detailEmailOpt)
 
@@ -336,15 +339,13 @@
           hasPic : this.options.includes('hasImage'),
           maxPrice : this.maxPrice,
           minPrice : this.minPrice,
-          notifyEmail : options.includes('notifyEmail'),
-          notifyText : options.includes('notifyText'),
+          notifyEmail : this.options.includes('notifyEmail'),
+          notifyPhone : this.options.includes('notifyText'),
           detailEmailOpt : this.detailEmailOpt,
           detailTextOpt : this.detailTextOpt,
           search : this.search,
           state : this.state,
           descp : this.descp
-
-
 
         } )
 

@@ -66,6 +66,8 @@ public class User {
 		this.preference = preference;
 	}
 
+	
+	
 
 	public Set<Preference> getPreference() {
 		return preference;

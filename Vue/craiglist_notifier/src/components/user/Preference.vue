@@ -5,9 +5,7 @@
     <div class="row">
 
       <app-side-bar v-if="hideList">
-        <li v-for="i in 4" class="nav-item">
-          <app-listed-item></app-listed-item>
-        </li>
+          <app-listed-item  v-for="i in 4"  :id="i"></app-listed-item>
       </app-side-bar>
 
       <main role="main" :class="adjustMain" class=" ml-sm-auto pt-3 px-4">
@@ -33,8 +31,11 @@
 
           </div>
         </div>
-        <h2>Section title</h2>
 
+
+        <div  v-for="(item,index) in getPrefs" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                {{item.city}} {{index}}
+        </div>
 
       </main>
 
@@ -53,6 +54,7 @@
   import SideBarItem from './SideBarItem.vue'
   import ListedItem from './ListedItem.vue'
   import PrefModal from './PreferenceModal.vue'
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
@@ -67,11 +69,13 @@
       appPrefModal : PrefModal
     },
     computed : {
-
+      ...mapGetters([
+        'getPrefs'
+      ]),
 
       adjustMain() {
         return {
-          "col-md-9 col-xs-8 col-lg-10" : this.hideList,
+          "col-md-7 col-xs-6 col-lg-6" : this.hideList,
           "col-md-12 col-xs-12 col-lg-12" : !this.hideList
         }
       }

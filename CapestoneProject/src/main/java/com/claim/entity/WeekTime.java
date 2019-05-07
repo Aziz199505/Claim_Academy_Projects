@@ -15,6 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.joda.time.DateTime;
+
+
+
 
 @Entity
 @Table(name="week")
@@ -28,15 +32,12 @@ public class WeekTime {
 	 
 	 @ManyToOne(cascade= CascadeType.ALL)
 	 @JoinColumn(name = "notifyId")
-	 private Email email;
+	 private Notify notify;
 	 
-	 @ManyToOne(cascade= CascadeType.ALL)
-	 @JoinColumn(name = "notifyId")
-	 private Phone phone;
 	 
 	 
 	 @OneToMany(fetch = FetchType.EAGER,mappedBy="week",cascade = CascadeType.ALL)
-	 private Set<DateTime> dateTime;
+	 private Set<DateTimeFormat> dateTimeFormat;
 
 
 	 
@@ -48,11 +49,6 @@ public class WeekTime {
 		super();
 	}
 	
-	
-	
-
-
-
 
 
 	public long getWeekId() {
@@ -77,50 +73,30 @@ public class WeekTime {
 
 	
 
-
-
-
-
-	public Email getEmail() {
-		return email;
+	public Notify getNotify() {
+		return notify;
 	}
 
 
 
-
-
-	public void setEmail(Email email) {
-		this.email = email;
+	public void setNotify(Notify notify) {
+		this.notify = notify;
 	}
 
 
 
-
-
-	public Phone getPhone() {
-		return phone;
+	public Set<DateTimeFormat> getDateTimeFormat() {
+		return dateTimeFormat;
 	}
 
 
 
-
-
-	public void setPhone(Phone phone) {
-		this.phone = phone;
+	public void setDateTimeFormat(Set<DateTimeFormat> dateTimeFormat) {
+		this.dateTimeFormat = dateTimeFormat;
 	}
 
 
 
-
-
-	public Set<DateTime> getDateTime() {
-		return dateTime;
-	}
-
-
-	public void setDateTime(Set<DateTime> dateTime) {
-		this.dateTime = dateTime;
-	}
 	 	
 	
 	 

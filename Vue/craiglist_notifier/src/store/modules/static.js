@@ -7,6 +7,7 @@ const hash =  new Hashids('',10)
 const state =  {
   areas : null,
   cors : "https://cors-anywhere.herokuapp.com/",
+  myCors : "http://localhost:8082/",
   refAreas : "https://reference.craigslist.org/Areas",
   states : {
     'AK': 'Alaska',
@@ -155,6 +156,9 @@ const getters =  {
   },
   getCategory(state) {
     return state.category
+  },
+  getMyCors(state) {
+    return state.myCors
   }
 
   /*,

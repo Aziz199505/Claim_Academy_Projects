@@ -4,20 +4,19 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 
-@MappedSuperclass
+@Entity
+@Table(name="notify")
 public class Notify {
 	@Id @GeneratedValue 
 	@Column(name="notifyId")
@@ -27,7 +26,11 @@ public class Notify {
     @JoinColumn(name = "prefId")
     private Preference preference;
 	
+	@Column(name="name")
+	private String name;
 	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="notify",cascade = CascadeType.ALL)
+    private Set<WeekTime> weekTime;
 	
 	
 
@@ -43,11 +46,55 @@ public class Notify {
 
 
 
-	public Notify(long notifyId, Preference preference) {
+	
+
+
+	public Notify(long notifyId, Preference preference, String name, Set<WeekTime> weekTime) {
 		super();
 		this.notifyId = notifyId;
 		this.preference = preference;
+		this.name = name;
+		this.weekTime = weekTime;
 	}
+
+
+
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+
+
+
+	public Set<WeekTime> getWeekTime() {
+		return weekTime;
+	}
+
+
+
+
+
+
+	public void setWeekTime(Set<WeekTime> weekTime) {
+		this.weekTime = weekTime;
+	}
+
+
+
 
 
 

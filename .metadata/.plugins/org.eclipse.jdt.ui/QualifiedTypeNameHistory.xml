@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.Locale"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xpath.internal.functions.Function"/>
     <fullyQualifiedTypeName name="java.util.function.Function"/>
@@ -35,7 +34,6 @@
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.StringUtils"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
-    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Table"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
     <fullyQualifiedTypeName name="com.twilio.Twilio"/>
     <fullyQualifiedTypeName name="com.twilio.rest.api.v2010.account.Message"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="com.claim.entity.DateTimeFormat"/>
 </qualifiedTypeNameHistroy>

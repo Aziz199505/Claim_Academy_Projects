@@ -44,12 +44,11 @@
   }
 
   .sidebar-sticky {
-    cursor: col-resize;
     position: -webkit-sticky;
     position: sticky;
-    top: 48px; /* Height of navbar */
+    top: 35px; /* Height of navbar */
     height: calc(100vh - 48px);
-    padding-top: .5rem;
+    padding-top: 0rem;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   }

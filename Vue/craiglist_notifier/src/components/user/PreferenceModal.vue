@@ -223,13 +223,7 @@
   import moment from 'moment'
 
 
-  const instance = axios.create({
-    headers: {
-      get: {        // can be common or any other method
-        Origin: 'x-requested-with'
-      }
-    }
-  })
+
 
   moment().format();
   export default {
@@ -355,8 +349,9 @@
           detailEmailOpt : this.detailEmailOpt,
           detailTextOpt : this.detailTextOpt,
           search : this.search,
-          state : this.state,
-          descp : this.descp
+          state : this.State,
+          descp : this.descp,
+          userId : this.getUserHashId.userId
 
         } )
 
@@ -572,7 +567,8 @@
         'getRefAreas',
         'getStates',
         'getCategory',
-        'getMyCors'
+        'getMyCors',
+        'getUserHashId'
       ]),
 
       onAreas() {
@@ -672,7 +668,7 @@
         //console.log("It is been search: " + value)
         value = this.search.split(' ').join('+')
         console.log(this.getMyCors)
-        instance.get(`${this.getMyCors}/https://${this.hostname}.craigslist.org/suggest?type=search&term=${value}&cat=${this.selectedCategory}`)
+        axios.get(`${this.getMyCors}https://${this.hostname}.craigslist.org/suggest?type=search&term=${value}&cat=${this.selectedCategory}`)
           .then(res => {
             //console.log(res)
             this.searches = res.data

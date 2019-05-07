@@ -38,7 +38,7 @@ public class Preference {
 	private String postal;
 	
 	@Column(name="hasPic")
-	private boolean hasBic;
+	private boolean hasPic;
 	
 	@Column(name="notify")
 	private boolean notify;
@@ -52,13 +52,20 @@ public class Preference {
 	@Column(name="searchNearby")
 	private boolean searchNearby;
 	
+	@Column(name="search")
+	private String search;
 	
+	@Column(name="descp")
+	private String descp;
 	
+	@Column(name="state")
+	private String state;
 	
 
 	@ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "userId")
     private User user;
+	
 	
 	
 	@OneToMany(fetch = FetchType.EAGER,mappedBy="preference",cascade = CascadeType.ALL)
@@ -69,9 +76,11 @@ public class Preference {
 	public Preference() {
 		super();
 	}
-
+	
+	
 	public Preference(long prefId, String city, double maxPrice, double minPrice, String category, String postal,
-			boolean hasBic, boolean notify, boolean notifyEmail, boolean notifyPhone, boolean searchNearby, User user, Set<Notify> notifyDetail) {
+			boolean hasPic, boolean notify, boolean notifyEmail, boolean notifyPhone, boolean searchNearby,
+			String search, String descp, String state, User user, Set<Notify> notifyDetail) {
 		super();
 		this.prefId = prefId;
 		this.city = city;
@@ -79,26 +88,57 @@ public class Preference {
 		this.minPrice = minPrice;
 		this.category = category;
 		this.postal = postal;
-		this.hasBic = hasBic;
+		this.hasPic = hasPic;
 		this.notify = notify;
 		this.notifyEmail = notifyEmail;
 		this.notifyPhone = notifyPhone;
 		this.searchNearby = searchNearby;
+		this.search = search;
+		this.descp = descp;
+		this.state = state;
 		this.user = user;
 		this.notifyDetail = notifyDetail;
-		
 	}
 
-	
-	
-	
-	
+
+
+
+
+
+
 	public Set<Notify> getNotifyDetail() {
 		return notifyDetail;
 	}
 
 	public void setNotifyDetail(Set<Notify> notifyDetail) {
 		this.notifyDetail = notifyDetail;
+	}
+
+	
+	
+	
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getDescp() {
+		return descp;
+	}
+
+	public void setDescp(String descp) {
+		this.descp = descp;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public User getUser() {
@@ -157,12 +197,12 @@ public class Preference {
 		this.postal = postal;
 	}
 
-	public boolean isHasBic() {
-		return hasBic;
+	public boolean isHasPic() {
+		return hasPic;
 	}
 
-	public void setHasBic(boolean hasBic) {
-		this.hasBic = hasBic;
+	public void setHasBic(boolean hasPic) {
+		this.hasPic = hasPic;
 	}
 
 	public boolean isNotify() {
@@ -195,6 +235,15 @@ public class Preference {
 
 	public void setSearchNearby(boolean searchNearby) {
 		this.searchNearby = searchNearby;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Preference [prefId=" + prefId + ", city=" + city + ", maxPrice=" + maxPrice + ", minPrice=" + minPrice
+				+ ", category=" + category + ", postal=" + postal + ", hasBic=" + hasPic + ", notify=" + notify
+				+ ", notifyEmail=" + notifyEmail + ", notifyPhone=" + notifyPhone + ", searchNearby=" + searchNearby
+				+ ", search=" + search + ", descp=" + descp + ", state=" + state + ", user=" + user + "]";
 	}
 
 

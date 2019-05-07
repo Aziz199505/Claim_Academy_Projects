@@ -37,6 +37,7 @@ const actions =  {
 
   addPref({commit,dispatch,state},pref) {
       console.log("I sumbitted")
+      console.log(pref)
       commit('storePref',pref)
   },
   fetchPrefs({commit,dispatch,state}) {

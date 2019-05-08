@@ -97,6 +97,14 @@ public class WeekTime {
 
 
 
+	@Override
+	public String toString() {
+		return "WeekTime [weekId=" + weekId + ", week=" + week + ", notify=" + notify + ", dateTimeFormat="
+				+ dateTimeFormat + "]";
+	}
+
+
+
 	 	
 	
 	 

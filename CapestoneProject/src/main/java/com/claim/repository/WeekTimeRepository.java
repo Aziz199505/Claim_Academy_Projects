@@ -1,6 +1,5 @@
 package com.claim.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,10 +7,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.claim.entity.User;
+import com.claim.entity.WeekTime;
+
+
+
 
 @Repository
-public interface UserRepository extends JpaRepository<User,String>{
+public interface WeekTimeRepository extends JpaRepository<WeekTime,String>{
 	
-	 public Optional<User> findByEmail(@Param("email") String email);
-	 public Optional<User> findByUserId(@Param("userId") long userId);
 }

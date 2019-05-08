@@ -125,6 +125,17 @@ public class Notify {
 
 
 
+
+
+	@Override
+	public String toString() {
+		return "Notify [notifyId=" + notifyId + ", preference=" + preference + ", name=" + name + ", weekTime="
+				+ weekTime + "]";
+	}
+
+
+
+
 	
 	 
 	 

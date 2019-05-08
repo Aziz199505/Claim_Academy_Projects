@@ -63,6 +63,12 @@ public class DateTimeFormat {
 		this.week = week;
 	}
 
+	@Override
+	public String toString() {
+		return "DateTimeFormat [timeId=" + timeId + ", timeFrom=" + timeFrom + ", timeTo=" + timeTo + ", week=" + week
+				+ "]";
+	}
+
 	
 	
 	

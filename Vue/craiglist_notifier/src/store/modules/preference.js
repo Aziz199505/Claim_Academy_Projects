@@ -38,6 +38,7 @@ const actions =  {
   addPref({commit,dispatch,state},pref) {
       console.log("I sumbitted")
       console.log(pref)
+      globalAxios.post('/submitPrefDetails')
       commit('storePref',pref)
   },
   fetchPrefs({commit,dispatch,state}) {

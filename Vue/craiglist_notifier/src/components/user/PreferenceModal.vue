@@ -585,7 +585,7 @@
         .then(coor => {
           this.myCoords = coor
           //console.log(coor);
-          axios.get(`${this.getCors}https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/Rest/?lat=${coor.lat}&lon=${coor.lng}&apikey=6c436e1250d34ec9b621e9d30eee2c9a&format=json&notStore=false&version=4.10`).then((res) => {
+          axios.get(`${this.getMyCors}https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/Rest/?lat=${coor.lat}&lon=${coor.lng}&apikey=6c436e1250d34ec9b621e9d30eee2c9a&format=json&notStore=false&version=4.10`).then((res) => {
             try {
               let addr = res.data.StreetAddresses[0]
 

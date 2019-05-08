@@ -1,5 +1,6 @@
 package com.claim.controller;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,7 +65,13 @@ public class UserController {
 		 
 		 
 		if(temp.get().getPassword().equals(user.getPassword())) {
-			return new ResponseEntity<> (temp.get(),HttpStatus.OK);
+			User u = temp.get();
+			
+			u.setPreference(null);
+			u.setPassword("nopassword!!!!lfdajfdal!!@!#FDAFFSAFSDA");
+			
+			
+			return new ResponseEntity<> (u,HttpStatus.OK);
 		}
 		else {
 			return new ResponseEntity<> (HttpStatus.UNAUTHORIZED);

@@ -3,15 +3,20 @@ package com.claim.controller;
 import java.io.IOException;
 import java.util.EnumSet;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.claim.entity.DateTimeFormat;
@@ -34,6 +39,39 @@ public class PrefController {
 	
 	@Autowired
 	private WeekTimeRepository weekTimeRepository;
+	
+	
+	
+	@RequestMapping(value="/fetchPrefs",
+			produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			method=RequestMethod.POST)
+	@ResponseBody 
+	public ResponseEntity<Set<Preference>> login(@RequestBody User user) {
+		
+		 Optional<User> temp = userRepository.findByUserId(user.getUserId());
+		 
+		 //System.out.println("Hello world");
+		 if(!temp.isPresent()) {
+				return new ResponseEntity<> (HttpStatus.UNAUTHORIZED);
+		 }
+
+		User u = temp.get();
+			
+		
+		Set<Preference> prefs = new HashSet<Preference>();
+		
+		for(Preference p : u.getPreference()) {
+			p.setNotifyDetail(null);
+		}
+		
+			
+			
+		return new ResponseEntity<> (u.getPreference(),HttpStatus.OK);
+				
+	}
+		
+	
 
 	@RequestMapping(value = "/submitPrefDetails", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public void sumbitPrefDetail(@RequestBody String json) {

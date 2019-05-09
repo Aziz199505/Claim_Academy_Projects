@@ -1,5 +1,7 @@
 import globalAxios from "axios";
 import router from '../../router'
+import {mapGetters} from 'vuex'
+
 
 
 const state =  {
@@ -35,13 +37,21 @@ const actions =  {
       .catch(error => console.log(error))
   }*/
 
-  addPref({commit,dispatch,state},pref) {
-      console.log("I sumbitted")
-      console.log(pref)
-      globalAxios.post('/submitPrefDetails')
-      commit('storePref',pref)
+  addPref: function ({commit, dispatch, state}, pref) {
+    console.log("I sumbitted")
+    console.log(pref)
+    globalAxios.post('/submitPrefDetails', pref).catch(err => {
+      console.log(err)
+    })
+
+    dispatch('fetchPrefs')
   },
-  fetchPrefs({commit,dispatch,state}) {
+  fetchPrefs({commit,dispatch,state,rootGetters}) {
+    let userId = rootGetters.getUserHashId()
+
+    console.log(userId)
+
+    ""
 
   }
 

@@ -19,7 +19,7 @@ const mutations = {
   }*/
 
   storePref(state,pref) {
-    state.preferences.push(pref)
+    state.preferences = pref
   }
 
 
@@ -40,18 +40,30 @@ const actions =  {
   addPref: function ({commit, dispatch, state}, pref) {
     console.log("I sumbitted")
     console.log(pref)
-    globalAxios.post('/submitPrefDetails', pref).catch(err => {
+    globalAxios.post('/submitPrefDetails', pref)
+      .then(res => {
+        dispatch('fetchPrefs')
+      })
+
+      .catch(err => {
       console.log(err)
     })
 
-    dispatch('fetchPrefs')
+
   },
   fetchPrefs({commit,dispatch,state,rootGetters}) {
-    let userId = rootGetters.getUserHashId()
+    let userId = rootGetters.getUserHashId.userId
 
     console.log(userId)
 
-    ""
+    globalAxios.post('/fetchPrefs', {
+      userId
+    }).then(res => {
+      console.log(res)
+      commit('storePref',res.data)
+    }).catch(err => {
+      console.log(err)
+    })
 
   }
 

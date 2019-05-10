@@ -61,13 +61,16 @@ public class PrefController {
 		
 		Set<Preference> prefs = new HashSet<Preference>();
 		
+		
 		for(Preference p : u.getPreference()) {
 			p.setNotifyDetail(null);
+			p.setUser(null);
+			prefs.add(p);
 		}
 		
 			
 			
-		return new ResponseEntity<> (u.getPreference(),HttpStatus.OK);
+		return new ResponseEntity<> (prefs,HttpStatus.OK);
 				
 	}
 		

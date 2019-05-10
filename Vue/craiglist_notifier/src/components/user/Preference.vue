@@ -33,8 +33,42 @@
         </div>
 
 
-        <div  v-for="(item,index) in getPrefs" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                {{item.city}} {{index}}
+        <div  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom row">
+          <div class="col-md-1">
+            #
+          </div>
+          <div class="col-md-3">
+            <span class="capitalize"> City </span>
+          </div>
+          <div class="col-md-3">
+            <span> Search </span>
+          </div>
+          <div class="col-md-4">
+            <span> Description </span>
+          </div>
+          <div class="col-md-1">
+
+          </div>
+        </div>
+
+        <div  v-for="(item,index) in getPrefs" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom row">
+          <div class="col-md-1">
+            {{index + 1}}
+          </div>
+          <div class="col-md-3">
+            <span class="capitalize"> {{item.city}} </span>
+          </div>
+          <div class="col-md-3">
+            <span> {{item.search}} </span>
+          </div>
+          <div class="col-md-4">
+            <span> {{item.descp}} </span>
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
         </div>
 
       </main>
@@ -95,5 +129,6 @@
       -webkit-overflow-scrolling: touch;
     }
 
+  .capitalize { text-transform: capitalize; }
 
 </style>

@@ -43,7 +43,7 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@OneToMany(fetch = FetchType.EAGER,mappedBy="user",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="user",cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval=true)
     private Set<Preference> preference;
 
 	
@@ -75,8 +75,14 @@ public class User {
 	}
 
 
-	public void setPreference(Set<Preference> preference) {
-		this.preference = preference;
+	public void setPreference(Set<Preference> pref) {
+		preference.clear();
+		preference.addAll(pref);
+	}
+	
+	public void newPreference(Set<Preference> preference) {
+		this.preference.clear();
+		this.preference.addAll(preference);
 	}
 
 

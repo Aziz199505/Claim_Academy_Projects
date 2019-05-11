@@ -3,9 +3,9 @@ package com.claim.controller;
 import java.io.IOException;
 import java.util.EnumSet;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.prefs.Preferences;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,7 @@ import com.claim.entity.Preference;
 import com.claim.entity.User;
 import com.claim.entity.Week;
 import com.claim.entity.WeekTime;
+import com.claim.repository.PreferenceRepository;
 import com.claim.repository.UserRepository;
 import com.claim.repository.WeekTimeRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -39,6 +40,48 @@ public class PrefController {
 	
 	@Autowired
 	private WeekTimeRepository weekTimeRepository;
+	
+	@Autowired
+	private PreferenceRepository prefRepository;
+	
+	@RequestMapping(value="/deletePref",
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			method=RequestMethod.POST)
+	public void sumbitStudentDetails(@RequestBody String json) {
+		//Send Mail sendMail.sendMail(user.getEmail(), "Welcome", user.getUsername() + " thanks for registering!");
+		//userRepository.save(user);
+		JSONObject jsonObj = new JSONObject(json);
+		int userId = jsonObj.getInt("userId");
+		int pId = jsonObj.getInt("prefId");
+		
+		User user  = userRepository.findByUserId(Long.valueOf(String.valueOf(userId))).get();
+		
+		long prefId = Long.valueOf(String.valueOf(pId));
+		System.out.println(user.getFirstName());
+		Set<Preference> prefs = new HashSet<Preference>();
+
+		for(Preference pref : user.getPreference()) {
+			if(pref.getPrefId() != prefId) {
+				/*
+				 * System.out.println(pref.getCity() + " " + pref.getSearch() + " " +
+				 * pref.getPrefId()); user.getPreference().remove(pref);
+				 */
+				System.out.println("Adding " + pref.getPrefId());
+				prefs.add(pref);
+			}
+		}
+		
+		
+
+		
+		user.getPreference().clear();
+		user.getPreference().addAll(prefs);
+		
+		
+		
+		userRepository.save(user);
+		//System.out.println(json);
+	}
 	
 	
 	
@@ -174,7 +217,12 @@ public class PrefController {
 		pref.setNotifyDetail(notifies);
 		pref.setUser(user);
 		
+		for(Preference p: user.getPreference()) {
+			prefs.add(p);
+		}
 		prefs.add(pref);
+		
+		
 		
 		user.setPreference(prefs);
 		

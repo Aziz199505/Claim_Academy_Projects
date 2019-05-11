@@ -62,7 +62,7 @@ public class Preference {
 	private String state;
 	
 
-	@ManyToOne(cascade= CascadeType.ALL)
+	@ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 	

@@ -56,7 +56,9 @@
 
 
             <div class="md-form mb-5">
+<!--
               <i class="fas fa-user prefix grey-text"></i>
+-->
 <!--
               <input  v-model="search" name="search" type="text" placeholder="Search anything..." id="orangeForm" class="form-control validate">
 -->
@@ -69,13 +71,17 @@
 
 
             <div class="md-form mb-5">
+<!--
               <i class="fas fa-user prefix grey-text"></i>
+-->
               <input name="maxPrice" v-model="minPrice" type="number"  min="0"  class="form-control validate">
               <label data-error="wrong" data-success="right" for="orangeForm">Min Price</label>
             </div>
 
             <div class="md-form mb-5">
+<!--
               <i class="fas fa-user prefix grey-text"></i>
+-->
               <input name="minPrice" type="number" v-model="maxPrice"  min="0" class="form-control validate">
               <label data-error="wrong" data-success="right" for="orangeForm">Max Price</label>
             </div>
@@ -180,7 +186,9 @@
             </div>
 
             <div class="md-form mb-5">
+<!--
               <i class="fas fa-user prefix grey-text"></i>
+-->
               <textarea placeholder="Add Description" v-model="descp" name="descp" class="form-control validate" rows="5" id="comment"></textarea>
 
               <label data-error="wrong" data-success="right" for="orangeForm">Description</label>

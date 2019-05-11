@@ -65,8 +65,25 @@ const actions =  {
       console.log(err)
     })
 
-  }
+  },
 
+  deletePref ({commit, dispatch, state,rootGetters}, prefId) {
+    let userId = rootGetters.getUserHashId.userId
+
+    globalAxios.post('/deletePref', {
+      prefId,
+      userId
+    }).then(res =>  {
+      dispatch('fetchPrefs')
+    })
+
+
+      .catch(err => {
+        console.log(err)
+      })
+
+
+  }
 
 }
 const getters =  {

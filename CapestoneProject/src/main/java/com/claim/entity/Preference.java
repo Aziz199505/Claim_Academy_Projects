@@ -58,10 +58,15 @@ public class Preference {
 	@Column(name="descp")
 	private String descp;
 	
+	@Column(name="baseHost")
+	private String baseHost;
+	
 	@Column(name="state")
 	private String state;
 	
 
+	
+	
 	@ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -201,9 +206,6 @@ public class Preference {
 		return hasPic;
 	}
 
-	public void setHasBic(boolean hasPic) {
-		this.hasPic = hasPic;
-	}
 
 	public boolean isNotify() {
 		return notify;
@@ -235,6 +237,23 @@ public class Preference {
 
 	public void setSearchNearby(boolean searchNearby) {
 		this.searchNearby = searchNearby;
+	}
+
+
+	
+	
+	public String getBaseHost() {
+		return baseHost;
+	}
+
+
+	public void setBaseHost(String baseHost) {
+		this.baseHost = baseHost;
+	}
+
+
+	public void setHasPic(boolean hasPic) {
+		this.hasPic = hasPic;
 	}
 
 

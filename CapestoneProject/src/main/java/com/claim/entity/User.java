@@ -76,8 +76,13 @@ public class User {
 
 
 	public void setPreference(Set<Preference> pref) {
-		preference.clear();
-		preference.addAll(pref);
+		try {
+			preference.clear();
+			preference.addAll(pref);
+		}catch(Exception e) {
+			this.preference = pref;
+		}
+		
 	}
 	
 	public void newPreference(Set<Preference> preference) {

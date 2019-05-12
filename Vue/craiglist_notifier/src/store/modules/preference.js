@@ -1,11 +1,13 @@
 import globalAxios from "axios";
+import axios from "axios"
 import router from '../../router'
 import {mapGetters} from 'vuex'
 
 
 
 const state =  {
-  preferences : []
+  preferences : [],
+  prefResults : []
 }
 
 const mutations = {
@@ -20,8 +22,16 @@ const mutations = {
 
   storePref(state,pref) {
     state.preferences = pref
-  }
+  },
 
+  storePrefResult(state,prefResult) {
+
+    //Note I am here
+    if(this.prefIndex >= state.preferences.length - 1) {state.prefResult.pop()}
+
+
+    state.prefResults.push(prefResult.data)
+  }
 
 }
 const actions =  {
@@ -83,7 +93,21 @@ const actions =  {
       })
 
 
-  }
+  },
+  fetchPrefResults({commit, dispatch, state,rootGetters},pref) {
+
+    axios.post(rootGetters.getMyCors+"http://localhost:3000/prefSearch",pref.payload)
+      .then(res => {
+        console.log(res)
+        commit('storePrefResult',{data : res.data, index : pref.prefIndex})
+      })
+      .catch(err => {
+        console.log()
+
+      })
+
+
+    }
 
 }
 const getters =  {

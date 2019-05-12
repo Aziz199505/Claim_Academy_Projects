@@ -2,30 +2,37 @@
 var express = require("express");
 const craigslist = require('node-craigslist');
 
+
+
 var app = express();
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
-app.get("/url", (req, res, next) => {
+app.post("/prefSearch", (req, res, next) => {
     const list = [];
 
+    console.log(req.body)
 
     var
         craigslist = require('node-craigslist'),
         client = new craigslist.Client({
-            city : 'seattle'
         }),
-        options = {
+        options = req.body
+        /*{
             baseHost : '', // defaults to craigslist.org
-            category : '', // defaults to sss (all)
-            city : '',
-            maxPrice : '200',
-            minPrice : '100',
-            postedToday : true
-        };
+            category : 'cta', // defaults to sss (all)
+            maxPrice : '3000',
+            minPrice : '2000',
+            postedToday : true,
+            hasImage : true,
+            city: 'stlouis'
+        }*/;
 
     client
-        .search(options, 'xbox one')
+        .search(options, '')
         .then((listings) => listings.forEach(   (l) => {
                 list.push(
              client.details(l).then((r) => {

@@ -10,7 +10,7 @@
 
       <main role="main" :class="adjustMain" class=" ml-sm-auto pt-3 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Preferences {{count}}</h1>
+          <h1 class="h2">Preferences</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button @click="prefState = !prefState" data-toggle="modal" data-target="#modalAddCarForm" class="btn btn-sm btn-outline-primary">Add</button>
@@ -94,7 +94,7 @@
     data() {
       return {
         selectedSort : 'search',
-        count : 0,
+        prefIndex : 0,
         prefState : false,
         hideList : true,
         sortedOrder : 'asc',
@@ -122,11 +122,35 @@
 
 
       },
-      counter() {
+      resultFetcher() {
         setInterval(() => {
-          this.count += 1;
+          let eachPref = this.getPrefs[this.prefIndex]
           //Some Dispatch every some 1 seconds
-        },1000 )
+          //console.log(this.getPrefs[this.prefIndex])
+
+          this.$store.dispatch('fetchPrefResults', {
+            payload : {
+              category : eachPref.category,
+              maxPrice : eachPref.maxPrice === 0 ? "" : eachPref.maxPrice,
+              minPrice : eachPref.minPrice === 0 ? "" : eachPref.minPrice,
+              postedToday : true,
+              hasImage : eachPref.hasPic,
+              city : eachPref.baseHost
+            },
+            prefIndex : this.prefIndex
+
+          }
+
+
+          )
+          this.prefIndex += 1;
+
+          if(this.prefIndex >= this.getPrefs.length - 1)  {
+            this.prefIndex = 0
+          }
+
+
+        },60000 )
       },
       removePref(prefId) {
         console.log("My prefId: " + prefId)
@@ -179,7 +203,7 @@
           this.sortedPref = this.getPrefs.sort(this.compareValues('search'))
         } )
 
-      //this.counter()
+      this.resultFetcher()
     },
     watch : {
       getPrefs : {

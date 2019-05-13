@@ -127,6 +127,8 @@
       },
       resultFetcher() {
         setInterval(() => {
+
+          console.log("My prex index " + this.prefIndex + " prefs " + this.getPrefs.length)
           if(this.getPrefs.length > 0) {
 
             console.log("My prefindex : " + this.prefIndex)
@@ -144,7 +146,8 @@
                   city: eachPref.baseHost
                 },
                 prefIndex: this.prefIndex ,
-                search : eachPref.search
+                search : eachPref.search ,
+                prefId : eachPref.prefId
 
               }
             ).then(() => {

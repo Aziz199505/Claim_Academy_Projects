@@ -46,15 +46,23 @@ const mutations = {
       }
     }
 
+  },
+  removePrefResult(state,prefId) {
+    let prefIndex = 0;
 
 
+   state.prefResults.forEach((e,index) => {
+     if(e[0].prefId === prefId) {
+       console.log("Found prefID and removing it at " + index)
+       prefIndex = index
+     }
+    })
 
 
-
-
-
+    state.prefResults.splice(prefIndex,1);
 
   }
+
 
 }
 const actions =  {
@@ -107,7 +115,12 @@ const actions =  {
       prefId,
       userId
     }).then(res =>  {
-      dispatch('fetchPrefs')
+
+      dispatch('fetchPrefs').then(() => {
+        console.log("Removing from pref results")
+        commit('removePrefResult',prefId)
+      } )
+
     })
 
 
@@ -131,9 +144,16 @@ const actions =  {
         } )
 */
 
+        let prefResult = res.data.map(e => {
+          e.prefId = pref.prefId
+          return e
+        } )
 
 
-        commit('storePrefResult',{data : res.data, index : pref.prefIndex})
+
+
+
+        commit('storePrefResult',{data : prefResult, index : pref.prefIndex})
       })
       .catch(err => {
         console.log()

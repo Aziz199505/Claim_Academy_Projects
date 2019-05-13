@@ -128,7 +128,7 @@ const mutations = {
 }
 const actions =  {
   fetchAreas({commit,dispatch,state}) {
-    globalAxios.get(state.cors + state.refAreas )
+    globalAxios.get(state.myCors + state.refAreas )
       .then(res => {
         //commit('setAuth',{token : res.data.idToken, userId : res.data.localId})
         //console.log(res.data)

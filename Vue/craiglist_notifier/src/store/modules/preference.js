@@ -27,10 +27,33 @@ const mutations = {
   storePrefResult(state,prefResult) {
 
     //Note I am here
-    if(this.prefIndex >= state.preferences.length - 1) {state.prefResult.pop()}
+
+    console.log("Pref Index: " + prefResult.index + " Preferences Length: " + state.preferences.length)
+
+    let notFound = true
+
+    state.prefResults.forEach((e,index) =>  {
+      if(JSON.stringify(e) === JSON.stringify(prefResult.data)) notFound = false;
+    })
 
 
-    state.prefResults.push(prefResult.data)
+    if(notFound) {
+      state.prefResults.unshift(prefResult.data)
+      while(state.prefResults.length > state.preferences.length) {
+        console.log("It ran")
+        state.prefResults.pop()
+        console.log("This is what supposed to be")
+      }
+    }
+
+
+
+
+
+
+
+
+
   }
 
 }
@@ -96,9 +119,20 @@ const actions =  {
   },
   fetchPrefResults({commit, dispatch, state,rootGetters},pref) {
 
-    axios.post(rootGetters.getMyCors+"http://localhost:3000/prefSearch",pref.payload)
+
+    axios.post(rootGetters.getMyCors+"http://localhost:3000/prefSearch",{options : pref.payload, search : pref.search})
       .then(res => {
-        console.log(res)
+        //console.log(res)
+       /* let filterData = res.data.filter(e =>  {
+          console.log(e.title + " my search: " + pref.search)
+          //console.log()
+
+          if(e.title.toLowerCase().indexOf(pref.search) > -1) return e
+        } )
+*/
+
+
+
         commit('storePrefResult',{data : res.data, index : pref.prefIndex})
       })
       .catch(err => {
@@ -113,6 +147,9 @@ const actions =  {
 const getters =  {
   getPrefs(state) {
     return state.preferences
+  },
+  getPrefsResults(state) {
+    return state.prefResults
   }
 
   /* getAuth(state) {

@@ -5,7 +5,10 @@
     <div class="row">
 
       <app-side-bar v-if="hideList">
-          <app-listed-item  v-for="i in 4"  :id="i"></app-listed-item>
+
+          <app-listed-item  v-for="(item,index) in allResults" :info="item"  :id="index"></app-listed-item>
+
+
       </app-side-bar>
 
       <main role="main" :class="adjustMain" class=" ml-sm-auto pt-3 px-4">
@@ -124,33 +127,45 @@
       },
       resultFetcher() {
         setInterval(() => {
-          let eachPref = this.getPrefs[this.prefIndex]
-          //Some Dispatch every some 1 seconds
-          //console.log(this.getPrefs[this.prefIndex])
+          if(this.getPrefs.length > 0) {
 
-          this.$store.dispatch('fetchPrefResults', {
-            payload : {
-              category : eachPref.category,
-              maxPrice : eachPref.maxPrice === 0 ? "" : eachPref.maxPrice,
-              minPrice : eachPref.minPrice === 0 ? "" : eachPref.minPrice,
-              postedToday : true,
-              hasImage : eachPref.hasPic,
-              city : eachPref.baseHost
-            },
-            prefIndex : this.prefIndex
+            console.log("My prefindex : " + this.prefIndex)
+            let eachPref = this.getPrefs[this.prefIndex]
+            //Some Dispatch every some 1 seconds
+            //console.log(this.getPrefs[this.prefIndex])
 
+            this.$store.dispatch('fetchPrefResults', {
+                payload: {
+                  category: eachPref.category,
+                  maxPrice: eachPref.maxPrice === 0 ? "" : eachPref.maxPrice,
+                  minPrice: eachPref.minPrice === 0 ? "" : eachPref.minPrice,
+                  postedToday: true,
+                  hasImage: eachPref.hasPic,
+                  city: eachPref.baseHost
+                },
+                prefIndex: this.prefIndex ,
+                search : eachPref.search
+
+              }
+            ).then(() => {
+              console.log("This is result")
+              console.log(this.getPrefsResults)
+            })
+
+
+            this.prefIndex += 1;
+            console.log("My prefindex : " + this.prefIndex + " Pref Length: " + this.getPrefs.length)
+            if (this.prefIndex >= this.getPrefs.length) {
+              this.prefIndex = 0
+            }
+
+
+          } else {
+            console.log("Preference is zero")
           }
 
 
-          )
-          this.prefIndex += 1;
-
-          if(this.prefIndex >= this.getPrefs.length - 1)  {
-            this.prefIndex = 0
-          }
-
-
-        },60000 )
+        },30000 )
       },
       removePref(prefId) {
         console.log("My prefId: " + prefId)
@@ -183,12 +198,21 @@
     },
     computed : {
       ...mapGetters([
-        'getPrefs'
+        'getPrefs',
+        'getPrefsResults'
       ]),
 
       ...mapState(['preferences']),
 
+      allResults() {
+        let results = []
+        this.getPrefsResults.forEach(e => {
+          results = [...results, ...e]
+        } )
 
+        return results
+
+      },
 
       adjustMain() {
         return {

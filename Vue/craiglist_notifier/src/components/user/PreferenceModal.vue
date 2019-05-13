@@ -583,6 +583,10 @@
       onAreas() {
 
 
+/*
+          console.log("error is here!")
+*/
+
           return this.getRefAreas.filter(e => {
             if(e.Region === this.selectedState) return e;
           })

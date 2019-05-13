@@ -20,7 +20,7 @@ app.post("/prefSearch", (req, res, next) => {
         craigslist = require('node-craigslist'),
         client = new craigslist.Client({
         }),
-        options = req.body
+        options = req.body.options
         /*{
             baseHost : '', // defaults to craigslist.org
             category : 'cta', // defaults to sss (all)
@@ -32,7 +32,7 @@ app.post("/prefSearch", (req, res, next) => {
         }*/;
 
     client
-        .search(options, '')
+        .search(options, req.body.search)
         .then((listings) => listings.forEach(   (l) => {
                 list.push(
              client.details(l).then((r) => {
@@ -47,6 +47,43 @@ app.post("/prefSearch", (req, res, next) => {
         });
         })
 
+        .catch((err) => {
+            console.error(err);
+        });
+
+
+
+
+
+});
+
+
+app.post("/prefSearchPrice", (req, res, next) => {
+    const list = [];
+
+    console.log(req.body)
+
+    var
+        craigslist = require('node-craigslist'),
+        client = new craigslist.Client({
+        }),
+        options = req.body.options
+        /*{
+            baseHost : '', // defaults to craigslist.org
+            category : 'cta', // defaults to sss (all)
+            maxPrice : '3000',
+            minPrice : '2000',
+            postedToday : true,
+            hasImage : true,
+            city: 'stlouis'
+        }*/;
+
+    client
+        .search(options, req.body.search)
+        .then((listings) => {
+            // filtered listings (by price)
+            res.json(listings)
+        })
         .catch((err) => {
             console.error(err);
         });

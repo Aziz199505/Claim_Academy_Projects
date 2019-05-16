@@ -1,11 +1,13 @@
 import globalAxios from "axios";
 import router from '../../router'
 import Hashids from 'hashids'
+import myArea from '../../assets/Areas'
+
 
 const hash =  new Hashids('',10)
 
 const state =  {
-  areas : null,
+  areas : myArea,
   cors : "https://cors-anywhere.herokuapp.com/",
   myCors : "http://localhost:8082/",
   refAreas : "https://reference.craigslist.org/Areas",
@@ -127,7 +129,15 @@ const mutations = {
 
 }
 const actions =  {
+
+
   fetchAreas({commit,dispatch,state}) {
+      console.log("My state")
+      console.log(state.areas)
+
+/*    $.getJSON("../../../assets/Areas.json", function(json) {
+      console.log(json); // this will show the info it in firebug console
+    });
     globalAxios.get(state.myCors + state.refAreas )
       .then(res => {
         //commit('setAuth',{token : res.data.idToken, userId : res.data.localId})
@@ -136,7 +146,7 @@ const actions =  {
         //router.push('/thank-you')
         //dispatch('storeData',authData)
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error))*/
   }
 
 
@@ -149,7 +159,7 @@ const getters =  {
     return state.cors
   },
   getRefAreas(state) {
-    return state.areas
+    return myArea
   },
   getStates(state) {
     return state.states

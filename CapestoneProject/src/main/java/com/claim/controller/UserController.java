@@ -32,7 +32,7 @@ public class UserController {
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			method=RequestMethod.POST)
 	public void sumbitStudentDetails(@RequestBody User user) {
-		sendMail.sendMail(user.getEmail(), "Welcome to Craiglist Notifier", user.getUsername() + " thanks for registering!");
+	//Mail Send	sendMail.sendMail(user.getEmail(), "Welcome to Craiglist Notifier", user.getUsername() + " thanks for registering!");
 		userRepository.save(user);
 	}
 	

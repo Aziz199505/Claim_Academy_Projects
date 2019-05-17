@@ -25,23 +25,75 @@
       </div>
       <div class="user-card-content text-nowrap  d-inline-block">
         <h5 class="card-title d-inline-flex">{{info.title.length < 25 ? info.title :  info.title.substring(0,20) + "..."}}</h5>
-        <div class="card-text">Free User</div>
-        <div class="card-text dental-text font-weight-bold">Dental Medicine</div>
-        <div class="card-text">Generation 2016 - Group 11</div>
+        <div class="card-text">{{info.location === "" ? "(Nearby areas)" : info.location}}</div>
+        <div class="card-text dental-text font-weight-bold">{{info.price}}</div>
+        <div class="card-text">{{getTime(info.postedAt)}}</div>
+        <div class="card-text">{{getTotalTime(info.postedAt)}}</div>
+        <hr>
+        <button class="btn btn-primary" @click="openNewWindow(info.url)"
+
+          >Learn More</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import moment from 'moment'
+
   export default {
-    props : ["id","info"]
+    props : ["id","info"],
+    methods : {
+      openNewWindow (url) {
+        console.log(url)
+        let w = 600
+        let h = 600
+        let left = (screen.width - w) / 2;
+        let top = (screen.height - h) / 4;
+
+        console.log(left)
+        console.log(top)
+
+        window.open(url,
+        'newwindow',
+          'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left
+        );
+          return false;
+
+      },
+      getTime(time) {
+        return moment(time).format('DD-MM-YYYY HH:mm A')
+      },
+      getTotalTime(time) {
+        return this.msToTime(new Date() - moment(time))
+      },
+       msToTime(duration) {
+          let milliseconds = parseInt((duration % 1000) / 100),
+            seconds = Math.floor((duration / 1000) % 60),
+            minutes = Math.floor((duration / (1000 * 60)) % 60),
+            hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+          hours = (hours < 10) ? "0" + hours : hours;
+          minutes = (minutes < 10) ? "0" + minutes : minutes;
+          seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    return hours + " hour " + minutes + " minutes ago";
+  }
+
+    }
+
   }
 
 </script>
 
 
 <style scoped>
+
+  .card:hover {
+    background-color: #eaeeff;
+  }
+
+
 
   .card.user-card {
     display: table;

@@ -41,7 +41,7 @@ const actions =  {
       })
       .catch(error => console.log(error))
   },
-  signIn({commit},authData) {
+  signIn({commit,dispatch},authData) {
     globalAxios.post("/login", {
       email : authData.email,
       password : authData.password
@@ -49,6 +49,9 @@ const actions =  {
       commit('storeUser',res.data)
       router.push(`/user/${hash.encode(res.data.userId)}`)
       console.log(res.data)
+
+      dispatch('fetchPrefs',{root:true})
+
     }).catch(error => {
       console.log(error)
     })

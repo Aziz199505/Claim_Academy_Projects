@@ -13,13 +13,14 @@
 
       <main role="main" :class="adjustMain" class=" ml-sm-auto pt-3 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Preferences</h1>
+          <h1 class="h2">Preferences({{allResults.length}})</h1>
+
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button @click="prefState = !prefState" data-toggle="modal" data-target="#modalAddCarForm" class="btn btn-sm btn-outline-primary">Add</button>
-              <button class="btn btn-sm btn-outline-danger">Remove</button>
+            <!--  <button class="btn btn-sm btn-outline-danger">Remove</button>-->
             </div>
-            <div class="dropdown">
+          <!--  <div class="dropdown">
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">Preferences
                 <span class="caret"></span></button>
               <ul class="dropdown-menu">
@@ -27,7 +28,7 @@
                 <li><a href="#">CSS</a></li>
                 <li><a href="#">JavaScript</a></li>
               </ul>
-            </div>
+            </div>-->
             <button @click="hideList = !hideList" class="btn btn-sm btn-outline-info">Hide Listed</button>
 
 
@@ -40,7 +41,7 @@
           <div class="col-md-1">
             #
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <span style="cursor: pointer" @click="switchSort('city','asc')" class="capitalize"> City </span> <span style="cursor: pointer" @click="sortedOrder == 'asc' ? switchSort('city','desc') : switchSort('city','asc') " v-if="selectedSort == 'city'" class="fa fa-fw fa-sort"></span>
           </div>
           <div class="col-md-3">
@@ -50,15 +51,18 @@
             <span style="cursor: pointer" @click="switchSort('descp','asc')"> Description </span>  <span style="cursor: pointer" @click="sortedOrder == 'asc' ? switchSort('descp','desc') : switchSort('descp','asc') "   v-if="selectedSort == 'descp'"class="fa fa-fw fa-sort"></span>
           </div>
           <div class="col-md-1">
+            <span>Select</span>
+          </div>
+          <div class="col-md-1">
 
           </div>
         </div>
 
-        <div  v-for="(item,index) in sortedPref" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom row">
+        <div  v-for="(item,index) in sortedPref" style="" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom row">
           <div class="col-md-1">
             {{index + 1}}
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <span class="capitalize"> {{item.city}} </span>
           </div>
           <div class="col-md-3">
@@ -67,6 +71,13 @@
           <div class="col-md-4">
             <span> {{item.descp}} </span>
           </div>
+          <div class="col-md-1">
+            <label class="Switch">
+              <input v-model="selectList" :value="item.prefId" type="checkbox" name="ohh shiny" required>
+              <span></span>
+            </label>
+          </div>
+
           <div class="col-md-1">
             <button @click="removePref(item.prefId)" type="button" class="close" aria-label="Close">
               <span  aria-hidden="true">&times;</span>
@@ -101,7 +112,9 @@
         prefState : false,
         hideList : true,
         sortedOrder : 'asc',
-        sortedPref : {}
+        sortedPref : {},
+        selectList : [],
+        listResults : []
       }
     },
     components : {
@@ -125,45 +138,22 @@
 
 
       },
+
+
       resultFetcher() {
         setInterval(() => {
 
-          console.log("My prex index " + this.prefIndex + " prefs " + this.getPrefs.length)
           if(this.getPrefs.length > 0) {
 
-            console.log("My prefindex : " + this.prefIndex)
-            let eachPref = this.getPrefs[this.prefIndex]
-            //Some Dispatch every some 1 seconds
-            //console.log(this.getPrefs[this.prefIndex])
-
-            this.$store.dispatch('fetchPrefResults', {
-                payload: {
-                  category: eachPref.category,
-                  maxPrice: eachPref.maxPrice === 0 ? "" : eachPref.maxPrice,
-                  minPrice: eachPref.minPrice === 0 ? "" : eachPref.minPrice,
-                  postedToday: true,
-                  hasImage: eachPref.hasPic,
-                  city: eachPref.baseHost
-                },
-                prefIndex: this.prefIndex ,
-                search : eachPref.search ,
-                prefId : eachPref.prefId
-
-              }
-            ).then(() => {
-              console.log("This is result")
-              console.log(this.getPrefsResults)
-            })
-
-
+/*
+            this.$store.dispatch('addingToPrefResults',this.prefIndex)
             this.prefIndex += 1;
             console.log("My prefindex : " + this.prefIndex + " Pref Length: " + this.getPrefs.length)
             if (this.prefIndex >= this.getPrefs.length) {
               this.prefIndex = 0
-            }
+            }*/
 
-
-          } else {
+          }else {
             console.log("Preference is zero")
           }
 
@@ -172,7 +162,11 @@
       },
       removePref(prefId) {
         console.log("My prefId: " + prefId)
+
         this.$store.dispatch('deletePref',prefId)
+          .then(() => {
+            this.selectList.splice(this.selectList.indexOf(prefId),1)
+          } )
       },
       compareValues(key, order='asc') {
         return function(a, b) {
@@ -212,8 +206,21 @@
         this.getPrefsResults.forEach(e => {
           results = [...results, ...e]
         } )
+     //   console.log(results)
 
-        return results
+        if(this.selectList.length > 0) {
+          results =  results.filter(e =>  {
+            //console.log(e)
+            if(this.selectList.includes(e.prefId)) return e;
+          } )
+
+          return results
+        }else {return results}
+
+
+
+
+
 
       },
 
@@ -224,15 +231,43 @@
         }
       }
     },
+    mounted() {
+    /*  console.log("This is mounted")
+
+      console.log(this.getPrefs)*/
+
+    },
     created() {
-      this.$store.dispatch('fetchPrefs')
+/*      this.$store.dispatch('fetchPrefs')
         .then(() => {
-          this.sortedPref = this.getPrefs.sort(this.compareValues('search'))
-        } )
+
+        } )*/
+
+      this.sortedPref = this.getPrefs.sort(this.compareValues('search'))
+
+     /* this.getPrefs.forEach((e,index) => {
+        console.log("running this")
+        this.addingToPrefResults(index)
+      } )*/
+
+      console.log("Created")
+
 
       this.resultFetcher()
     },
     watch : {
+    /*  selectList(val) {
+        console.log("Change in selected list")
+        console.log(val)
+
+        if(val.length > 0) {
+          this.sortedPref = this.sortedPref.filter(e =>  {
+            if(val.includes(e[0].prefId)) return e;
+          } )
+        }
+      },*/
+
+
       getPrefs : {
         handler(val){
           console.log("changed")
@@ -270,6 +305,60 @@
 </script>
 
 <style scoped>
+  :root {
+    --primaryColor: sandybrown;
+    --textColor: gray;
+    --backgroundColor: #333130;
+  }
+
+  .Switch > span {
+    position: relative;
+    padding-left: 3.2em;
+    user-select: none; /* just for the demo */
+  }
+
+  .Switch > input[type='checkbox'] {
+    height: 1.2em;
+    width: 2.55em;
+    opacity: 0; /* thanks sara https://vimeo.com/331530115 */
+    position: absolute;
+    z-index: 1;
+  }
+
+  .Switch > span:before {
+    background-color: lightgray;
+    border-radius: 1.2em;
+    border: .1em solid transparent;
+    content: '';
+    height: 1.2em;
+    left: 0;
+    position: absolute;
+    top: .3em;
+    transition: border-color .2s, background-color .2s;
+    width: 2.55em;
+  }
+
+  .Switch > span:after {
+    background-color: lightyellow;
+    border-radius: 50%;
+    border: .1em solid lightgray;
+    content: '';
+    height: 1.2em;
+    left: 0;
+    position: absolute;
+    top: .3em;
+    transition: transform .2s, border-color .2s;
+    width: 1.2em;
+  }
+
+  .Switch > input:checked + span:before {
+    background-color: mediumspringgreen;
+  }
+
+  .Switch > input:checked + span:after {
+    border-color: mediumspringgreen;
+    transform: translateX(100%);
+  }
 
   .list-group{
       text-align: center;

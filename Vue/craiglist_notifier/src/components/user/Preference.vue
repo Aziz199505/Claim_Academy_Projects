@@ -145,13 +145,12 @@
 
           if(this.getPrefs.length > 0) {
 
-/*
             this.$store.dispatch('addingToPrefResults',this.prefIndex)
             this.prefIndex += 1;
             console.log("My prefindex : " + this.prefIndex + " Pref Length: " + this.getPrefs.length)
             if (this.prefIndex >= this.getPrefs.length) {
               this.prefIndex = 0
-            }*/
+            }
 
           }else {
             console.log("Preference is zero")

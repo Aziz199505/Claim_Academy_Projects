@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab9f11e9-fbed-4dd3-a311-0e3125c66be5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../CapestoneProject/src/main/java/com/claim/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CapestoneProject/src/main/java/com/claim/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CapestoneProject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CapestoneProject/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../craiglist_notifier/src/components/auth/SignIn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../craiglist_notifier/src/components/auth/SignIn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../craiglist_notifier/src/components/user/ListedItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../craiglist_notifier/src/components/user/ListedItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CapestoneProject/src/main/java/com/claim/CapestoneProject/CapestoneProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CapestoneProject/src/main/java/com/claim/CapestoneProject/CapestoneProjectApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../craiglist_notifier/src/components/user/Preference.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../craiglist_notifier/src/components/user/Preference.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../craiglist_notifier/src/store/modules/preference.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../craiglist_notifier/src/store/modules/preference.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../craiglist_notifier/src/store/modules/static.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../craiglist_notifier/src/store/modules/static.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../craiglist_notifier/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../craiglist_notifier/src/store/modules/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -95,7 +89,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="131">
               <caret line="60" column="26" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="26" />
             </state>
           </provider>
@@ -168,9 +162,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
+    <option name="x" value="-1634" />
+    <option name="y" value="601" />
     <option name="width" value="1934" />
-    <option name="height" value="1047" />
+    <option name="height" value="531" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -232,7 +227,7 @@
     <option name="totallyTimeSpent" value="15955000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1934" height="1047" extended-state="0" />
+    <frame x="-1634" y="601" width="1934" height="531" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973932" />
@@ -288,7 +283,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="131">
           <caret line="60" column="26" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="26" />
         </state>
       </provider>

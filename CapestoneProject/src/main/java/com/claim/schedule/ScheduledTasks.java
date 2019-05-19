@@ -15,6 +15,9 @@ import com.claim.entity.Preference;
 import com.claim.entity.User;
 import com.claim.repository.PreferenceRepository;
 import com.claim.repository.UserRepository;
+import com.claim.restTemp.Item;
+import com.claim.restTemp.ItemRequest;
+import com.claim.restTemp.Options;
 
 @Component
 public class ScheduledTasks {
@@ -30,7 +33,7 @@ public class ScheduledTasks {
 	private PreferenceRepository prefRepository;
     
     
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10000)
     public void reportCurrentTime() {
     	RestTemplate restTemplate = new RestTemplate();
     	
@@ -41,6 +44,25 @@ public class ScheduledTasks {
 			  for(Preference pref : prefs) {
 				  if(pref.getUser().getUserId() == user.getUserId()) {
 					  log.info(user.getUsername() + " " + pref.getSearch());
+					  ItemRequest itemRequest = new ItemRequest();
+					  
+					  itemRequest.setSearch(pref.getSearch());
+					  
+					  Options option = new Options();
+					  option.setCategory(pref.getCategory());
+					  option.setCity(pref.getBaseHost());
+					  option.setHasImage(pref.isHasPic());
+					  option.setMaxPrice(pref.getMaxPrice());
+					  option.setMinPrice(pref.getMinPrice());
+					  
+					  itemRequest.setOptions(option);
+					  
+					 Item[] response = restTemplate.postForObject("http://localhost:3000/prefSearchPrice", itemRequest, Item[].class );
+					  
+					 for(int i =0 ; i < response.length; i++) {
+						 log.info("PID: " + response[i].getPid() + " Date: " + response[i].getDate());
+					 }
+					  
 				  }
 				  
 		    		

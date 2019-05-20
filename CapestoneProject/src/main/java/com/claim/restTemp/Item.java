@@ -7,7 +7,7 @@ public class Item {
 
 	private String date;
 	private String pid;
-	
+	private String price;
 	
 	public Item() {
 		super();
@@ -26,6 +26,18 @@ public class Item {
 
 	public String getPid() {
 		return pid;
+	}
+
+	
+	
+
+	public String getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 

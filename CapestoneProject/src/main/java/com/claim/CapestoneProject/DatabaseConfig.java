@@ -48,7 +48,7 @@ JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
     mailSender.setPort(587);
     
     mailSender.setUsername("cryptozhunter@gmail.com");
-    mailSender.setPassword("unevenjade948");
+    mailSender.setPassword("Ketmon123!");
 
    Properties props = mailSender.getJavaMailProperties();
    props.put("mail.transport.protocol", "smtp");

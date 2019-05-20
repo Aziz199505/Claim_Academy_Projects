@@ -65,6 +65,11 @@ public class Preference {
 	private String state;
 	
 
+	/*
+	 * @OneToMany(mappedBy="preference",cascade={CascadeType.PERSIST,
+	 * CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval=true) private
+	 * Set<CraiglistItem> CraiglistItem;
+	 */
 	
 	
 	@ManyToOne
@@ -103,13 +108,23 @@ public class Preference {
 		this.state = state;
 		this.user = user;
 		this.notifyDetail = notifyDetail;
-	}
+		/*
+		 * this.CraiglistItem = craiglistItem;
+		 */	}
 
 
 
 
 
 
+
+	/*
+	 * public Set<CraiglistItem> getCraiglistItem() { return CraiglistItem; }
+	 * 
+	 * 
+	 * public void setCraiglistItem(Set<CraiglistItem> craiglistItem) {
+	 * CraiglistItem = craiglistItem; }
+	 */
 
 	public Set<Notify> getNotifyDetail() {
 		return notifyDetail;

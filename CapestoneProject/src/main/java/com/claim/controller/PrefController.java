@@ -25,6 +25,7 @@ import com.claim.entity.Preference;
 import com.claim.entity.User;
 import com.claim.entity.Week;
 import com.claim.entity.WeekTime;
+import com.claim.repository.CraiglistItemRepository;
 import com.claim.repository.PreferenceRepository;
 import com.claim.repository.UserRepository;
 import com.claim.repository.WeekTimeRepository;
@@ -44,6 +45,11 @@ public class PrefController {
 	@Autowired
 	private PreferenceRepository prefRepository;
 	
+	
+	 @Autowired
+	 private CraiglistItemRepository craigItemRepository;
+	
+	
 	@RequestMapping(value="/deletePref",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			method=RequestMethod.POST)
@@ -60,6 +66,10 @@ public class PrefController {
 		System.out.println(user.getFirstName());
 		Set<Preference> prefs = new HashSet<Preference>();
 
+		
+	   
+		/* craigItemRepository.deleteCraigItemByPrefId(String.valueOf(pId)); */
+		
 		for(Preference pref : user.getPreference()) {
 			if(pref.getPrefId() != prefId) {
 				/*

@@ -161,10 +161,10 @@ public class ScheduledTasks {
 						 
 						
 						 if(pref.isNotifyEmail()) { sendMail.sendMail(user.getEmail(),
-						 "Notification Alert!", tempBodyPhone); }
+						 "Notification Alert!", tempBody); }
 						  
 						 if(pref.isNotifyPhone()) { log.info("Sending SMS to " + user.getCellPhone());
-						 tt.send(user.getCellPhone(),tempBody); }
+						 tt.send(user.getCellPhone(),tempBodyPhone); }
 						 
 						
 						 

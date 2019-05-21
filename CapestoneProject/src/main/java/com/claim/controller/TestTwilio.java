@@ -9,22 +9,22 @@ public class TestTwilio {
 	    public static final String AUTH_TOKEN = "d04a8d9853c6a2d9798b712bd6cfd487";
 	    public static final String FROM = "+13145829178";
 	    
-	    private String to;
-	    private String body;
 	    
-	    public TestTwilio(String to, String body ) {
-	    	this.to = to;
-	    	this.body = body;
+	    
+	    public TestTwilio() {
+	    	Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 	    }
 	    
 
-	    public void send() {
-	        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+	    public void send(String to, String body) {
+	        
 	        Message message = Message.creator(
 	                new com.twilio.type.PhoneNumber("+1" + to),
 	                new com.twilio.type.PhoneNumber(FROM),
 	                body)
 	            .create();
+	        
+	        
 
 	        System.out.println(message.getSid());
 	    }

@@ -187,6 +187,10 @@ const actions =  {
 
 
   },
+  clearPrefs({commit,dispatch,state,rootGetters}) {
+    state.preferences = []
+    state.prefResults = []
+  },
   fetchPrefs({commit,dispatch,state,rootGetters},status) {
     let userId = rootGetters.getUserHashId.userId
 

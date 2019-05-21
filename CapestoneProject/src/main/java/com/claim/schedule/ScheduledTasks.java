@@ -36,6 +36,9 @@ public class ScheduledTasks {
 
     SimpleDateFormat dateForamter =new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
     
+	TestTwilio tt = new TestTwilio();
+
+    
     @Autowired
 	private UserRepository userRepository;
 
@@ -136,8 +139,8 @@ public class ScheduledTasks {
 						}
 						 
 						if(pref.isNotifyPhone())  {
-							TestTwilio tt = new TestTwilio(user.getCellPhone(),tempBody);
-							tt.send();
+							log.info("Sending SMS to " + user.getCellPhone());
+							tt.send(user.getCellPhone(),tempBody);
 						}
 						
 						 

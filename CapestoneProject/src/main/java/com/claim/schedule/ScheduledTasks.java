@@ -80,8 +80,16 @@ public class ScheduledTasks {
 					 for(int i =0 ; i < response.length; i++) {
 						 log.info("PID: " + response[i].getPid() + " Date: " + response[i].getDate());
 						 Optional<CraiglistItem> tempCraigItem =  craigItemRepository.findByPid(response[i].getPid());
+						// Optional<CraiglistItem> tempCraigItemPref =  craigItemRepository.findByPrefId(pref.getPrefId());
 						 
-						 if(!tempCraigItem.isPresent()) {
+						/*
+						 * if(tempCraigItem.isPresent() && tempCraigItem.get().getPrefId() !=
+						 * pref.getPrefId()) {
+						 * 
+						 * }
+						 */
+						 
+						 if(!tempCraigItem.isPresent() || (tempCraigItem.isPresent() && tempCraigItem.get().getPrefId() != pref.getPrefId())) {
 							 
 							 
 							 
@@ -120,8 +128,12 @@ public class ScheduledTasks {
 									 log.info("Price " + ci.getPrice());
 									 log.info("Url " + responseDetail[j].getUrl());
 									 
-									 tempBody += "New Item has been found\n";
-									 tempBody += "Title: " + responseDetail[j].getTitle() + "\n";
+									 
+									 if(newItems.size() > 3) {
+										 tempBody += "New Item has been found\n";
+										 tempBody += "Title: " + responseDetail[j].getTitle() + "\n";
+									 }
+									 
 									 tempBody += "Price: " + ci.getPrice()  + "\n" ;
 									 tempBody += "Url: " + responseDetail[j].getUrl() + "\n";
 									 tempBody += "Search for: " + pref.getSearch() + " in " + pref.getState() + "\n";
@@ -134,14 +146,13 @@ public class ScheduledTasks {
 							
 						 }
 						 
-						if(pref.isNotifyEmail()) {
-							sendMail.sendMail(user.getEmail(), "Notification Alert!", tempBody);
-						}
+						
+						 if(pref.isNotifyEmail()) { sendMail.sendMail(user.getEmail(),
+						 "Notification Alert!", tempBody); }
+						  
+						 if(pref.isNotifyPhone()) { log.info("Sending SMS to " + user.getCellPhone());
+						 tt.send(user.getCellPhone(),tempBody); }
 						 
-						if(pref.isNotifyPhone())  {
-							log.info("Sending SMS to " + user.getCellPhone());
-							tt.send(user.getCellPhone(),tempBody);
-						}
 						
 						 
 					 }

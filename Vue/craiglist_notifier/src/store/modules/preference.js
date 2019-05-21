@@ -63,12 +63,18 @@ const mutations = {
 
       else {
         state.prefResults.unshift(prefResult.data)
-        while(state.prefResults.length > state.preferences.length) {
-          console.log("It ran")
-          state.prefResults.pop()
-          console.log("This is what supposed to be")
+
+        if(state.prefResults.length > 0 && state.preferences.length > 0 ) {
+          /// BUGGGGGGGG Fix it***
+          while(state.prefResults.length > state.preferences.length) {
+            console.log("It ran")
+            state.prefResults.pop()
+            console.log("This is what supposed to be")
+
+          }
           state.prefResults.unshift(prefResult.data)
         }
+
       }
 
 

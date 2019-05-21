@@ -46,8 +46,7 @@ public class PrefController {
 	private PreferenceRepository prefRepository;
 	
 	
-	 @Autowired
-	 private CraiglistItemRepository craigItemRepository;
+	
 	
 	
 	@RequestMapping(value="/deletePref",

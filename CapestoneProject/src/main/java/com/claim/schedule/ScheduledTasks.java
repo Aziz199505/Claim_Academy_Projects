@@ -86,7 +86,7 @@ public class ScheduledTasks {
 					 List<CraiglistItem> newItems = new ArrayList<>();
 					 for(int i =0 ; i < response.length; i++) {
 						 log.info("PID: " + response[i].getPid() + " Date: " + response[i].getDate());
-						 Optional<CraiglistItem> tempCraigItem =  craigItemRepository.findByPid(response[i].getPid());
+						 Optional<CraiglistItem> tempCraigItem =  craigItemRepository.findByPid(response[i].getPid(),pref.getPrefId());
 						// Optional<CraiglistItem> tempCraigItemPref =  craigItemRepository.findByPrefId(pref.getPrefId());
 						 
 						/*
@@ -96,7 +96,10 @@ public class ScheduledTasks {
 						 * }
 						 */
 						 
-						 if(!tempCraigItem.isPresent() || (tempCraigItem.isPresent() && tempCraigItem.get().getPrefId() != pref.getPrefId())) {
+						if (!tempCraigItem.isPresent() /*
+														 * || (tempCraigItem.isPresent() &&
+														 * tempCraigItem.get().getPrefId() != pref.getPrefId())
+														 */) {
 							 
 							 
 							 
@@ -125,6 +128,7 @@ public class ScheduledTasks {
 					 
 					 if(newItems.size() > 0) {
 						 String tempBody = "";
+						 String tempBodyPhone = "";
 						 ItemDetail[] responseDetail = restTemplate.postForObject("http://localhost:3000/prefSearch", itemRequest, ItemDetail[].class );
 						 for(CraiglistItem ci : newItems) {
 							 for(int j = 0; j < responseDetail.length; j++) {
@@ -136,26 +140,28 @@ public class ScheduledTasks {
 									 log.info("Url " + responseDetail[j].getUrl());
 									 
 									 
-									 if(newItems.size() > 3) {
-										 tempBody += "New Item has been found\n";
-										 tempBody += "Title: " + responseDetail[j].getTitle() + "\n";
-									 }
+									// if(newItems.size() > 3) {
+									tempBody += "New Item has been found\n";
+									tempBody += "Title: " + responseDetail[j].getTitle() + "\n";
+									// }
 									 
 									 tempBody += "Price: " + ci.getPrice()  + "\n" ;
 									 tempBody += "Url: " + responseDetail[j].getUrl() + "\n";
+									 tempBodyPhone += "Url: " + responseDetail[j].getUrl() + "\n";
 									 tempBody += "Search for: " + pref.getSearch() + " in " + pref.getState() + "\n";
 								 }
 							 }
 							 
 							 if(newItems.size() > 1) {
-								 tempBody += "===================\n";
+								 tempBody += "\n";
+								 tempBodyPhone += "\n";
 							 }
 							
 						 }
 						 
 						
 						 if(pref.isNotifyEmail()) { sendMail.sendMail(user.getEmail(),
-						 "Notification Alert!", tempBody); }
+						 "Notification Alert!", tempBodyPhone); }
 						  
 						 if(pref.isNotifyPhone()) { log.info("Sending SMS to " + user.getCellPhone());
 						 tt.send(user.getCellPhone(),tempBody); }

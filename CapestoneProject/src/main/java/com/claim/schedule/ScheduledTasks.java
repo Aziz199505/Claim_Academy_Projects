@@ -55,7 +55,14 @@ public class ScheduledTasks {
     public void reportCurrentTime() {
     	RestTemplate restTemplate = new RestTemplate();
     	
-    	List<User> users = userRepository.findAll();
+    	List<User> users = new ArrayList<>();
+    	
+    	try {
+    		users = userRepository.findAll();
+    	}catch(Exception e) {
+    		
+    	}
+    	
     	List<Preference> prefs = prefRepository.findAll();
 		
 		  for(User user: users) {

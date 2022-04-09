@@ -14,7 +14,7 @@
     "axios": "^0.18.0",
     "chart.js": "^2.8.0",
     "hashids": "^1.2.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "uninstall": "0.0.0",
     "v-suggestions": "^1.1.1",
     "vue": "^2.5.11",

@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "cors-anywhere": "^0.4.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "node-craigslist": "^2.0.0"
   }
 }
